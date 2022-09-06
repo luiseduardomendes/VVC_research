@@ -1,6 +1,5 @@
-from distutils.log import Log
+import numpy as np
 import re
-from turtle import title
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -16,7 +15,7 @@ class LogDict:
                 self.df[key].append(float(log_data[i]))
         else:
             for i, key in enumerate(list(self.keys)[:-4]):
-                self.df[key].append(np.nan)
+                self.df[key].append(np.NaN)
 
         self.df['fileName'].append(name)
         self.df['qp'].append(qp)
