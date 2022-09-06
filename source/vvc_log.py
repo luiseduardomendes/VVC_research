@@ -1,7 +1,8 @@
 from distutils.log import Log
 import re
+from turtle import title
 import pandas as pd
-import numpy as np
+import matplotlib.pyplot as plt
 
 # this object is used as return to the read_log function
 # it is also used by the LogDF to append new data to a Log Data Frame
@@ -52,11 +53,58 @@ class LogDF:
     def sort_by(self, key : str):
         self.df = self.df.sort_values(by=key).reset_index(drop=True)
 
+    def get(self, key : str):
+        return self.df[key][0]
+
     def __mk_empty_df__(self) -> pd.DataFrame:
         df = {}
         for key in self.keys:
             df[key] = []
         return pd.DataFrame(df)
+
+    def plot(self, x : str = 'bitrate', y : str = 'YUV_PSNR', save : bool = False, output_name : str = None):
+        if output_name == None:
+            output_name = self.df['fileName'][0] + '_' + x + '_by_' + y
+
+        ax = self.df.plot.line(x=x, y=y, title=output_name)
+        if save:
+            fig = ax.get_figure()
+            fig.savefig(output_name + '.png')
+
+        return ax
+
+    def compare(self, cmp_with, x : str = 'bitrate', y : str = 'YUV_PSNR', save : bool = False, output_name : str = None):
+        if output_name == None:
+            output_name = self.df['fileName'][0] + '_' + cmp_with.get('fileName')[0] + '_' + x + '_by_' + y
+        
+        df2 = cmp_with.getDataFrame()
+
+        fig, ax = plt.subplots()
+        ax.plot(self.df[x], self.df[y])
+        ax.plot(df2[x], df2[y])
+        ax.set_xlabel(x)
+        ax.set_ylabel(y)
+
+        if save:
+            fig = ax.get_figure()
+            fig.savefig(output_name + '.png')
+
+    def difference(self, cmp_with, x : str = 'bitrate', y : str = 'YUV_PSNR', save : bool = False, output_name : str = None):
+        if output_name == None:
+            output_name = self.df['fileName'][0] + '_' + cmp_with.get('fileName')[0] + '_' + x + '_by_' + y
+        
+        df2 = cmp_with.getDataFrame()
+
+        fig, ax = plt.subplots()
+        ax.plot(df2[x], df2[y] - self.df[y])
+
+        ax.set_xlabel(x)
+        ax.set_ylabel(y)
+
+        if save:
+            fig = ax.get_figure()
+            fig.savefig(output_name + '.png')
+        
         
 
 # receives a file in the specified format "log_{VIDEONAME}_qp{QP}_{CONFIG}_.+RdCost{SATD}_exec"
