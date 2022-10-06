@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,encoder,satd,qp
+,,,,,Johnny,randomaccess,4x4-3-8x8-SAD.cpp,22
+,,,,,Johnny,randomaccess,4x4-3-8x8-SAD.cpp,27
+,,,,,Johnny,randomaccess,4x4-3-8x8-SAD.cpp,32
+,,,,,Johnny,randomaccess,4x4-3-8x8-SAD.cpp,37

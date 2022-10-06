@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,qp,cfg,satd
+81906.375,40.8285,42.0737,42.1717,41.1015,Campfire,22,low_delay,Preciso
+22062.2175,37.6465,38.0874,39.9663,37.9414,Campfire,27,low_delay,Preciso
+10333.485,35.8241,35.9998,38.4532,36.1342,Campfire,32,low_delay,Preciso
+5445.3825,33.9478,34.0293,36.774,34.2433,Campfire,37,low_delay,Preciso

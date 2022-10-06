@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,encoder,satd,qp
+1300.5525,39.5045,40.9601,41.4263,39.8955,RaceHorses,lowdelay,4x4-1-8x8-SAD,22
+586.1475,34.9844,37.9091,38.2529,35.648,RaceHorses,lowdelay,4x4-1-8x8-SAD,27
+279.075,31.4588,35.8455,36.0204,32.3763,RaceHorses,lowdelay,4x4-1-8x8-SAD,32
+138.1575,28.6473,34.2989,34.286,29.7633,RaceHorses,lowdelay,4x4-1-8x8-SAD,37

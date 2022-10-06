@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,qp,cfg,satd
+178503.45,44.094,45.6599,43.9009,44.2813,Campfire,22,intra,Preciso
+79440.795,40.3443,41.353,41.5281,40.6732,Campfire,27,intra,Preciso
+29416.875,37.6415,38.2591,39.7849,38.0269,Campfire,32,intra,Preciso
+15468.045,36.0131,36.4034,38.0322,36.3475,Campfire,37,intra,Preciso

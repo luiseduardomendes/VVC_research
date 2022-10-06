@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,qp,cfg,satd
+55816.935,39.5666,41.2122,41.9132,40.0067,CampFire,22,random_access,Preciso
+18083.385,37.3656,37.7468,39.9786,37.7007,CampFire,27,random_access,Preciso
+9354.915,35.7469,35.7733,38.5265,36.0451,CampFire,32,random_access,Preciso
+4841.07,33.8815,33.7519,36.8178,34.1432,CampFire,37,random_access,Preciso

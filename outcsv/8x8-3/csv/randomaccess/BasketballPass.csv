@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,encoder,satd,qp
+657.475,42.486,45.9025,45.3438,43.2416,BasketballPass,randomaccess,8x8-3,22
+330.1375,38.787,43.0957,42.3173,39.6728,BasketballPass,randomaccess,8x8-3,27
+169.35,35.4241,40.7606,39.6215,36.4369,BasketballPass,randomaccess,8x8-3,32
+92.0375,32.6387,38.7505,37.7623,33.7781,BasketballPass,randomaccess,8x8-3,37

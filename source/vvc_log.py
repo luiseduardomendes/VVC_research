@@ -1,5 +1,6 @@
 import numpy as np
 import re
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -72,6 +73,27 @@ class LogDF:
 
         return ax
 
+    def to_csv(self, output_name = None, output_folder = None):
+        if output_name == None:
+            output_name = self.df['satd'][0] + self.df['cfg'][0] + self.df['fileName'][0] + '.csv'
+        if output_folder != None:
+            output_name = os.path.join(output_folder, output_name)
+        self.df.to_csv(output_name, index=False)
+
+    def to_excel(self, output_name = None, output_folder = None):
+        if output_name == None:
+            output_name = self.df['satd'][0] + self.df['cfg'][0] + self.df['fileName'][0] + '.xlsx'
+        if output_folder != None:
+            output_name = os.path.join(output_folder, output_name)
+        self.df.to_excel(output_name, index=False)
+
+    def to_latex(self, output_name = None, output_folder = None):
+        if output_name == None:
+            output_name = self.df['satd'][0] + self.df['cfg'][0] + self.df['fileName'][0] + '.tex'
+        if output_folder != None:
+            output_name = os.path.join(output_folder, output_name)
+        self.df.to_latex(output_name, index=False)
+
     def compare(self, cmp_with, x : str = 'bitrate', y : str = 'YUV_PSNR', save : bool = False, output_name : str = None):
         if output_name == None:
             output_name = self.df['fileName'][0] + '_' + cmp_with.get('fileName')[0] + '_' + x + '_by_' + y
@@ -108,7 +130,7 @@ class LogDF:
 
 # receives a file in the specified format "log_{VIDEONAME}_qp{QP}_{CONFIG}_.+RdCost{SATD}_exec"
 # with the extension ".gplog", ".vvclog" or ".txt"
-def read_log(file : str) -> LogDict:
+def read_log(file : str, name = None, qp = None, cfg = None, satd = None) -> LogDict:
 
     # Bitrate, Y-PSNR, U-PSNR, V-PSNR, YUV-PSNR
     ptrn = re.compile(r'^\s+\d+\s+a\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\s+$', re.M)  
@@ -116,7 +138,8 @@ def read_log(file : str) -> LogDict:
     file_name_ptrn = re.compile(r'log_(.+)_qp(\d{2})_(\w+)_.+RdCost(.+)_exec')
 
     if file.endswith('.txt') or file.endswith('.gplog') or file.endswith('.vvclog'):
-        name, qp, cfg, satd = file_name_ptrn.findall(file)[0]
+        if name == None:
+            name, qp, cfg, satd = file_name_ptrn.findall(file)[0]
         with open(file) as f:
             log_text = f.read()
             check = ptrn.findall(log_text, re.M)

@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,encoder,satd,qp
+774.9625,42.2198,44.7446,44.538,42.8524,BasketballPass,lowdelay,4x4-1-8x8-1.cpp,22
+359.8125,38.205,42.1991,41.4109,39.0399,BasketballPass,lowdelay,4x4-1-8x8-1.cpp,27
+179.7,34.8014,39.8759,38.9553,35.7978,BasketballPass,lowdelay,4x4-1-8x8-1.cpp,32
+94.075,31.954,38.3212,37.2075,33.1139,BasketballPass,lowdelay,4x4-1-8x8-1.cpp,37

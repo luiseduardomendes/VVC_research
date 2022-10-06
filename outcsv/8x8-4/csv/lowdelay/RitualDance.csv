@@ -1,0 +1,9 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,encoder,satd,qp
+9013.83,46.4674,48.3627,48.9969,47.0069,RitualDance,lowdelay,8x8-4,22
+9004.125,46.4671,48.3837,48.9816,47.0073,RitualDance,lowdelay,8x8-4,22
+4488.855,43.1283,45.8107,45.9891,43.729,RitualDance,lowdelay,8x8-4,27
+4489.83,43.1245,45.8161,45.9676,43.7249,RitualDance,lowdelay,8x8-4,27
+2400.255,39.8491,44.142,43.9216,40.6703,RitualDance,lowdelay,8x8-4,32
+2403.375,39.8495,44.1298,43.9949,40.6744,RitualDance,lowdelay,8x8-4,32
+1344.63,36.9403,42.0989,42.2468,37.9076,RitualDance,lowdelay,8x8-4,37
+1346.49,36.9337,42.1309,42.2793,37.9045,RitualDance,lowdelay,8x8-4,37

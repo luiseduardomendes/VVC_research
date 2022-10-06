@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,encoder,satd,qp
+3250.53,40.1874,43.9287,45.518,41.1791,BQMall,randomaccess,4x4-3.cpp,22
+1634.64,37.7087,42.0519,43.1546,38.7162,BQMall,randomaccess,4x4-3.cpp,27
+876.87,34.9778,40.1302,41.0129,36.0566,BQMall,randomaccess,4x4-3.cpp,32
+481.605,32.2078,38.2924,38.9399,33.3836,BQMall,randomaccess,4x4-3.cpp,37

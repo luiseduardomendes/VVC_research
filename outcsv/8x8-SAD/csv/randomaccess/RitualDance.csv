@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,encoder,satd,qp
+7891.335,46.2012,48.3565,48.9882,46.793,RitualDance,randomaccess,8x8-SAD,22
+4060.065,43.0574,46.0697,46.2698,43.7243,RitualDance,randomaccess,8x8-SAD,27
+2180.31,39.8965,44.289,44.0665,40.736,RitualDance,randomaccess,8x8-SAD,32
+1217.25,37.0127,42.3962,42.5025,38.0037,RitualDance,randomaccess,8x8-SAD,37

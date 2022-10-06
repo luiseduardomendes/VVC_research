@@ -1,0 +1,9 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,encoder,satd,qp
+774.9625,42.2198,44.7446,44.538,42.8524,BasketballPass,lowdelay,8x8-4,22
+774.2875,42.2159,44.747,44.5307,42.8493,BasketballPass,lowdelay,8x8-4,22
+359.8125,38.205,42.1991,41.4109,39.0399,BasketballPass,lowdelay,8x8-4,27
+361.575,38.2144,42.2174,41.3767,39.0472,BasketballPass,lowdelay,8x8-4,27
+179.7,34.8014,39.8759,38.9553,35.7978,BasketballPass,lowdelay,8x8-4,32
+180.25,34.7847,39.844,38.9883,35.7817,BasketballPass,lowdelay,8x8-4,32
+94.075,31.954,38.3212,37.2075,33.1139,BasketballPass,lowdelay,8x8-4,37
+92.6875,31.9384,38.0857,37.1689,33.0901,BasketballPass,lowdelay,8x8-4,37

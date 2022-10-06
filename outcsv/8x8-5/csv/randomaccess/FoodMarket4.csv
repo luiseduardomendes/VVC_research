@@ -1,0 +1,9 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,encoder,satd,qp
+,,,,,FoodMarket4,randomaccess,8x8-5,22
+,,,,,FoodMarket4,randomaccess,8x8-5,22
+,,,,,FoodMarket4,randomaccess,8x8-5,27
+,,,,,FoodMarket4,randomaccess,8x8-5,27
+,,,,,FoodMarket4,randomaccess,8x8-5,32
+,,,,,FoodMarket4,randomaccess,8x8-5,32
+,,,,,FoodMarket4,randomaccess,8x8-5,37
+,,,,,FoodMarket4,randomaccess,8x8-5,37

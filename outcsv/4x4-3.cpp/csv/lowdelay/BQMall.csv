@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,encoder,satd,qp
+4183.905,40.1292,43.146,44.5863,41.0015,BQMall,lowdelay,4x4-3.cpp,22
+1834.77,37.1885,41.2972,42.2561,38.1853,BQMall,lowdelay,4x4-3.cpp,27
+927.345,34.2583,39.4361,40.1122,35.3765,BQMall,lowdelay,4x4-3.cpp,32
+488.88,31.4109,37.7688,38.2844,32.6639,BQMall,lowdelay,4x4-3.cpp,37

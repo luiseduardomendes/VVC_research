@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,encoder,satd,qp
+1144.215,39.2473,41.4582,41.9653,39.7964,RaceHorses,randomaccess,4x4-3.cpp,22
+556.935,35.2834,38.8041,39.1122,36.0521,RaceHorses,randomaccess,4x4-3.cpp,27
+273.5925,31.8808,36.6119,36.8361,32.8581,RaceHorses,randomaccess,4x4-3.cpp,32
+141.165,29.1617,35.1995,35.1414,30.3199,RaceHorses,randomaccess,4x4-3.cpp,37

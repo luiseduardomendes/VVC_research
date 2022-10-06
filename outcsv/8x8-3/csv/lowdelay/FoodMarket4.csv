@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,encoder,satd,qp
+,,,,,FoodMarket4,lowdelay,8x8-3,22
+,,,,,FoodMarket4,lowdelay,8x8-3,27
+,,,,,FoodMarket4,lowdelay,8x8-3,32
+,,,,,FoodMarket4,lowdelay,8x8-3,37

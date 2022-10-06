@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,encoder,satd,qp
+,,,,,Johnny,lowdelay,4x4-3.cpp,22
+,,,,,Johnny,lowdelay,4x4-3.cpp,27
+,,,,,Johnny,lowdelay,4x4-3.cpp,32
+,,,,,Johnny,lowdelay,4x4-3.cpp,37

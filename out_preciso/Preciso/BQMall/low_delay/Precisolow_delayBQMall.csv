@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,qp,cfg,satd
+4192.935,40.1296,43.1581,44.6069,41.0045,BQMall,22,low_delay,Preciso
+1837.275,37.1976,41.2558,42.2366,38.1881,BQMall,27,low_delay,Preciso
+928.74,34.2699,39.4326,40.2074,35.3914,BQMall,32,low_delay,Preciso
+490.995,31.4048,37.8253,38.4041,32.6682,BQMall,37,low_delay,Preciso
