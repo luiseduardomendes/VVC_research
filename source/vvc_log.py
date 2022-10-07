@@ -1,13 +1,16 @@
+from operator import index
 import numpy as np
 import re
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
+from scipy import integrate, interpolate
+import math
 
 # this object is used as return to the read_log function
 # it is also used by the LogDF to append new data to a Log Data Frame
 class LogDict:
-    keys = ('bitrate','Y_PSNR','U_PSNR','V_PSNR','YUV_PSNR','fileName','qp','cfg','satd')
+    keys = ('bitrate','Y_PSNR','U_PSNR','V_PSNR','YUV_PSNR','fileName','qp','cfg','satd', 'bd_rate')
     def __init__(self, name : str, qp : int, cfg : str, satd : str, log_data : list = None):
         self.df = self.__mk_empty_df__()
 
@@ -22,6 +25,7 @@ class LogDict:
         self.df['qp'].append(qp)
         self.df['cfg'].append(cfg)
         self.df['satd'].append(satd)
+        self.df['bdrate'].append(None)
 
         self.df = pd.DataFrame(self.df)
 
@@ -38,10 +42,11 @@ class LogDict:
         return df
 
 class LogDF:
-    keys = ('bitrate','Y_PSNR','U_PSNR','V_PSNR','YUV_PSNR','fileName','qp','cfg','satd')
+    keys = ('bitrate','Y_PSNR','U_PSNR','V_PSNR','YUV_PSNR','fileName','qp','cfg','satd', 'bd_rate')
 
     def __init__(self) -> None:
         self.df = self.__mk_empty_df__()
+        self.output_name = None
 
     # appends a new LogDict (that is the return of read_log) to a LogDF (that storages more than one file data)
     def append(self, df : LogDict):
@@ -75,7 +80,10 @@ class LogDF:
 
     def to_csv(self, output_name = None, output_folder = None):
         if output_name == None:
-            output_name = self.df['satd'][0] + self.df['cfg'][0] + self.df['fileName'][0] + '.csv'
+            if self.output_name == None:
+                output_name = self.output_name
+            else:
+                output_name = self.df['satd'][0] + self.df['cfg'][0] + self.df['fileName'][0] + '.csv'
         if output_folder != None:
             output_name = os.path.join(output_folder, output_name)
         self.df.to_csv(output_name, index=False)
@@ -125,6 +133,54 @@ class LogDF:
         if save:
             fig = ax.get_figure()
             fig.savefig(output_name + '.png')
+
+    def bdbr(self, ref):
+
+        HEVC = np.asarray(pd.read_csv(ref).loc[:,:'YUV_PSNR'])
+        VVC = np.asarray(self.df.loc[:,:'YUV_PSNR'])
+        
+        HEVC = HEVC[HEVC[:,0].argsort()]
+        VVC = VVC[VVC[:,0].argsort()]
+
+        xa, ya = np.log10(HEVC[:,0]), HEVC[:,4]
+        xb, yb = np.log10(VVC[:,0]), VVC[:,4]
+        
+        max_i = len(ya)
+        i = 1
+        while(i < max_i):
+            if ya[i] < ya[i-1] or yb[i] <  yb[i-1]:
+                ya = np.delete( ya,i)
+                yb = np.delete( yb,i)
+                xa = np.delete( xa,i)
+                xb = np.delete( xb,i)
+                max_i = len(ya)
+            else:
+                i += 1
+
+        x_interp = [max(min(xa), min(xb)), min(max(xa),max(xb))]
+        y_interp = [max(min(ya), min(yb)), min(max(ya),max(yb))]
+
+        interp_br_a = interpolate.PchipInterpolator(ya,xa)
+        interp_br_b = interpolate.PchipInterpolator(yb,xb)
+
+        bdbr_a = integrate.quad(interp_br_a, y_interp[0], y_interp[1])[0]
+        bdbr_b = integrate.quad(interp_br_b, y_interp[0], y_interp[1])[0]
+
+        bdbr = (bdbr_b - bdbr_a) / (y_interp[1] - y_interp[0])
+        bdbr = (math.pow(10., bdbr)-1)*100
+
+        for ind in self.df.index:
+            self.df['bd_rate'][ind] = bdbr
+            
+    def __init__(self, compare_path, precise_path) -> None:
+        self.df = pd.read_csv(compare_path)
+        self.output_name = compare_path
+        if not 'bd_rate' in self.df.columns:
+            self.df.insert(len(self.df.columns),'bd_rate', [None for _ in range(4)])
+        if self.df['bd_rate'][0] == None:
+            self.bdbr(precise_path)
+            
+        
         
         
 
