@@ -12,8 +12,8 @@ import math
 # this object is used as return to the read_log function
 # it is also used by the LogDF to append new data to a Log Data Frame
 class LogDict:
-    keys = ('bitrate','Y_PSNR','U_PSNR','V_PSNR','YUV_PSNR','fileName','frame','qp','cfg','satd', 'bd_rate')
-    def __init__(self, name : str, frame : str,qp : int, cfg : str, satd : str, log_data : list = None):
+    keys = ('bitrate','Y_PSNR','U_PSNR','V_PSNR','YUV_PSNR','fileName','frame','qp','cfg','satd', 'bd_rate', 'precise')
+    def __init__(self, name : str, frame : str,qp : int, cfg : str, satd : str, log_data : list = None, precise_path = None):
         self.df = self.__mk_empty_df__()
 
         if log_data != None:
@@ -23,7 +23,7 @@ class LogDict:
             for i, key in enumerate(list(self.keys)[:4]):
                 self.df[key].append(np.NaN)
         
-        self.df['YUV_PSNR'].append(None)
+        self.df['YUV_PSNR'].append((self.df['Y_PSNR'][0] + self.df['U_PSNR'][0] + self.df['V_PSNR'][0])/3)
 
         self.df['fileName'].append(name)
         self.df['frame'].append(frame)
@@ -31,6 +31,7 @@ class LogDict:
         self.df['cfg'].append(cfg)
         self.df['satd'].append(satd)
         self.df['bd_rate'].append(None)
+        self.df['precise'].append(precise_path)
 
         self.df = pd.DataFrame(self.df)
 
@@ -47,7 +48,7 @@ class LogDict:
         return df
 
 class LogDF:
-    keys = ('bitrate','Y_PSNR','U_PSNR','V_PSNR','YUV_PSNR','fileName','frame','qp','cfg','satd', 'bd_rate')
+    keys = ('bitrate','Y_PSNR','U_PSNR','V_PSNR','YUV_PSNR','fileName','frame','qp','cfg','satd', 'bd_rate', 'precise')
 
     def __init__(self) -> None:
         self.df = self.__mk_empty_df__()
@@ -139,10 +140,18 @@ class LogDF:
             fig = ax.get_figure()
             fig.savefig(output_name + '.png')
 
-    def bdbr(self, ref):
-
-        HEVC = np.asarray(pd.read_csv(ref).loc[:,:'YUV_PSNR'])
+    def bdbr(self, ref = None):
+        if ref != None:
+            HEVC = np.asarray(pd.read_csv(ref).loc[:,:'YUV_PSNR'])
+        elif (self.df['precise'][0] != None and self.df['frame'][0] != None):
+            frame = self.df['frame'][0]
+            temp = get_log_df(list(self.df['precise']), 'any', (22,27,32,37), 'any', 'any', 'any', None, frame).getDataFrame()
+            HEVC = np.asarray(temp.loc[:,:'YUV_PSNR'])
+        else:
+            raise Exception('There is no precise path to calculate BD-Rate')
+        
         VVC = np.asarray(self.df.loc[:,:'YUV_PSNR'])
+
         
         HEVC = HEVC[HEVC[:,0].argsort()]
         VVC = VVC[VVC[:,0].argsort()]
@@ -192,7 +201,7 @@ class LogDF:
 
 # receives a file in the specified format "log_{VIDEONAME}_qp{QP}_{CONFIG}_.+RdCost{SATD}_exec"
 # with the extension ".gplog", ".vvclog" or ".txt"
-def read_log(file : str, name = None, qp = None, cfg = None, satd = None, file_name_ptrn = None) -> LogDict:
+def read_log(file : str, name = None, qp = None, cfg = None, satd = None, precise_path = None, file_name_ptrn = None, frame = None) -> list:
 
     # Bitrate, Y-PSNR, U-PSNR, V-PSNR, YUV-PSNR
     ptrn = re.compile(r'^POC\s+(\d+)\s+LId:\s+\d+\s+TId:\s+\d+\s+\( \w+, \w-SLICE, QP \d+ \)\s+(\w+) bits \[Y (\d+\.\d+) dB\s+U (\d+\.\d+) dB\s+V (\d+\.\d+) dB', re.M)
@@ -210,22 +219,28 @@ def read_log(file : str, name = None, qp = None, cfg = None, satd = None, file_n
             check = ptrn.findall(log_text, re.M)
             if len(check) > 0:
                 for i in check:
-                    data_set.append(LogDict(name, i[0], qp, cfg, satd, i[1:]))
+                    if frame != None and i[0] == frame:
+                        return LogDict(name, i[0], qp, cfg, satd, i[1:], precise_path)
+
+                    data_set.append(LogDict(name, i[0], qp, cfg, satd, i[1:], precise_path))
             else:
-                data_set.append(LogDict(name, '0', qp, cfg, satd, None))
+                data_set.append(LogDict(name, '', qp, cfg, satd, None, precise_path))
 
             f.close()
 
     return data_set
-    
-def group_by_filename_1(data_set : list) -> LogDF:
-    output = LogDF()
-    for data in data_set:
-        output.append(data)
-        
-    output.sort_by('qp')
-    return output
 
+def get_log_df(files : list, name = None, qp_list : tuple = (22,27,32,37), cfg = None, satd = None, precise_path = None, file_name_ptrn = None, frame = None):
+    if frame != None:
+        data = LogDF()
+        for i, file in enumerate(files):
+            data.append(read_log(file, name, qp_list[i], cfg, satd, precise_path, None, frame))
+        return data
+    else:
+        for i, file in enumerate(files):
+            data = read_log(file, name, qp_list[i], cfg, satd, precise_path, None, None)
+            data = split(data)
+            return data
 
 # receives a list of LogDF and returns a dict of LogDF, grouped by qp
 
@@ -255,5 +270,9 @@ def split(data_set : list) -> dict:
         
     for key in output.keys():
         output[key].sort_by('qp')
+        try:
+            output[key].bdbr()
+        except:
+            pass
 
     return output
