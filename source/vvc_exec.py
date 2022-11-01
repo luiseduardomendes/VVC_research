@@ -27,9 +27,9 @@ def exec(self, cfg_encoder: str, cfg_video: str, video_name: str, qp: int, satd_
                     f'-c \"{cfg_video}\" ' + # video parameters 
                     f'-b \"{out_dir}videos_bin/{video_name}.bin\" ' + # output binary video
                     f'-q {qp} -f 32 {ts_status} --SIMD=SCALAR ' +
-                    f'>> \"{out_dir}{video_name}/{encoder}/exec_log/log_{video_name}_qp{qp}_{encoder}_{satd}_exec.gplog\" &' + 
+                    f'>> \"{out_dir}{video_name}/{encoder}/exec_log/log_{video_name}_qp{qp}_{encoder}_{satd}_exec.gplog\" ' + 
                     f'&& gprof {bin_dir}EncoderAppStatic gmon.out' +
-                    f'>> {out_dir}/{video_name}/{encoder}/gprof_log/log_{video_name}_qp{qp}_{encoder}_gprof.txt'
+                    f'>> {out_dir}/{video_name}/{encoder}/gprof_log/log_{video_name}_qp{qp}_{encoder}_gprof.txt &'
         )
 
     else:
