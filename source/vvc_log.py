@@ -1,4 +1,3 @@
-from operator import index
 import numpy as np
 import re
 import os
@@ -6,6 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from scipy import integrate, interpolate
 import math
+
 
 # this object is used as return to the read_log function
 # it is also used by the LogDF to append new data to a Log Data Frame
