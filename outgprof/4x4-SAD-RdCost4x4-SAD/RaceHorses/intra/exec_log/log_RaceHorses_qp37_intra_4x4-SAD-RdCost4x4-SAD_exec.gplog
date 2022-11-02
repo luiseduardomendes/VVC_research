@@ -1,0 +1,48 @@
+
+VVCSoftware: VTM Encoder Version 14.0 [Linux][GCC 9.4.0][64 bit] [SIMD=SCALAR] 
+
+TOOL CFG: IBD:1 HAD:1 RDQ:1 RDQTS:1 RDpenalty:0 LQP:0 SQP:0 ASR:0 MinSearchWindow:8 RestrictMESampling:0 FEN:1 ECU:0 FDM:1 ESD:0 TransformSkip:1 TransformSkipFast:1 TransformSkipLog2MaxSize:5 ChromaTS:1 BDPCM:0 Tiles: 1x1 Slices: 1 MCTS:0 SAO:1 ALF:1 CCALF:1 WPP:0 WPB:0 PME:2  WaveFrontSynchro:0 WaveFrontSubstreams:1 ScalingList:0 TMVPMode:1  DQ:1  SignBitHidingFlag:0 RecalQP:0 
+TOOL CFG: LFNST:1 MMVD:1 Affine:1 AffineType:1 PROF:0 SbTMVP:1 DualITree:1 IMV:1 BIO:0 LMChroma:1 HorCollocatedChroma:1 VerCollocatedChroma:0 MTS: 1(intra) 0(inter) SBT:1 ISP:1 SMVD:0 CompositeLTReference:0 Bcw:0 BcwFast:0 LADF:0 CIIP:0 Geo:0 AllowDisFracMMVD:1 AffineAmvr:0 AffineAmvrEncOpt:0 DMVR:0 MmvdDisNum:8 JointCbCr:1 ACT:0 PLT:0 IBC:0 HashME:0 WrapAround:0 VirtualBoundariesEnabledFlag:0 VirtualBoundariesPresentInSPSFlag:1 vertical virtual boundaries:[ ] horizontal virtual boundaries:[ ] Reshape:1 (Signal:SDR Opt:0 CSoffset:2) MRL:1 MIP:1 EncDbOpt:0 
+FAST TOOL CFG: LCTUFast:1 FastMrg:1 PBIntraFast:1 IMV4PelFast:1 MTSMaxCand: 4(intra) 4(inter) ISPFast:1 FastLFNST:1 AMaxBT:1 E0023FastEnc:1 ContentBasedFastQtbt:0 UseNonLinearAlfLuma:1 UseNonLinearAlfChroma:1 MaxNumAlfAlternativesChroma:8 FastMIP:1 FastLocalDualTree:0 RPR:0 TemporalFilter:0 SEI CTI:0 
+
+
+ started @ Wed Nov  2 14:03:25 2022
+POC    0 LId:  0 TId: 0 ( IDR_N_LP, I-SLICE, QP 37 )      31936 bits [Y 31.6310 dB    U 35.6950 dB    V 35.6823 dB] [ET   638 ] [L0] [L1]
+POC    1 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      31608 bits [Y 31.6582 dB    U 35.3908 dB    V 35.7786 dB] [ET   355 ] [L0] [L1]
+POC    2 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      30784 bits [Y 31.7783 dB    U 35.6868 dB    V 35.8623 dB] [ET   240 ] [L0] [L1]
+POC    3 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      30352 bits [Y 31.7373 dB    U 35.6729 dB    V 35.9029 dB] [ET    40 ] [L0] [L1]
+POC    4 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      29464 bits [Y 31.7158 dB    U 35.6600 dB    V 35.7790 dB] [ET    85 ] [L0] [L1]
+POC    5 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      29896 bits [Y 31.7693 dB    U 35.6766 dB    V 35.9820 dB] [ET   154 ] [L0] [L1]
+POC    6 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      29520 bits [Y 31.7279 dB    U 35.6181 dB    V 35.7463 dB] [ET   145 ] [L0] [L1]
+POC    7 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      29848 bits [Y 31.7356 dB    U 35.4493 dB    V 35.7631 dB] [ET   175 ] [L0] [L1]
+POC    8 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      30456 bits [Y 31.7035 dB    U 35.4842 dB    V 35.8119 dB] [ET   147 ] [L0] [L1]
+POC    9 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      30616 bits [Y 31.7605 dB    U 35.6783 dB    V 35.7248 dB] [ET   150 ] [L0] [L1]
+POC   10 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      30400 bits [Y 31.7602 dB    U 35.7062 dB    V 35.5467 dB] [ET   110 ] [L0] [L1]
+POC   11 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      30816 bits [Y 31.8344 dB    U 35.6389 dB    V 35.7507 dB] [ET   154 ] [L0] [L1]
+POC   12 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      31048 bits [Y 31.8709 dB    U 35.4996 dB    V 35.5932 dB] [ET   139 ] [L0] [L1]
+POC   13 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      30840 bits [Y 31.7692 dB    U 35.3840 dB    V 35.5212 dB] [ET   142 ] [L0] [L1]
+POC   14 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      30952 bits [Y 31.8870 dB    U 35.4740 dB    V 35.3993 dB] [ET   143 ] [L0] [L1]
+POC   15 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      30528 bits [Y 31.7731 dB    U 35.5872 dB    V 35.6554 dB] [ET   141 ] [L0] [L1]
+POC   16 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      30560 bits [Y 31.9279 dB    U 35.4369 dB    V 35.6802 dB] [ET   138 ] [L0] [L1]
+POC   17 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      30480 bits [Y 31.9627 dB    U 35.5046 dB    V 35.7544 dB] [ET   145 ] [L0] [L1]
+POC   18 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      30136 bits [Y 31.9218 dB    U 35.6117 dB    V 35.4016 dB] [ET   131 ] [L0] [L1]
+POC   19 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      30760 bits [Y 31.9572 dB    U 35.6255 dB    V 35.7986 dB] [ET   141 ] [L0] [L1]
+POC   20 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      30208 bits [Y 31.8723 dB    U 35.6748 dB    V 35.7228 dB] [ET   134 ] [L0] [L1]
+POC   21 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      29824 bits [Y 31.7590 dB    U 35.8186 dB    V 35.7177 dB] [ET   129 ] [L0] [L1]
+POC   22 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      29552 bits [Y 31.7630 dB    U 35.7746 dB    V 35.9291 dB] [ET   135 ] [L0] [L1]
+POC   23 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      29600 bits [Y 31.6742 dB    U 35.9400 dB    V 35.9768 dB] [ET   129 ] [L0] [L1]
+POC   24 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      29392 bits [Y 31.6282 dB    U 35.9318 dB    V 35.8984 dB] [ET    88 ] [L0] [L1]
+POC   25 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      29224 bits [Y 31.6062 dB    U 35.7582 dB    V 35.8003 dB] [ET   120 ] [L0] [L1]
+POC   26 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      28624 bits [Y 31.5830 dB    U 35.9900 dB    V 36.0579 dB] [ET   120 ] [L0] [L1]
+POC   27 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      28648 bits [Y 31.6808 dB    U 36.0027 dB    V 35.9487 dB] [ET   122 ] [L0] [L1]
+POC   28 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      28904 bits [Y 31.6465 dB    U 35.9731 dB    V 35.8767 dB] [ET   120 ] [L0] [L1]
+POC   29 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      29048 bits [Y 31.5161 dB    U 36.1193 dB    V 36.0694 dB] [ET   122 ] [L0] [L1]
+POC   30 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      28120 bits [Y 31.4311 dB    U 36.2645 dB    V 36.0327 dB] [ET   113 ] [L0] [L1]
+POC   31 LId:  0 TId: 0 ( CRA, I-SLICE, QP 37 )      27112 bits [Y 31.4090 dB    U 36.0970 dB    V 36.1569 dB] [ET   112 ] [L0] [L1]
+
+LayerId  0
+	Total Frames |  Bitrate      Y-PSNR   U-PSNR   V-PSNR   YUV-PSNR 
+	32           a  899.3025     31.7329  35.7133  35.7913  32.7060  
+
+ finished @ Wed Nov  2 15:26:21 2022
+ Total Time:     1272.488 sec. [user]     4976.337 sec. [elapsed]

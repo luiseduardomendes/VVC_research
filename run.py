@@ -61,6 +61,10 @@ cfg_videos_dir = sv_path['vtm'] + '/cfg-files/'
 satd_src = sv_path['repo'] + '/FilesForVVC/'
 satd_dir = sv_path['commonlib']
 out_videos_dir = sv_path['out']
+if out_videos_dir.endswith('/'):
+    out_videos_dir = out_videos_dir[:-1] + 'gprof'
+if not os.path.isdir(out_videos_dir):
+    os.mkdir(out_videos_dir)
 
 video_cfg = [f for f in os.listdir(cfg_videos_dir) if os.path.isfile(os.path.join(cfg_videos_dir, f)) and f[-4:] == '.cfg']
 
