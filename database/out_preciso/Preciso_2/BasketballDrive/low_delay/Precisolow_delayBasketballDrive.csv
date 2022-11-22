@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,qp,cfg,satd
+12523.7625,40.2839,45.0124,46.5515,41.4313,BasketballDrive,22,low_delay,Preciso
+3862.75,38.8247,43.6463,44.2765,39.9439,BasketballDrive,27,low_delay,Preciso
+1859.625,37.2525,42.4135,42.4704,38.3647,BasketballDrive,32,low_delay,Preciso
+988.4,35.4372,41.0271,40.6207,36.5559,BasketballDrive,37,low_delay,Preciso

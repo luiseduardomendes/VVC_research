@@ -9,7 +9,17 @@ from pprint import pprint
 
 class VVC_output(pd.DataFrame):
     __keys__ = ('frame','bitrate','Y_PSNR','U_PSNR','V_PSNR','YUV_PSNR','qp')
-    def __init__(self, file_path, qps, frames):
+    def __init__(self, file_path, qps, frames = 'any'):
+
+        # file path: contains the path to files that are related to each other except by QP,
+        # example: [BQMall_AI_22.vvclog, BQMall_AI_27.vvclog, BQMall_AI_32.vvclog, BQMall_AI_37.vvclog]
+        # all these files are the same video, using same configuration set but diffent QP between them
+
+        # qps: the QPs of the files in file_path
+
+        # frames: number of frames that must be given by the log
+        # it is usefull if there is a file that was not entirely codified, it can lead to errors.
+        # otherwise, it can be set at 'any' to ignore 
         
         # 0         1           2           3           4           5
         # frames    bitrate     y_psnr      u_psnr      v_psrn      yuv_psnr
@@ -21,9 +31,17 @@ class VVC_output(pd.DataFrame):
 
         pattern_video = re.compile(r'^\s+\d+\s+a\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\s+$', re.M)
         
-        dt = {}
-        for key in self.__keys__:
-            dt[key] = []
+        dt = {
+            'frame':    [],
+            'bitrate':  [],
+            'Y_PSNR':   [],
+            'U_PSNR':   [],
+            'V_PSNR':   [],
+            'YUV_PSNR': [],
+            'qp':       []
+        }
+        
+        
         for index, file in enumerate(file_path):
             if os.path.isfile(file):
                 with open(file) as f:
@@ -136,4 +154,43 @@ class BD_Rate(pd.Series):
         bdbr = (math.pow(10., bdbr)-1)*100
 
         return bdbr
+    
 
+def frame_analysis(approximations, file_names, path_to_files_approximated, path_to_files_precise):
+
+    qps = (22, 27, 32, 37)
+    satds = approximations
+    files = file_names
+    cfgs = ('intra', 'lowdelay', 'randomaccess')
+
+    
+    satd = satds[0]
+    file = files[0]
+    cfg = cfgs[0]
+    path_logs = [os.path.join(path_to_files_approximated, satd, cfg, f'log_{file}_qp{qp}_{cfg}_{satd}.vvclog') for qp in qps]
+    path_refs = [os.path.join(path_to_files_precise, satd, cfg, f'log_{file}_qp{qp}_{cfg}_precise.vvclog') for qp in qps]
+    df = BD_Rate(
+        VVC_output(path_logs, qps, 32),
+        VVC_output(path_refs, qps, 32),
+        satd,
+        file,
+        cfg,
+    )
+
+
+    for satd in satds:
+        for file in files:    
+            for cfg in cfgs:
+                path_logs = [os.path.join(path_to_files_approximated, satd, cfg, f'log_{file}_qp{qp}_{cfg}_{satd}.vvclog') for qp in qps]
+                path_refs = [os.path.join(path_to_files_precise, satd, cfg, f'log_{file}_qp{qp}_{cfg}_precise.vvclog') for qp in qps]
+                
+                df = df.append(
+                    BD_Rate(
+                        VVC_output(path_logs, qps, 32),
+                        VVC_output(path_refs, qps, 32),
+                        satd,
+                        file,
+                        cfg,
+                    )
+                )
+    

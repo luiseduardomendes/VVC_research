@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,qp,cfg,satd
+5865.75,39.8699,41.093,42.2067,40.2687,RaceHorsesC,22,low_delay,Preciso
+2116.8525,35.4502,38.3809,39.5579,36.1799,RaceHorsesC,27,low_delay,Preciso
+955.8975,32.2183,36.6519,37.804,33.1951,RaceHorsesC,32,low_delay,Preciso
+454.695,29.5684,35.2737,36.1478,30.734,RaceHorsesC,37,low_delay,Preciso

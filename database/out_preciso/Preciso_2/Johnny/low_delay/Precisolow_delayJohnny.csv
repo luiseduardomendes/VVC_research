@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,qp,cfg,satd
+1902.03,43.1374,48.4575,49.0957,44.3213,Johnny,22,low_delay,Preciso
+670.47,41.5965,47.1365,47.7116,42.8093,Johnny,27,low_delay,Preciso
+328.11,39.8211,45.429,45.6389,41.0219,Johnny,32,low_delay,Preciso
+183.195,37.6765,43.1693,44.0465,38.9,Johnny,37,low_delay,Preciso

@@ -1,5 +1,3 @@
-from operator import index
-from pickle import NONE
 import numpy as np
 import re
 import os
