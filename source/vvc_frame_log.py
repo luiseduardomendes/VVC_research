@@ -1,155 +1,127 @@
+from scipy import interpolate, integrate
+import pandas as pd
 import numpy as np
+import math
 import re
 import os
-import pandas as pd
-import matplotlib.pyplot as plt
-from scipy import integrate, interpolate
-import math
 
+from pprint import pprint
 
-# this object is used as return to the read_log function
-# it is also used by the LogDF to append new data to a Log Data Frame
-class LogDict:
-    keys = ('bitrate','Y_PSNR','U_PSNR','V_PSNR','YUV_PSNR','fileName','frame','qp','cfg','satd', 'bd_rate', 'precise')
-    def __init__(self, name : str, frame : str,qp : int, cfg : str, satd : str, log_data : list = None, precise_path = None):
-        self.df = self.__mk_empty_df__()
+class VVC_output(pd.DataFrame):
+    __keys__ = ('frame','bitrate','Y_PSNR','U_PSNR','V_PSNR','YUV_PSNR','qp')
+    def __init__(self, file_path, qps, frames = 'any'):
 
-        if log_data != None:
-            for i, key in enumerate(list(self.keys)[:4]):
-                self.df[key].append(float(log_data[i]))
-        else:
-            for i, key in enumerate(list(self.keys)[:4]):
-                self.df[key].append(np.NaN)
+        # file path: contains the path to files that are related to each other except by QP,
+        # example: [BQMall_AI_22.vvclog, BQMall_AI_27.vvclog, BQMall_AI_32.vvclog, BQMall_AI_37.vvclog]
+        # all these files are the same video, using same configuration set but diffent QP between them
+
+        # qps: the QPs of the files in file_path
+
+        # frames: number of frames that must be given by the log
+        # it is usefull if there is a file that was not entirely codified, it can lead to errors.
+        # otherwise, it can be set at 'any' to ignore 
         
-        self.df['YUV_PSNR'].append((self.df['Y_PSNR'][0] + self.df['U_PSNR'][0] + self.df['V_PSNR'][0])/3)
+        # 0         1           2           3           4           5
+        # frames    bitrate     y_psnr      u_psnr      v_psrn      yuv_psnr
 
-        self.df['fileName'].append(name)
-        self.df['frame'].append(frame)
-        self.df['qp'].append(qp)
-        self.df['cfg'].append(cfg)
-        self.df['satd'].append(satd)
-        self.df['bd_rate'].append(None)
-        self.df['precise'].append(precise_path)
+        pattern_frame = re.compile(r'^POC\s+(\d+)\s+LId:\s+\d+\s+TId:\s+\d+\s+\( \w+, \w-SLICE, QP \d+ \)\s+(\w+) bits \[Y (\d+\.\d+) dB\s+U (\d+\.\d+) dB\s+V (\d+\.\d+) dB', re.M)
 
-        self.df = pd.DataFrame(self.df)
+        # 0           1           2           3           4
+        # bitrate     y_psnr      u_psnr      v_psrn      yuv_psnr
 
-    def getDf(self):
-        return self.df
-
-    def get(self, key : str):
-        return self.df[key][0]
-
-    def __mk_empty_df__(self) -> dict:
-        df = {}
-        for key in self.keys:
-            df[key] = []
-        return df
-
-class LogDF:
-    keys = ('bitrate','Y_PSNR','U_PSNR','V_PSNR','YUV_PSNR','fileName','frame','qp','cfg','satd', 'bd_rate', 'precise')
-
-    def __init__(self) -> None:
-        self.df = self.__mk_empty_df__()
-        self.output_name = None
-
-    # appends a new LogDict (that is the return of read_log) to a LogDF (that storages more than one file data)
-    def append(self, df : LogDict):
-        self.df = pd.concat([self.df, df.getDf()], ignore_index=True)
-
-    def getDataFrame(self) -> pd.DataFrame():
-        return self.df
-
-    def sort_by(self, key : str):
-        self.df = self.df.sort_values(by=key).reset_index(drop=True)
-
-    def get(self, key : str):
-        return self.df[key][0]
-
-    def __mk_empty_df__(self) -> pd.DataFrame:
-        df = {}
-        for key in self.keys:
-            df[key] = []
-        return pd.DataFrame(df)
-
-    def plot(self, x : str = 'bitrate', y : str = 'YUV_PSNR', save : bool = False, output_name : str = None):
-        if output_name == None:
-            output_name = self.df['fileName'][0] + '_' + x + '_by_' + y
-
-        ax = self.df.plot.line(x=x, y=y, title=output_name)
-        if save:
-            fig = ax.get_figure()
-            fig.savefig(output_name + '.png')
-
-        return ax
-
-    def to_csv(self, output_name = None, output_folder = None):
-        if output_name == None:
-            if self.output_name == None:
-                output_name = self.output_name
+        pattern_video = re.compile(r'^\s+\d+\s+a\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\s+$', re.M)
+        
+        dt = {
+            'frame':    [],
+            'bitrate':  [],
+            'Y_PSNR':   [],
+            'U_PSNR':   [],
+            'V_PSNR':   [],
+            'YUV_PSNR': [],
+            'qp':       []
+        }
+        
+        
+        for index, file in enumerate(file_path):
+            if os.path.isfile(file):
+                with open(file) as f:
+                    log = f.read()
+                    check = pattern_frame.findall(log)
+                    if len(check) == frames:
+                        for i in check:
+                            dt['frame'].append(int(i[0]))
+                            dt['bitrate'].append(int(i[1]))
+                            dt['Y_PSNR'].append(float(i[2]))
+                            dt['U_PSNR'].append(float(i[3]))
+                            dt['V_PSNR'].append(float(i[4]))
+                            dt['YUV_PSNR'].append((float(i[2]) + float(i[3]) + float(i[4]))/3)
+                            dt['qp'].append(int(qps[index]))
+                    check = pattern_video.findall(log)
+                    if len(check) > 0:
+                        i = check[0]
+                        dt['frame'].append(-1)
+                        dt['bitrate'].append(float(i[0]))
+                        dt['Y_PSNR'].append(float(i[1]))
+                        dt['U_PSNR'].append(float(i[2]))
+                        dt['V_PSNR'].append(float(i[3]))
+                        dt['YUV_PSNR'].append(float(i[4]))
+                        dt['qp'].append(qps[index])
             else:
-                output_name = self.df['satd'][0] + self.df['cfg'][0] + self.df['fileName'][0] + '.csv'
-        if output_folder != None:
-            output_name = os.path.join(output_folder, output_name)
-        self.df.to_csv(output_name, index=False)
-
-    def to_excel(self, output_name = None, output_folder = None):
-        if output_name == None:
-            output_name = self.df['satd'][0] + self.df['cfg'][0] + self.df['fileName'][0] + '.xlsx'
-        if output_folder != None:
-            output_name = os.path.join(output_folder, output_name)
-        self.df.to_excel(output_name, index=False)
-
-    def to_latex(self, output_name = None, output_folder = None):
-        if output_name == None:
-            output_name = self.df['satd'][0] + self.df['cfg'][0] + self.df['fileName'][0] + '.tex'
-        if output_folder != None:
-            output_name = os.path.join(output_folder, output_name)
-        self.df.to_latex(output_name, index=False)
-
-    def compare(self, cmp_with, x : str = 'bitrate', y : str = 'YUV_PSNR', save : bool = False, output_name : str = None):
-        if output_name == None:
-            output_name = self.df['fileName'][0] + '_' + cmp_with.get('fileName')[0] + '_' + x + '_by_' + y
+                dt = {}
+                for key in self.__keys__:
+                    dt[key] = []
+                super().__init__(dt)
+                return
+        super().__init__(dt)
+        super().__init__((super().sort_values(by=['frame', 'qp'])))
         
-        df2 = cmp_with.getDataFrame()
+    
+    def print(self):
+        print(self)
 
-        fig, ax = plt.subplots()
-        ax.plot(self.df[x], self.df[y])
-        ax.plot(df2[x], df2[y])
-        ax.set_xlabel(x)
-        ax.set_ylabel(y)
+class BD_Rate(pd.Series):
+    __indexes__ = ('satd','video','cfg','frame')
+    def __init__(self, cmp_df : VVC_output, ref_df : VVC_output, satd, video, cfg, qps=4):
 
-        if save:
-            fig = ax.get_figure()
-            fig.savefig(output_name + '.png')
+        bdr = [
+            self.bdbr(cmp_df.iloc[i:i+qps], ref_df.iloc[i:i+qps]) 
+            for i in range(0, len(cmp_df['frame']), qps)
+        ]
+        index = [
+            [
+                satd
+                for i in range(0, len(cmp_df['frame']), qps)
+            ],
+            [
+                video
+                for i in range(0, len(cmp_df['frame']), qps)
+            ],
+            [
+                cfg
+                for i in range(0, len(cmp_df['frame']), qps)
+            ], 
+            [
+                cmp_df['frame'][i]
+                for i in range(0, len(cmp_df['frame']), qps)
+            ],
+        ]
 
-    def difference(self, cmp_with, x : str = 'bitrate', y : str = 'YUV_PSNR', save : bool = False, output_name : str = None):
-        if output_name == None:
-            output_name = self.df['fileName'][0] + '_' + cmp_with.get('fileName')[0] + '_' + x + '_by_' + y
+        super().__init__(
+            bdr, 
+            index=index
+        )
         
-        df2 = cmp_with.getDataFrame()
+    
+    def print(self):
+        print(self)
 
-        fig, ax = plt.subplots()
-        ax.plot(df2[x], df2[y] - self.df[y])
+    def bdbr(self, cmp, ref):
+        if not (len(cmp['bitrate']) == len(ref['bitrate']) and len(cmp['bitrate'] == 4)):
 
-        ax.set_xlabel(x)
-        ax.set_ylabel(y)
+            return None
 
-        if save:
-            fig = ax.get_figure()
-            fig.savefig(output_name + '.png')
-
-    def bdbr(self, ref = None):
-        if ref != None:
-            HEVC = np.asarray(pd.read_csv(ref).loc[:,:'YUV_PSNR'])
-        elif (self.df['precise'][0] != None and self.df['frame'][0] != None):
-            frame = self.df['frame'][0]
-            temp = get_log_df(list(self.df['precise']), 'any', (22,27,32,37), 'any', 'any', 'any', None, frame).getDataFrame()
-            HEVC = np.asarray(temp.loc[:,:'YUV_PSNR'])
-        else:
-            raise Exception('There is no precise path to calculate BD-Rate')
-        
-        VVC = np.asarray(self.df.loc[:,:'YUV_PSNR'])
-
+        VVC     = np.asarray(cmp.loc[:,'bitrate':'YUV_PSNR'])
+        HEVC    = np.asarray(ref.loc[:,'bitrate':'YUV_PSNR'])
         
         HEVC = HEVC[HEVC[:,0].argsort()]
         VVC = VVC[VVC[:,0].argsort()]
@@ -181,96 +153,92 @@ class LogDF:
         bdbr = (bdbr_b - bdbr_a) / (y_interp[1] - y_interp[0])
         bdbr = (math.pow(10., bdbr)-1)*100
 
-        for ind in self.df.index:
-            self.df['bd_rate'][ind] = bdbr
-            
-    def __init__(self, compare_path = None, precise_path = None) -> None:
-        if (compare_path != None and precise_path != None):
-            self.df = pd.read_csv(compare_path)
-            self.output_name = compare_path
-            if not 'bd_rate' in self.df.columns:
-                self.df.insert(len(self.df.columns),'bd_rate', [None for _ in range(4)])
-            if self.df['bd_rate'][0] == None:
-                self.bdbr(precise_path)
+        return bdbr
+    
+def make_path_ref(path, cfg, file, qps):
+    f = []
+    for qp in qps:
+        temp_file = os.path.join(
+            path, 
+            'Preciso', 
+            cfg, 
+            f'{file}_QP{qp}.txt'
+        ) 
+        if os.path.isfile(temp_file):
+            f.append(temp_file)
         else:
-            self.df = self.__mk_empty_df__()
-            self.output_name = None
-            
+            print(f"file {temp_file} not found")
+            return []
+    return f
 
-# receives a file in the specified format "log_{VIDEONAME}_qp{QP}_{CONFIG}_.+RdCost{SATD}_exec"
-# with the extension ".gplog", ".vvclog" or ".txt"
-def read_log(file : str, name = None, qp = None, cfg = None, satd = None, precise_path = None, file_name_ptrn = None, frame = None) -> list:
+def make_path_log(path, cfg, file, satd, qps):
+    f = []
+    for qp in qps:
+        temp_file = os.path.join(
+            path, 
+            satd, 
+            file, 
+            cfg, 
+            f'log_{file}_qp{qp}_{cfg}_{satd}_exec.gplog'
+        )
+        if os.path.isfile(temp_file):
+            f.append(temp_file)
+        else:
+            print(f"file {temp_file} not found")
+            return []
+    return f
 
-    # Bitrate, Y-PSNR, U-PSNR, V-PSNR, YUV-PSNR
-    ptrn = re.compile(r'^POC\s+(\d+)\s+LId:\s+\d+\s+TId:\s+\d+\s+\( \w+, \w-SLICE, QP \d+ \)\s+(\w+) bits \[Y (\d+\.\d+) dB\s+U (\d+\.\d+) dB\s+V (\d+\.\d+) dB', re.M)
-    # Name, QP, config, satd
-    if file_name_ptrn == None:
-        file_name_ptrn = re.compile(r'log_(.+)_qp(\d{2})_(\w+)_.+RdCost(.+)_exec')
+# approximations example:
+# approximations = ['4x4-1-8x8-1', '4x4-1-8x8-2', ..., '8x8-SAD']
 
-    data_set = []
+# example:
+# file_names = ['BQMall', 'BasketballPass', 'BasketballDrive', ..., 'RaceHorses']
 
-    if file.endswith('.txt') or file.endswith('.gplog') or file.endswith('.vvclog'):
-        if name == None:
-            name, qp, cfg, satd = file_name_ptrn.findall(file)[0]
-        with open(file) as f:
-            log_text = f.read()
-            check = ptrn.findall(log_text, re.M)
-            if len(check) > 0:
-                for i in check:
-                    if frame != None and i[0] == frame:
-                        return LogDict(name, i[0], qp, cfg, satd, i[1:], precise_path)
+def frame_analysis(approximations, file_names, path):
 
-                    data_set.append(LogDict(name, i[0], qp, cfg, satd, i[1:], precise_path))
-            else:
-                data_set.append(LogDict(name, '', qp, cfg, satd, None, precise_path))
+    qps = (22, 27, 32, 37)
+    satds = approximations
+    files = file_names
+    cfgs = ('intra', 'lowdelay', 'randomaccess')
 
-            f.close()
+    _conv_cfg_ = {
+        'intra'         : 'AI',
+        'lowdelay'      : 'LB',
+        'randomaccess'  : 'RA'
+    }
+    
+    satd = satds[0]
+    file = files[0]
+    cfg = cfgs[0]
 
-    return data_set
+    path_logs = make_path_log(path, cfg, file, satd, qps)
+    path_refs = make_path_ref(path, _conv_cfg_[cfg], file, qps)
 
-def get_log_df(files : list, name = None, qp_list : tuple = (22,27,32,37), cfg = None, satd = None, precise_path = None, file_name_ptrn = None, frame = None):
-    if frame != None:
-        data = LogDF()
-        for i, file in enumerate(files):
-            data.append(read_log(file, name, qp_list[i], cfg, satd, precise_path, None, frame))
-        return data
-    else:
-        for i, file in enumerate(files):
-            data = read_log(file, name, qp_list[i], cfg, satd, precise_path, None, None)
-            data = split(data)
-            return data
-
-# receives a list of LogDF and returns a dict of LogDF, grouped by qp
-
-# split the data by each execution of VVC, i.e., the same video, coded with the same
-# alteration on Software and the same configuration (AI, RA or LD)
-
-# each key are composed by an APPROXIMATION on software, the NAME OF THE VIDEO encoded,
-# and the CONFIGURATION USED (AI, RA, LD)
-
-# output is a dict where each KEY are associated with it DATA_FRAME, that stores data
-# from different QUANTIZATION PARAMETER (22, 27, 32, 37)
+    df = BD_Rate(
+        VVC_output(path_logs, qps, 32),
+        VVC_output(path_refs, qps, 32),
+        satd,
+        file,
+        cfg,
+    )
 
 
-def split(data_set : list) -> dict:
-    keys = []
-    output = {}     
-
-    for df in data_set:
-        
-        key = df.get('satd') + '_' + df.get('fileName') + '_' + df.get('frame') + '_' + df.get('cfg')
-        if not key in keys:
-            output[key] = LogDF()
-            keys.append(key)
-            
-        
-        output[key].append(df)
-        
-    for key in output.keys():
-        output[key].sort_by('qp')
-        try:
-            output[key].bdbr()
-        except:
-            pass
-
-    return output
+    for satd in satds:
+        for file in files:    
+            for cfg in cfgs:
+                path_logs = make_path_log(path, cfg, file, satd, qps)
+                if len(path_logs) == 0:
+                    continue
+                path_refs = make_path_ref(path, _conv_cfg_[cfg], file, qps)
+                if len(path_refs) == 0:
+                    continue
+                df = df.append(
+                    BD_Rate(
+                        VVC_output(path_logs, qps, 32),
+                        VVC_output(path_refs, qps, 32),
+                        satd,
+                        file,
+                        cfg,
+                    )
+                )
+    
