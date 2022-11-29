@@ -2,8 +2,7 @@ import os
 import re
 
 # cfg_encoder parameter must be only the name, without path
-def exec(cfg_encoder: str, cfg_video: str, video_name: str, qp: int, satd_settings: str, n_frames:int=32, gprof : bool=False):
-    vtm_dir = "/home/luispmendes/VVCSoftware_VTM/"
+def exec(cfg_encoder: str, cfg_video: str, video_name: str, qp: int, satd_settings: str, vtm_dir : str, n_frames:int=32, gprof : bool=False):
 
     satd = satd_settings.replace('(', '').replace(')', '').replace('/', '-')
     if satd.endswith('.cpp'):

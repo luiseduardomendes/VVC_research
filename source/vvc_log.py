@@ -179,9 +179,6 @@ class LogDF:
             self.df.insert(len(self.df.columns),'bd_rate', [None for _ in range(4)])
         if self.df['bd_rate'][0] == None:
             self.bdbr(precise_path)
-            
-        
-        
         
 
 # receives a file in the specified format "log_{VIDEONAME}_qp{QP}_{CONFIG}_.+RdCost{SATD}_exec"
