@@ -179,6 +179,7 @@ def make_path_log(path, cfg, file, satd, qps):
             satd, 
             file, 
             cfg, 
+            'exec_log',
             f'log_{file}_qp{qp}_{cfg}_{satd}_exec.gplog'
         )
         if os.path.isfile(temp_file):
