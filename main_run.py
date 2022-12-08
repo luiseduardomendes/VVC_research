@@ -1,9 +1,9 @@
 import os
 import re
 import pandas as pd
-import source.vvc_exec as vex
+import source.common.vvc_exec as vex
 from auxiliar_files.server_paths import sv_paths as sv_path
-from source.commonlib import file_subs, get_next_file, compile_VTM
+from source.common.commonlib import file_subs, get_next_file, compile_VTM
 
 file = get_next_file(sv_path['exec_buffer'])
 file_subs(
