@@ -1,7 +1,7 @@
 import pandas as pd
-from vvc_log_analysis.vvc_output import VVC_output
-from vvc_log_analysis.vvc_bd_rate import BD_Rate
-from common.sv_make_path import *
+from source.vvc_log_analysis.vvc_output import VVC_output
+from source.vvc_log_analysis.vvc_bd_rate import BD_Rate
+from source.common.sv_make_path import *
 
 def vvc_frame_analysis(approximations, file_names, path, all_frames = True):
 

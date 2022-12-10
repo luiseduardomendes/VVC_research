@@ -1,5 +1,5 @@
 import pandas as pd
-from source.vvc_output import VVC_output
+from source.vvc_log_analysis.vvc_output import VVC_output
 import numpy as np
 from scipy import interpolate, integrate
 import math
@@ -9,10 +9,30 @@ class BD_Rate(pd.Series):
     __indexes__ = ['satd','video','cfg','frame']
     def __init__(self, cmp_df : VVC_output = None, ref_df : VVC_output = None, satd = None, video = None, cfg = None, qps=4):
 
-        bdr = [
-            self.bdbr(cmp_df.iloc[i:i+qps], ref_df.iloc[i:i+qps]) 
-            for i in range(0, len(cmp_df['frame']), qps)
-        ]
+        if cmp_df == None:
+            bdr = []
+            index = self.__mk_empty_index__()
+
+        else:
+            bdr = [
+                self.bdbr(cmp_df.iloc[i:i+qps], ref_df.iloc[i:i+qps]) 
+                for i in range(0, len(cmp_df['frame']), qps)
+            ]
+            index = self.__mk_index__()
+
+
+        super().__init__(
+            bdr, 
+            index=index
+        )
+
+    def __mk_empty_index__(self) -> pd.MultiIndex:
+        return pd.MultiIndex.from_arrays(
+            [[], [], [], [],], names=self.__indexes__
+        )
+
+    def __mk_index__(self, satd, video, cfg, cmp_df, qps) -> pd.MultiIndex:
+        
         index = pd.MultiIndex.from_arrays(
             [
                 [
@@ -33,11 +53,6 @@ class BD_Rate(pd.Series):
                 ],
             ],
             names = self.__indexes__
-        )
-
-        super().__init__(
-            bdr, 
-            index=index
         )
 
     def bdbr(self, cmp, ref):
