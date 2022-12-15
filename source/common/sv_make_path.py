@@ -12,7 +12,7 @@ def make_path_ref(path, cfg, file, qps):
         if os.path.isfile(temp_file):
             f.append(temp_file)
         else:
-            print(f"file {temp_file} not found")
+            print(f"error on make_path_ref: file {temp_file} not found")
             return []
     return f
 
@@ -30,6 +30,6 @@ def make_path_log(path, cfg, file, satd, qps):
         if os.path.isfile(temp_file):
             f.append(temp_file)
         else:
-            print(f"file {temp_file} not found")
+            print(f"error on make_path_log: file {temp_file} not found")
             return []
     return f

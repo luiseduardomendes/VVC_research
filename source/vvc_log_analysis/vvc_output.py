@@ -4,16 +4,20 @@ import os
 
 class VVC_output(pd.DataFrame):
     __keys__ = ('frame','bitrate','Y_PSNR','U_PSNR','V_PSNR','YUV_PSNR','qp')
-    def __init__(self, file_path = None, qps = None, frames = -1):        
+    def __init__(self, file_path = None, qps = None, frames = -1, data = None):        
         # 0         1           2           3           4           5
         # frames    bitrate     y_psnr      u_psnr      v_psrn      yuv_psnr
-        self.pattern_frame = re.compile(r'^POC\s+(\d+)\s+LId:\s+\d+\s+TId:\s+\d+\s+\( \w+, \w-SLICE, QP \d+ \)\s+(\w+) bits \[Y (\d+\.\d+) dB\s+U (\d+\.\d+) dB\s+V (\d+\.\d+) dB', re.M)
+        pattern_frame = re.compile(r'^POC\s+(\d+)\s+LId:\s+\d+\s+TId:\s+\d+\s+\( \w+, \w-SLICE, QP \d+ \)\s+(\w+) bits \[Y (\d+\.\d+) dB\s+U (\d+\.\d+) dB\s+V (\d+\.\d+) dB', re.M)
 
         # 0           1           2           3           4
         # bitrate     y_psnr      u_psnr      v_psrn      yuv_psnr
-        self.pattern_video = re.compile(r'^\s+\d+\s+a\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\s+$', re.M)
-        
-        self.dt = {
+        pattern_video = re.compile(r'^\s+\d+\s+a\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\s+$', re.M)
+
+        if type(data) == pd.DataFrame:
+            super().__init__(data)
+            return
+
+        super().__init__({
             'frame':    [],
             'bitrate':  [],
             'Y_PSNR':   [],
@@ -21,85 +25,103 @@ class VVC_output(pd.DataFrame):
             'V_PSNR':   [],
             'YUV_PSNR': [],
             'qp':       []
-        }
-        self.qps = qps
-
-        if file_path == None:
-            self.create_empty_df()
+        })
         
-        else:
+        if file_path != None:    
+            error_found = False      
             if frames != -1:
                 for file_index, file in enumerate(file_path):
                     if os.path.isfile(file):
-                        self.read_frames(file, file_index, frames)
+                        self.read_frames(file, qps[file_index], frames, pattern_frame, pattern_video)
                     else:
-                        self.create_empty_df()
-                        return
+                        print(f'file \u001b[0;31m{file}\u001b[0m not found')
+                        error_found = True
+                        break
             else:
                 for file_index, file in enumerate(file_path):
                     if os.path.isfile(file):
-                        self.read_general(file, file_index)
+                        self.read_general(file, qps[file_index], pattern_video)
                     else:
-                        self.create_empty_df()
-                        return
+                        print(f'file \u001b[0;31m{file}\u001b[0m not found')
+                        error_found = True
+                        break
+            if error_found:
+                super().__init__({
+                    'frame':    [],
+                    'bitrate':  [],
+                    'Y_PSNR':   [],
+                    'U_PSNR':   [],
+                    'V_PSNR':   [],
+                    'YUV_PSNR': [],
+                    'qp':       []
+                })
+            else:   
+                self.sort()        
+          
 
-            super().__init__(self.dt)
-            super().__init__((super().sort_values(by=['frame', 'qp'])))
-        
-    def create_empty_df(self):
-        self.dt = {}
-        for key in self.__keys__:
-            self.dt[key] = []
-        super().__init__(self.dt)
+    def sort(self):
+        self = VVC_output(data=self.sort_values(by=['frame', 'qp']))
 
-    def read_frames(self, file, file_index, frames):
+    def read_frames(self, file, qp, frames, pattern_frame, pattern_video):
         with open(file) as f:
             log = f.read()
-            check = self.pattern_frame.findall(log)
-
+            check = pattern_frame.findall(log)
+            
             if len(check) == frames:
+            
                 for frame in check:
-                    self.append_frame(frame, file_index)
+            
+                    self.append_frame(frame, qp)
 
-            check = self.pattern_video.findall(log)
+            
+
+            check = pattern_video.findall(log)
             if len(check) > 0:
                 frame = check[0]
-                self.append_general(frame, file_index)
+                self.append_general(frame, qp)
 
-    def read_general(self, file, file_index):
+    def read_general(self, file, qp, pattern_video):
         with open(file) as f:
             log = f.read()
-            check = self.pattern_video.findall(log)
+            check = pattern_video.findall(log)
             if len(check) == 1:
                 frame = check[0]
-                self.append_general(frame, file_index)
+                self.append_general(frame, qp)
 
             f.close()
 
-    def append_frame(self, frame, file_index):
+    def append_frame(self, frame, qp):
 
         frames, bitrate, y_psnr, u_psnr, v_psnr = frame
+        
+        self = self.__init__(data=pd.concat(
+            [self, 
+            pd.DataFrame({
+                'frame':    [int(frames)],
+                'bitrate':  [int(bitrate)],
+                'Y_PSNR':   [float(y_psnr)],
+                'U_PSNR':   [float(u_psnr)],
+                'V_PSNR':   [float(v_psnr)],
+                'YUV_PSNR': [float(y_psnr)],
+                'qp':       [int(qp)]
+            })],
+            ignore_index=True
+        ))
 
-        self.dt['frame'].append(int(frames))
-        self.dt['bitrate'].append(int(bitrate))
-        self.dt['Y_PSNR'].append(float(y_psnr))
-        self.dt['U_PSNR'].append(float(u_psnr))
-        self.dt['V_PSNR'].append(float(v_psnr))
-        self.dt['YUV_PSNR'].append(self.calculate_YUV_PSNR(float(y_psnr), float(u_psnr), float(v_psnr)))
-        self.dt['qp'].append(int(self.qps[file_index]))
-
-    def append_general(self, frame, file_index):
+    def append_general(self, frame, qp):
         
         bitrate, y_psnr, u_psnr, v_psnr, yuv_psnr = frame
-
-        self.dt['frame'].append(-1)
-        self.dt['bitrate'].append(int(bitrate))
-        self.dt['Y_PSNR'].append(float(y_psnr))
-        self.dt['U_PSNR'].append(float(u_psnr))
-        self.dt['V_PSNR'].append(float(v_psnr))
-        self.dt['YUV_PSNR'].append(float(yuv_psnr))
-        self.dt['qp'].append(int(self.qps[file_index]))
-
-    def calculate_YUV_PSNR(self, Y_PSNR, U_PSNR, V_PSNR):
-        return (float(Y_PSNR) + float(U_PSNR) + float(V_PSNR))/3
+        
+        self = self.__init__(data=pd.concat(
+            [self, 
+            pd.DataFrame({
+                'frame':    [int(-1)],
+                'bitrate':  [float(bitrate)],
+                'Y_PSNR':   [float(y_psnr)],
+                'U_PSNR':   [float(u_psnr)],
+                'V_PSNR':   [float(v_psnr)],
+                'YUV_PSNR': [float(yuv_psnr)],
+                'qp':       [int(qp)]
+            })]
+        ))
 
