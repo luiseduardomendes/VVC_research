@@ -32,9 +32,9 @@ def exec(cfg_encoder: str, cfg_video: str, video_name: str, qp: int, satd_settin
             f'-c \"{cfg_video}\" ' + # video parameters 
             f'-b \"{out_dir}videos_bin/{video_name}.bin\" ' + # output binary video
             f'-q {qp} -f {n_frames} {ts_status} --SIMD=SCALAR ' + # qp, number of frames, 
-            f'>> \"{out_dir}vvc_log/{satd}/{encoder}/log_{video_name}_qp{qp}_{encoder}_{satd}.vvclog\" ' + 
+            f'>> \"{out_dir}vvclog/{satd}/{encoder}/log_{video_name}_qp{qp}_{encoder}_{satd}.vvclog\" ' + 
             f'&& cd {bin_dir} && gprof {bin_dir}EncoderAppStatic gmon.out' +
-            f'>> \"{out_dir}gprof_log/{satd}/{encoder}/log_{video_name}_qp{qp}_{encoder}_{satd}.gplog\" &'
+            f'>> \"{out_dir}gproflog/{satd}/{encoder}/log_{video_name}_qp{qp}_{encoder}_{satd}.gplog\" &'
         )
 
     else:
@@ -44,7 +44,7 @@ def exec(cfg_encoder: str, cfg_video: str, video_name: str, qp: int, satd_settin
             f'-c \"{cfg_video}\" ' + # video parameters 
             f'-b \"{out_dir}videos_bin/{video_name}.bin\" ' + # output binary video
             f'-q {qp} -f {n_frames} {ts_status} --SIMD=SCALAR ' +
-            f'>> \"{out_dir}vvc_log/log_{video_name}_qp{qp}_{encoder}_{satd}.vvclog\" '
+            f'>> \"{out_dir}vvclog/log_{video_name}_qp{qp}_{encoder}_{satd}.vvclog\" '
         )
 
 
@@ -59,12 +59,12 @@ def __mkdir__(out_dir, satd, encoder):
 
     if not os.path.isdir(out_dir + 'vvclog/' + satd + '/'):
         os.mkdir(out_dir + 'vvclog/' + satd + '/')
-    if not os.path.isdir(out_dir + 'gproflog/' + {satd} + '/'):
+    if not os.path.isdir(out_dir + 'gproflog/' + satd + '/'):
         os.mkdir(out_dir + 'gproflog/' + satd + '/')
 
     if not os.path.isdir(out_dir + 'vvclog/' + satd + '/' + encoder + '/'):
         os.mkdir(out_dir + 'vvclog/' + satd + '/' + encoder + '/')
-    if not os.path.isdir(out_dir + 'gproflog/' + {satd} + '/' + encoder + '/'):
+    if not os.path.isdir(out_dir + 'gproflog/' + satd + '/' + encoder + '/'):
         os.mkdir(out_dir + 'gproflog/' + satd + '/' + encoder + '/')
 
 

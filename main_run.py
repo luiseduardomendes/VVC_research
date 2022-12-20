@@ -5,14 +5,14 @@ import source.common.vvc_exec as vex
 from auxiliar_files.server_paths import sv_paths as sv_path
 from source.common.commonlib import file_subs, get_next_file, compile_VTM
 
-file = get_next_file(sv_path['exec_buffer'])
-file_subs(
-    os.path.join('FilesForVVC/', file), 
-    sv_path["commonlib"],
-    'RdCost.cpp'
-)
+#file = get_next_file(sv_path['exec_buffer'])
+#file_subs(
+#    os.path.join('FilesForVVC/', file), 
+#    sv_path["commonlib"],
+#    'RdCost.cpp'
+#)
 
-compile_VTM(sv_path["vtm"], sv_path["repo"])
+compile_VTM(sv_path["vvc"], sv_path["repo"])
 
 cfg_videos_dir = sv_path['cfg_videos'] 
 satd_src = sv_path['satd_src']
@@ -43,9 +43,10 @@ enc_cfgs = [
     'encoder_randomaccess_vtm.cfg'
 ]
 
-setting_name = file
-if file.endswith('.cpp'):
-    setting_name = file[:-4]
+setting_name = 'precise'
+#setting_name = file
+#if file.endswith('.cpp'):
+##    setting_name = file[:-4]
 
 for video in video_cfg:
     for qp in quant_param:
