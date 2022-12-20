@@ -3,7 +3,7 @@ import re
 from os.path import isfile, isdir
 from pathlib import Path
     
-def file_subs(self, file_path, destiny_dir, rename_like) -> None:
+def file_subs(file_path, destiny_dir, rename_like) -> None:
     if isfile(file_path):
         source_path = f'{file_path}'
     else:   
@@ -17,19 +17,22 @@ def file_subs(self, file_path, destiny_dir, rename_like) -> None:
     os.system(f"cp \"{source_path}\" \"{destiny_path}{rename_like}\"") 
 
 
-def get_next_file(exec_buffer):
-    pattern = re.compile(r'^FilesForVVC/(.+)$')
-
+def get_next_file(exec_buffer, erase = True):
+    # reads the first line, then, if erase is on, erases the line read
     with open(exec_buffer, 'r') as f:
-        file = pattern.findall(f.readline())[0]
-        with open('temp' + exec_buffer, 'w') as out:
-            for line in f:
-                out.write(line)
-            out.close()
+        file = f.readline()
+        if file.endswith('\n'):
+            file = file[:-1]
+        if erase:
+            with open(exec_buffer + 'temp', 'w') as out:
+                for line in f:
+                    out.write(line)
+                out.close()
         f.close()
     
-    os.system('rm {}'.format(exec_buffer))
-    os.system('mv {} {}'.format('./temp'+exec_buffer, './'+exec_buffer))
+    if erase:
+        os.remove(exec_buffer)
+        os.system(f"mv {exec_buffer + 'temp'} {exec_buffer}")
 
     return file
 
