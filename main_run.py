@@ -38,9 +38,9 @@ quant_param = [
 ]
 
 enc_cfgs = [
-    'encoder_intra_vtm.cfg',
-    'encoder_lowdelay_vtm.cfg',
-    'encoder_randomaccess_vtm.cfg'
+    'AI',
+    'LB',
+    'RA'
 ]
 
 setting_name = 'precise'
@@ -51,4 +51,14 @@ setting_name = 'precise'
 for video in video_cfg:
     for qp in quant_param:
         for cfg in enc_cfgs:
-            vex.exec(cfg, cfg_videos_dir+video, video[:-4], qp, setting_name, vtm_dir, gprof=True)
+            vex.exec(
+                vtm_dir         = vtm_dir, 
+                encoder_name    = cfg, 
+                cfg_video       = os.path.join(cfg_videos_dir, video), 
+                qp              = qp,
+                out_dir         = out_videos_dir,
+                video_name      = video[:-4], 
+                VTM_version     = setting_name, 
+                n_frames        = '32',
+                gprof           = True
+            )
