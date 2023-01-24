@@ -1,0 +1,3 @@
+/home/luismendes/Área de Trabalho/VVCSoftware_VTM
+/home/luismendes/Documentos/research/cfg_videos
+/home/luismendes/Documentos/research/output4

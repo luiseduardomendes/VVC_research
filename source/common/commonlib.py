@@ -49,3 +49,20 @@ def reset_exec_buffer(out_path, dir_path):
             f.write(line + '\n')
         f.close()
 
+def read_config_file(filename: str):
+    with open(filename, 'r') as f:
+        data = {
+            "vtm_dir": f.readline().replace('\n', ''),
+            "cfg_videos_dir": f.readline().replace('\n', ''),
+            "out_videos_dir": f.readline().replace('\n', '')
+        }
+        f.close()
+    print(data)
+    
+    if not os.path.isdir(data['vtm_dir']):
+        raise Exception("vtm_dir is not a directory")
+    elif not os.path.isdir(data['cfg_videos_dir']):
+        raise Exception("cfg_videos_dir is not a directory")
+    else:
+        return data
+    
