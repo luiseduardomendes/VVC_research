@@ -64,7 +64,7 @@ def exec(
     make_path_log_gprof(out_dir, VTM_version, encoder_name)
     
     command = \
-        f'\n\"{binary_encoder_path}\" ' + \
+        f'cd \"{bin_dir}\" && \"{binary_encoder_path}\" ' + \
         f'-c \"{encoder_cfg_path}\" ' + \
         f'-c \"{cfg_video}\" ' + \
         f'-b \"{binary_videos_path}\" ' + \

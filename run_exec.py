@@ -12,8 +12,12 @@ out_videos_dir = data['out_videos_dir']
 cfg_videos_dir = data['cfg_videos_dir']
 vtm_dir = data['vtm_dir']
 
-
 if not os.path.isdir(out_videos_dir):
+    os.mkdir(out_videos_dir)
+else:
+    n = int(out_videos_dir[-1])
+    n = n+1
+    out_videos_dir = out_videos_dir[:-1] + str(n)
     os.mkdir(out_videos_dir)
 
 video_cfg = [
@@ -30,9 +34,9 @@ enc_cfgs = ['AI','LB','RA']
 setting_name = 'precise'
 
 
-for video in video_cfg:
-    for qp in quant_param:
-        for cfg in enc_cfgs:
+for video in video_cfg[:1]:
+    for qp in quant_param[:1]:
+        for cfg in enc_cfgs[:1]:
             vex.exec(
                 vtm_dir         = vtm_dir, 
                 encoder_name    = cfg, 
@@ -41,7 +45,7 @@ for video in video_cfg:
                 out_dir         = out_videos_dir,
                 video_name      = video[:-4], 
                 VTM_version     = setting_name, 
-                n_frames        = '32',
+                n_frames        = '8',
                 gprof           = True,
                 background_exec = True
             )
