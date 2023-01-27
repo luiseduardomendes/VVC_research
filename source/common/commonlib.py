@@ -37,9 +37,10 @@ def get_next_file(exec_buffer, erase = True):
     return file
 
 def compile_VTM(vtm_path, repo_path):
+    #TODO: fix error
     os.system(f'cmake {vtm_path} -DCMAKE_BUILD_TYPE=Release')
-    os.system('make')
     os.system(f'cd {repo_path}')
+    os.system('make')
 
 def reset_exec_buffer(out_path, dir_path):
     files_list = [str(f) for f in Path(dir_path).rglob('*.cpp')]
