@@ -1,7 +1,8 @@
 import os
 import sys
 import source.common.vvc_exec as vex
-from source.common.commonlib import read_config_file
+from source.common.commonlib import read_config_file, compile_VTM
+
 
 if not os.path.isfile(sys.argv[1]):
     raise Exception("Insert a valid input argument")
@@ -11,6 +12,7 @@ data = read_config_file(config_file)
 out_videos_dir = data['out_videos_dir']
 cfg_videos_dir = data['cfg_videos_dir']
 vtm_dir = data['vtm_dir']
+compile_VTM(vtm_dir, '/home/luismendes/Documents/GitHub/VVC_research')
 
 if not os.path.isdir(out_videos_dir):
     os.mkdir(out_videos_dir)
@@ -47,6 +49,6 @@ for video in video_cfg[:1]:
                 VTM_version     = setting_name, 
                 n_frames        = '8',
                 gprof           = True,
-                background_exec = True
+                background_exec = False
             )
 
