@@ -140,3 +140,83 @@ path to the approximations
 ### `all_frames`
 
 Decides if it will return the BD_Rate for all the frames of the video or just the general BD_Rate.
+
+# VVC_execute_simulation
+
+**def vvc_execute_simulation( cfg_vid_dir:str, output_dir:str, vtm_path:str, qps : list = [22, 27, 32, 37], enc_cfgs : list = ['AI','LB','RA'], version : str = 'Precise', num_frames : int = 32, enable_gprof : bool = True, enable_background_execution : bool = False, src_modify_file: str = None, dst_modify_file: str = None)**
+
+Runs a simulation of the VVC Software VTM using different parameters. This function will run the software to all the videos in `cfg_vid_dir`, with all the quantization parameters in `qps`, using all of the configurations in `enc_cfgs`. Then it will store all the logs in the folder `output_dir`.
+
+It is possible to modify `VTM` using `src_modify_file` and `dst_modify_file`.
+
+**Parameters:**
+
+**cfg_vid_dir** : *str*,\
+path to the directory where the vvc configuration files are stored.
+
+**output_dir** : *str*,\
+path to the output directory. If it exists, then the software will create a new folder with the same name to avoid overwriting problems.
+
+**vtm_path** : *str*,\
+path to the VTM folder `VVCSoftware_VTM`.
+
+**qps** : *list* *default* [22, 27, 32, 37],\
+List of quantization parameters used to the simulation.
+
+**enc_cfgs** : *list* *default* ['AI','LB','RA'],\
+List of encoder configurations that will be used to the simulation.
+
+**version** : *str* *default* 'Precise',\
+Optional, it will distinguish the different versions at the simulation. For example, if it is needed to run the software with some changes, it it possible to distinguish the 'Precise' version to the 'Changed' version.
+
+**num_frames** : *int* *default* 32,\
+Numbers of frames encoded by video.
+
+**enable_gprof** : *bool* *default* True,\
+Turns on the profiling log using GNU profiler.
+
+**enable_background_execution** : *bool* *default* False,\
+If it is true, then the software will run in background.
+
+**src_modify_file** : *str* *default* None,\
+If it is needed to change some file of the VTM, then this value must be set to the path to the new file that must be included.
+
+**dst_modify_file** : *str* *default* None,\
+The file that will be overwrited by the `src_modify_file`.
+
+## Implementation example:
+     
+```python
+from source.vvc_execute_simulation import vvc_execute_simulation
+
+output_dir = 'output'
+cfg_vid_dir = 'video-cfg'
+vtm_path = '\home\user\VVCSoftware_VTM'
+
+vvc_execute_simulation(
+    cfg_vid_dir = cfg_vid_dir, 
+    output_dir  = output_dir, 
+    vtm_path    = vtm_path, 
+    num_frames  = 32, 
+)
+```
+
+## file structure representation:
+> output
+> > gprof_log
+> > > AI
+> > > > log_video1_qp22_AI_Precise.gplog\
+> > > > log_video1_qp27_AI_Precise.gplog\
+> > > > log_video2_qp22_AI_Precise.gplog\
+> > > > log_video2_qp27_AI_Precise.gplog
+
+> > > LB\
+> > > RA
+
+> > videos_bin
+> > > videos.bin
+
+> > vvc_log
+> > > AI
+> > > LB
+> > > RA
