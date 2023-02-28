@@ -1,6 +1,4 @@
 import os
-import re
-from auxiliar_files.server_paths import sv_paths
 
 def exec(
         # --------------- vtm parameters --------------- #

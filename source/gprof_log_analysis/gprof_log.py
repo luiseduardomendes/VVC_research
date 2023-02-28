@@ -2,18 +2,12 @@ import re
 import pandas as pd
 import numpy as np
     
-class GprofDF(pd.DataFrame):
-    def __init__(self, file, max_n = 10000, specific_function : tuple = None, specific_class : tuple = None) -> None:
-        super().__init__(
-            self.read_gprof_out(
-                file, 
-                max_n, 
-                specific_function, 
-                specific_class
-            )
-        )
 
-    def read_gprof_out(self, file, max_n = 10000, specific_function : tuple = None, specific_class : tuple = None):           
+class GprofDF(pd.DataFrame):
+    def __init__(self, data = None) -> None:
+        super().__init__(data)
+
+    def read_file(self, file_name):           
         keys = ('time', 'cum_sec', ' self_sec', 'calls', 'self_s_call', 'tot_s_call', 'name', 'class')
 
         pattern = re.compile(r'(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+|\s+)\s+(\d+|\s+)\s+(\d+\.\d+|\s+)\s+(\d+\.\d+|\s+)\s+(.+)()')
@@ -22,7 +16,7 @@ class GprofDF(pd.DataFrame):
         for key in keys:
             structBuffer[key] = []
         
-        with open(file) as f:
+        with open(file_name) as f:
             for line in f:
                 check = pattern.findall(line)
                 if len(check) != 0:
@@ -35,13 +29,6 @@ class GprofDF(pd.DataFrame):
 
                     funct_name = buffer[6].split(sep='(')[0]
                     funct_name = funct_name.split(sep='::')[-1]
-                    
-                    if specific_class != None:
-                        if class_name not in specific_class:
-                            continue
-                    if specific_function != None:
-                        if funct_name not in specific_function:
-                            continue
 
                     for i, key in enumerate(keys):
                         if buffer[i] == '':
@@ -55,7 +42,13 @@ class GprofDF(pd.DataFrame):
                     structBuffer['class'][-1] = class_name
                     structBuffer['name'][-1] = funct_name
 
-                if len(structBuffer['class']) >= max_n:
-                    break
             f.close()
-        return pd.DataFrame(structBuffer)
+        
+        self.__init__(structBuffer)
+        return(self)
+    
+    def filter_function(self, function_name : str):
+        return self[self['name'] == function_name]
+
+    def filter_class(self, class_name: str):
+        return self[self['class'] == class_name]
