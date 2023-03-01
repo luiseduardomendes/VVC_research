@@ -1,6 +1,6 @@
 import pandas as pd
 from pprint import pprint
-from source.vvc_log_analysis.vvc_output import VVC_output
+from source.vvc_log_analysis.vvc_output import VVC_Output
 from source.vvc_log_analysis.vvc_bd_rate import BD_Rate
 from source.common.sv_make_path import *
 
@@ -17,12 +17,8 @@ def vvc_frame_analysis(approximations, file_names, path, all_frames = True):
         'randomaccess'  : 'RA'
     }
 
-    if all_frames:
-        frames = 32
-    else:
-        frames = -1
-
     df = BD_Rate()
+    df.index.names=['satd','video','cfg','frame']
     for satd in satds:
         for file in files:    
             for cfg in cfgs:
@@ -34,13 +30,17 @@ def vvc_frame_analysis(approximations, file_names, path, all_frames = True):
                 if len(path_refs) == 0:
                     continue
 
-                log = VVC_output(path_logs, qps, frames)
-                log = (VVC_output(data=log.sort_values(by=['frame', 'qp'])))
+                log = VVC_Output()
+                log.read_multifile(path_logs, qps)
+                log = (VVC_Output(data=log.sort_values(by=['frame', 'qp'])))
                 
-                ref = VVC_output(path_refs, qps, frames)
-                ref = (VVC_output(data=ref.sort_values(by=['frame', 'qp'])))
+                ref = VVC_Output()
+                ref.read_multifile(path_refs, qps)
+                ref = (VVC_Output(data=ref.sort_values(by=['frame', 'qp'])))
 
+                tmp_df = BD_Rate(satd=satd, video=file, cfg=cfg)
+                tmp_df.calc_bdbr(log, ref)
 
-                df = pd.concat([df, BD_Rate(log, ref, satd, file, cfg)])
+                df = pd.concat([df, tmp_df])
     return df
     

@@ -1,5 +1,5 @@
 import pandas as pd
-from source.vvc_log_analysis.vvc_output import VVC_output
+from source.vvc_log_analysis.vvc_output import VVC_Output
 import numpy as np
 from scipy import interpolate, integrate
 import math
@@ -7,56 +7,35 @@ import math
 
 class BD_Rate(pd.Series):
     __indexes__ = ['satd','video','cfg','frame']
-    def __init__(self, cmp_df : VVC_output = None, ref_df : VVC_output = None, satd = None, video = None, cfg = None, qps=4):
+    __version__ = None
+    __video__   = None
+    __cfg__     = None
+    __nqps__    = 4
 
-        if type(cmp_df) != VVC_output:
-            bdr = []
-            index = self.__mk_empty_index__()
+    def __init__(self, satd = None, video = None, cfg = None, nqps=4):
+        self.__version__ = satd
+        self.__video__   = video
+        self.__cfg__     = cfg
+        self.__nqps__    = nqps
 
-        elif not cmp_df.empty:
-            bdr = [
-                self.bdbr(cmp_df.iloc[i:i+qps], ref_df.iloc[i:i+qps]) 
-                for i in range(0, len(cmp_df['frame']), qps)
-            ]
-            index = self.__mk_index__(satd, video, cfg, cmp_df, qps)
-        else:
-            bdr = []
-            index = self.__mk_empty_index__()
+        super().__init__([], index=self.__mk_empty_index__(), dtype=float)
 
+    def calc_bdbr(self, cmp_df : VVC_Output, ref_df : VVC_Output):
+        bdr = [
+            self.__bdbr__(cmp_df.iloc[i:i+self.__nqps__], ref_df.iloc[i:i+self.__nqps__]) 
+            for i in range(0, len(cmp_df['frame']), self.__nqps__)
+        ]
+        
+        index = self.__mk_index__(
+            self.__version__, 
+            self.__video__, 
+            self.__cfg__, 
+            cmp_df, 
+            self.__nqps__
+        )
         super().__init__(bdr, index=index, dtype=float)
 
-    def __mk_empty_index__(self) -> pd.MultiIndex:
-        return pd.MultiIndex.from_arrays(
-            [[], [], [], [],], names=self.__indexes__
-        )
-
-    def __mk_index__(self, satd, video, cfg, cmp_df, qps) -> pd.MultiIndex:
-        temp = np.array(cmp_df['frame'])
-        index = pd.MultiIndex.from_arrays(
-            [
-                [
-                    satd
-                    for i in range(0, len(cmp_df['frame']), qps)
-                ],
-                [
-                    video
-                    for i in range(0, len(cmp_df['frame']), qps)
-                ],
-                [
-                    cfg
-                    for i in range(0, len(cmp_df['frame']), qps)
-                ], 
-                [
-                    temp[i]
-                    for i in range(0, len(cmp_df['frame']), qps)
-                ],
-            ],
-            names = self.__indexes__
-        )
-        return index
-
-
-    def bdbr(self, cmp, ref):
+    def __bdbr__(self, cmp, ref):
         if len(cmp['bitrate']) != len(ref['bitrate']):
             return None
 
@@ -95,3 +74,33 @@ class BD_Rate(pd.Series):
         bdbr = (math.pow(10., bdbr)-1)*100
 
         return bdbr
+
+    def __mk_empty_index__(self) -> pd.MultiIndex:
+        return pd.MultiIndex.from_arrays(
+            [[], [], [], [],], names=self.__indexes__
+        )
+
+    def __mk_index__(self, satd, video, cfg, cmp_df, qps) -> pd.MultiIndex:
+        temp = np.array(cmp_df['frame'])
+        index = pd.MultiIndex.from_arrays(
+            [
+                [
+                    satd
+                    for i in range(0, len(cmp_df['frame']), qps)
+                ],
+                [
+                    video
+                    for i in range(0, len(cmp_df['frame']), qps)
+                ],
+                [
+                    cfg
+                    for i in range(0, len(cmp_df['frame']), qps)
+                ], 
+                [
+                    temp[i]
+                    for i in range(0, len(cmp_df['frame']), qps)
+                ],
+            ],
+            names = self.__indexes__
+        )
+        return index
