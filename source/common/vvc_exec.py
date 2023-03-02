@@ -62,7 +62,7 @@ def exec(
     make_path_log_gprof(out_dir, VTM_version, encoder_name)
     
     command = \
-        f'cd \"{bin_dir}\" && \"{binary_encoder_path}\" ' + \
+        f'./\"{binary_encoder_path}\" ' + \
         f'-c \"{encoder_cfg_path}\" ' + \
         f'-c \"{cfg_video}\" ' + \
         f'-b \"{binary_videos_path}\" ' + \
@@ -76,7 +76,10 @@ def exec(
             f'&& cd \"{bin_dir}\" && gprof \"{binary_encoder_path}\" gmon.out ' + \
             f'>> \"{output_log_path_gprof}\" {background_status}'
 
-    os.system(command)
+    print(command)
+
+    if display_data:
+        print('execution done')
 
 
 def __display_info__(
