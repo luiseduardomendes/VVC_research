@@ -28,7 +28,7 @@ def exec(
         'LB': 'encoder_lowdelay_vtm.cfg',
         'RA': 'encoder_randomaccess_vtm.cfg',
     }
-    cfg_encoder = os.path.join(cfg_dir, cfg_dict[encoder_name])
+    cfg_encoder = cfg_dict[encoder_name]
 
     # ts status is only used when the cfg selected is the intra encoding
     ts_status = ''
@@ -62,7 +62,7 @@ def exec(
     make_path_log_gprof(out_dir, VTM_version, encoder_name)
     
     command = \
-        f'./\"{binary_encoder_path}\" ' + \
+        f'/\"{binary_encoder_path}\" ' + \
         f'-c \"{encoder_cfg_path}\" ' + \
         f'-c \"{cfg_video}\" ' + \
         f'-b \"{binary_videos_path}\" ' + \
@@ -76,6 +76,7 @@ def exec(
             f'&& cd \"{bin_dir}\" && gprof \"{binary_encoder_path}\" gmon.out ' + \
             f'>> \"{output_log_path_gprof}\" {background_status}'
 
+    os.system(command)
     print(command)
 
     if display_data:
