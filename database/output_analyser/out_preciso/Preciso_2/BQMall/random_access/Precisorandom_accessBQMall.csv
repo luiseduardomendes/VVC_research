@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,qp,cfg,satd
+3253.17,40.1996,43.9319,45.5172,41.1896,BQMall,22,random_access,Preciso
+1634.61,37.7041,42.0622,43.1091,38.7105,BQMall,27,random_access,Preciso
+875.19,34.9644,40.0778,40.9838,36.0375,BQMall,32,random_access,Preciso
+483.48,32.2031,38.4172,39.0234,33.387,BQMall,37,random_access,Preciso

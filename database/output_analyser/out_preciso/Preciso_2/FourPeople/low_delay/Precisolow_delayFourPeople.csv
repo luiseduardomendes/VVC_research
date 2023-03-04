@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,qp,cfg,satd
+2203.755,43.0143,47.161,48.5291,44.0884,FourPeople,22,low_delay,Preciso
+1002.105,41.0776,45.6837,46.855,42.2053,FourPeople,27,low_delay,Preciso
+557.385,38.6854,43.8983,44.8681,39.8764,FourPeople,32,low_delay,Preciso
+325.17,35.9059,41.7107,42.9712,37.179,FourPeople,37,low_delay,Preciso

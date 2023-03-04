@@ -1,121 +1,46 @@
-from distutils.log import Log
-import re
 import pandas as pd
-import numpy as np
+from pprint import pprint
+from source.vvc_log_analysis.vvc_output import VVC_Output
+from source.vvc_log_analysis.vvc_bd_rate import BD_Rate
+import source.common.vvc_analyser_path as vvcpath
 
-# this object is used as return to the read_log function
-# it is also used by the LogDF to append new data to a Log Data Frame
-class LogDict:
-    keys = ('bitrate','Y_PSNR','U_PSNR','V_PSNR','YUV_PSNR','fileName','qp','cfg','satd')
-    def __init__(self, name : str, qp : int, cfg : str, satd : str, log_data : list = None):
-        self.df = self.__mk_empty_df__()
+def vvc_frame_analysis(approximations, file_names, path, all_frames = True):
 
-        if log_data != None:
-            for i, key in enumerate(list(self.keys)[:-4]):
-                self.df[key].append(float(log_data[i]))
-        else:
-            for i, key in enumerate(list(self.keys)[:-4]):
-                self.df[key].append(np.nan)
+    qps = (22, 27, 32, 37)
+    satds = approximations
+    files = file_names
+    cfgs = ('intra', 'lowdelay', 'randomaccess')
 
-        self.df['fileName'].append(name)
-        self.df['qp'].append(qp)
-        self.df['cfg'].append(cfg)
-        self.df['satd'].append(satd)
+    _cfg_ = {
+        'intra'         : 'AI',
+        'lowdelay'      : 'LB',
+        'randomaccess'  : 'RA'
+    }
 
-        self.df = pd.DataFrame(self.df)
+    df = BD_Rate()
+    df.index.names=['satd','video','cfg','frame']
+    for satd in satds:
+        for file in files:    
+            for cfg in cfgs:
+                path_logs = vvcpath.vvc_make_path(path, _cfg_[cfg], file, satd, qps)
+                if len(path_logs) == 0:
+                    continue
+                
+                path_refs = vvcpath.vvc_make_path(path, _cfg_[cfg], file, 'Precise', qps)
+                if len(path_refs) == 0:
+                    continue
 
-    def getDf(self):
-        return self.df
+                log = VVC_Output()
+                log.read_multifile(path_logs, qps)
+                log = (VVC_Output(data=log.sort_values(by=['frame', 'qp'])))
+                
+                ref = VVC_Output()
+                ref.read_multifile(path_refs, qps)
+                ref = (VVC_Output(data=ref.sort_values(by=['frame', 'qp'])))
 
-    def get(self, key : str):
-        return self.df[key][0]
+                tmp_df = BD_Rate(satd=satd, video=file, cfg=cfg)
+                tmp_df.calc_bdbr(log, ref)
 
-    def __mk_empty_df__(self) -> dict:
-        df = {}
-        for key in self.keys:
-            df[key] = []
-        return df
-
-class LogDF:
-    keys = ('bitrate','Y_PSNR','U_PSNR','V_PSNR','YUV_PSNR','fileName','qp','cfg','satd')
-
-    def __init__(self) -> None:
-        self.df = self.__mk_empty_df__()
-
-    # appends a new LogDict (that is the return of read_log) to a LogDF (that storages more than one file data)
-    def append(self, df : LogDict):
-        self.df = pd.concat([self.df, df.getDf()], ignore_index=True)
-
-    def getDataFrame(self) -> pd.DataFrame():
-        return self.df
-
-    def sort_by(self, key : str):
-        self.df = self.df.sort_values(by=key).reset_index(drop=True)
-
-    def __mk_empty_df__(self) -> pd.DataFrame:
-        df = {}
-        for key in self.keys:
-            df[key] = []
-        return pd.DataFrame(df)
-        
-
-# receives a file in the specified format "log_{VIDEONAME}_qp{QP}_{CONFIG}_.+RdCost{SATD}_exec"
-# with the extension ".gplog", ".vvclog" or ".txt"
-def read_log(file : str) -> LogDict:
-
-    # Bitrate, Y-PSNR, U-PSNR, V-PSNR, YUV-PSNR
-    ptrn = re.compile(r'^\s+\d+\s+a\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\s+$', re.M)  
-    # Name, QP, config, satd
-    file_name_ptrn = re.compile(r'log_(.+)_qp(\d{2})_(\w+)_.+RdCost(.+)_exec')
-
-    if file.endswith('.txt') or file.endswith('.gplog') or file.endswith('.vvclog'):
-        name, qp, cfg, satd = file_name_ptrn.findall(file)[0]
-        with open(file) as f:
-            log_text = f.read()
-            check = ptrn.findall(log_text, re.M)
-            if len(check) > 0:
-                data_dict = LogDict(name, qp, cfg, satd, check[0])
-            else:
-                data_dict = LogDict(name, qp, cfg, satd, None)
-
-            f.close()
-
-    return data_dict   
+                df = pd.concat([df, tmp_df])
+    return df
     
-def group_by_filename_1(data_set : list) -> LogDF:
-    output = LogDF()
-    for data in data_set:
-        output.append(data)
-        
-    output.sort_by('qp')
-    return output
-
-
-# receives a list of LogDF and returns a dict of LogDF, grouped by qp
-
-# split the data by each execution of VVC, i.e., the same video, coded with the same
-# alteration on Software and the same configuration (AI, RA or LD)
-
-# each key are composed by an APPROXIMATION on software, the NAME OF THE VIDEO encoded,
-# and the CONFIGURATION USED (AI, RA, LD)
-
-# output is a dict where each KEY are associated with it DATA_FRAME, that stores data
-# from different QUANTIZATION PARAMETER (22, 27, 32, 37)
-
-
-def split(data_set : list) -> dict:
-    keys = []
-    output = {}     
-
-    for df in data_set:
-        key = df.get('satd') + '_' + df.get('fileName') + '_' + df.get('cfg')
-        if not key in keys:
-            output[key] = LogDF()
-            keys.append(key)
-        
-        output[key].append(df)
-        
-    for key in output.keys():
-        output[key].sort_by('qp')
-
-    return output

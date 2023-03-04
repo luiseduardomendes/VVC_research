@@ -1,0 +1,9 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,encoder,satd,qp
+,,,,,Campfire,randomaccess,8x8-5,22
+,,,,,Campfire,randomaccess,8x8-5,22
+,,,,,Campfire,randomaccess,8x8-5,27
+,,,,,Campfire,randomaccess,8x8-5,27
+,,,,,Campfire,randomaccess,8x8-5,32
+,,,,,Campfire,randomaccess,8x8-5,32
+,,,,,Campfire,randomaccess,8x8-5,37
+,,,,,Campfire,randomaccess,8x8-5,37

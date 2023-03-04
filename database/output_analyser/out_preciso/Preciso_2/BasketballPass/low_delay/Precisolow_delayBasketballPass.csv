@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,qp,cfg,satd
+770.4625,42.2092,44.7721,44.5577,42.8497,BasketballPass,22,low_delay,Preciso
+359.8,38.2351,42.2624,41.4063,39.0698,BasketballPass,27,low_delay,Preciso
+177.9,34.8031,39.8817,38.9191,35.7991,BasketballPass,32,low_delay,Preciso
+92.55,31.9232,38.2163,37.3002,33.0914,BasketballPass,37,low_delay,Preciso

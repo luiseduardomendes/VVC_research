@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,qp,cfg,satd
+49853.37,46.2704,51.468,52.9837,47.505,FoodMarket,22,intra,Preciso
+22973.28,45.4583,49.8307,50.802,46.5582,FoodMarket,27,intra,Preciso
+14433.45,44.6375,47.9774,48.4977,45.5395,FoodMarket,32,intra,Preciso
+9404.655,43.2836,46.601,46.6294,44.1376,FoodMarket,37,intra,Preciso

@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,encoder,satd,qp
+,,,,,BQMall,lowdelay,4x4-3-8x8-1.cpp,22
+,,,,,BQMall,lowdelay,4x4-3-8x8-1.cpp,27
+,,,,,BQMall,lowdelay,4x4-3-8x8-1.cpp,32
+,,,,,BQMall,lowdelay,4x4-3-8x8-1.cpp,37

@@ -1,0 +1,3 @@
+/home/luismendes/Desktop/VVCresearch/VVCSoftware_VTM
+/home/luismendes/Desktop/VVCresearch/cfg-files-test
+/home/luismendes/Desktop/VVCresearch/output_01

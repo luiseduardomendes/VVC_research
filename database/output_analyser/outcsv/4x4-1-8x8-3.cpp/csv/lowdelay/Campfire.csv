@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,encoder,satd,qp
+,,,,,Campfire,lowdelay,4x4-1-8x8-3.cpp,22
+,,,,,Campfire,lowdelay,4x4-1-8x8-3.cpp,27
+,,,,,Campfire,lowdelay,4x4-1-8x8-3.cpp,32
+,,,,,Campfire,lowdelay,4x4-1-8x8-3.cpp,37

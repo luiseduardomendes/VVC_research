@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,qp,cfg,satd
+18520.05,44.7774,48.946,49.566,45.8241,Johnny,22,intra,Preciso
+9988.215,42.7572,47.0935,47.5744,43.8191,Johnny,27,intra,Preciso
+5594.535,40.6177,45.2098,45.3164,41.6905,Johnny,32,intra,Preciso
+3240.9,38.2227,43.1373,43.9268,39.3844,Johnny,37,intra,Preciso

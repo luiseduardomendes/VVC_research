@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,encoder,satd,qp
+49173.1125,41.7557,45.6818,47.7255,42.855,BasketballDrive,intra,8x8-1,22
+18397.4375,39.8815,44.4281,45.6496,41.0198,BasketballDrive,intra,8x8-1,27
+9600.125,38.6009,43.0553,43.5662,39.6814,BasketballDrive,intra,8x8-1,32
+5484.9625,37.0496,41.7653,41.8455,38.1372,BasketballDrive,intra,8x8-1,37

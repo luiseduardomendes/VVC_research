@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,encoder,satd,qp
+,,,,,Johnny,intra,4x4-1-8x8-1.cpp,22
+,,,,,Johnny,intra,4x4-1-8x8-1.cpp,27
+,,,,,Johnny,intra,4x4-1-8x8-1.cpp,32
+,,,,,Johnny,intra,4x4-1-8x8-1.cpp,37

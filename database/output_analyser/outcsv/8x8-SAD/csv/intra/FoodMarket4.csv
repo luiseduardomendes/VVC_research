@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,encoder,satd,qp
+50029.02,46.2694,51.4656,52.9825,47.5039,FoodMarket4,intra,8x8-SAD,22
+23086.17,45.4568,49.825,50.7918,46.5559,FoodMarket4,intra,8x8-SAD,27
+14534.265,44.6315,47.974,48.4964,45.5342,FoodMarket4,intra,8x8-SAD,32
+,,,,,FoodMarket4,intra,8x8-SAD,37

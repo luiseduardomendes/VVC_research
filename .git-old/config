@@ -1,0 +1,20 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = https://github.com/luiseduardomendes/VVC_research.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
+[branch "temp-23-11-22"]
+	remote = origin
+	merge = refs/heads/temp-23-11-22
+[branch "editing_vvc_exec"]
+	remote = origin
+	merge = refs/heads/editing_vvc_exec
+[branch "refactoring"]
+	remote = origin
+	merge = refs/heads/refactoring

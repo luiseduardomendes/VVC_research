@@ -1,0 +1,9 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,encoder,satd,qp
+,,,,,Johnny,randomaccess,8x8-4,22
+,,,,,Johnny,randomaccess,8x8-4,22
+,,,,,Johnny,randomaccess,8x8-4,27
+,,,,,Johnny,randomaccess,8x8-4,27
+,,,,,Johnny,randomaccess,8x8-4,32
+,,,,,Johnny,randomaccess,8x8-4,32
+,,,,,Johnny,randomaccess,8x8-4,37
+,,,,,Johnny,randomaccess,8x8-4,37

@@ -1,0 +1,5 @@
+bitrate,Y_PSNR,U_PSNR,V_PSNR,YUV_PSNR,fileName,qp,cfg,satd
+27395.25,48.2995,49.8267,50.9512,48.8537,RitualDance,22,intra,Preciso
+16372.8,45.8929,47.334,47.9576,46.3641,RitualDance,27,intra,Preciso
+9725.97,43.075,45.2976,45.3232,43.6567,RitualDance,32,intra,Preciso
+5718.615,40.0422,42.9894,43.7114,40.8394,RitualDance,37,intra,Preciso
