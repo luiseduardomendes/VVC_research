@@ -25,7 +25,7 @@ def exec(
     # standard path to the encoders
     cfg_dict = {
         'AI': 'encoder_intra_vtm.cfg',
-        'LB': 'encoder_lowdelay_vtm.cfg',
+        'LD': 'encoder_lowdelay_vtm.cfg',
         'RA': 'encoder_randomaccess_vtm.cfg',
     }
     cfg_encoder = cfg_dict[encoder_name]
@@ -71,13 +71,15 @@ def exec(
     if output_in_ext_file:
         command = command + f'>> \"{output_log_path_vvc}\" '
 
+    if background_exec:
+        command = command + ' & '
+
     if gprof:
         command = command + \
             f'&& cd \"{bin_dir}\" && gprof \"{binary_encoder_path}\" gmon.out ' + \
             f'>> \"{output_log_path_gprof}\" {background_status}'
 
     os.system(command)
-    print(command)
 
     if display_data:
         print('execution done')
