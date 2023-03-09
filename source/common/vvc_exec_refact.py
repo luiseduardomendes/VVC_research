@@ -25,7 +25,7 @@ class vvc_executer:
         self.update_config()
         self.update_paths()
 
-        print(self.__create_command__())
+        os.system(self.__create_command__())
 
         if self.display:
             self.__display_info__()
