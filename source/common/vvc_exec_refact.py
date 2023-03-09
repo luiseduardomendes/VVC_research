@@ -108,15 +108,17 @@ class vvc_executer:
     def __set_video_identifier__(self, video, cfg, qp, version):
         self.video_identifier = f'{video}_qp{qp}_{cfg}_{version}'
 
-    def __make_path_log_vvc__(self, out_dir, VTM_version, encoder_name):
+    def __make_path_log_vvc__(self, out_dir, VTM_version, video_name, encoder_name):
         if not os.path.isdir(out_dir):
             os.mkdir(out_dir)
         if not os.path.isdir(os.path.join(out_dir, 'vvc_log')):
             os.mkdir(os.path.join(out_dir, 'vvc_log'))
         if not os.path.isdir(os.path.join(out_dir, 'vvc_log', VTM_version)):
             os.mkdir(os.path.join(out_dir, 'vvc_log', VTM_version))
-        if not os.path.isdir(os.path.join(out_dir, 'vvc_log', VTM_version, encoder_name)):
-            os.mkdir(os.path.join(out_dir, 'vvc_log', VTM_version, encoder_name))
+        if not os.path.isdir(os.path.join(out_dir, 'vvc_log', VTM_version, video_name)):
+            os.mkdir(os.path.join(out_dir, 'vvc_log', VTM_version, video_name))
+        if not os.path.isdir(os.path.join(out_dir, 'vvc_log', VTM_version, video_name, encoder_name)):
+            os.mkdir(os.path.join(out_dir, 'vvc_log', VTM_version, video_name, encoder_name))
 
     def __display_info__(
         self,

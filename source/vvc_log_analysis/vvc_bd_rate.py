@@ -6,7 +6,8 @@ import math
 
 
 class BD_Rate(pd.Series):
-    __indexes__ = ['satd','video','cfg','frame']
+    __indexes__ = ['version','video','cfg','frame']
+    __name__    = 'bd-rate'
     __version__ = None
     __video__   = None
     __cfg__     = None
@@ -18,7 +19,7 @@ class BD_Rate(pd.Series):
         self.__cfg__     = cfg
         self.__nqps__    = nqps
 
-        super().__init__([], index=self.__mk_empty_index__(), dtype=float)
+        super().__init__([], name=self.__name__, index=self.__mk_empty_index__(), dtype=float)
 
     def calc_bdbr(self, cmp_df : VVC_Output, ref_df : VVC_Output):
         bdr = [
@@ -33,7 +34,7 @@ class BD_Rate(pd.Series):
             cmp_df, 
             self.__nqps__
         )
-        super().__init__(bdr, index=index, dtype=float)
+        super().__init__(bdr, name=self.__name__, index=index, dtype=float)
 
     def __bdbr__(self, cmp, ref):
         if len(cmp['bitrate']) != len(ref['bitrate']):

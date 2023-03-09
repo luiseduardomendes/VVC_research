@@ -18,7 +18,7 @@ def vvc_frame_analysis(approximations, file_names, path, all_frames = True):
     }
 
     df = BD_Rate()
-    df.index.names=['satd','video','cfg','frame']
+    df.index.names=['version','video','cfg','frame']
     for satd in satds:
         for file in files:    
             for cfg in cfgs:
