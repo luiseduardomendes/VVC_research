@@ -1,7 +1,7 @@
 import os 
 import re
 from source.common.commonlib import file_subs, compile_VTM
-import source.common.vvc_exec as vvc_exec
+import source.common.vvc_exec_refact as vvc_exec
 from pathlib import Path
 
 class Simulation:
@@ -35,25 +35,27 @@ class Simulation:
 
     def run_exec(self):
         print('Execution running')
-        print(self.get_exec_info())
+        self.get_exec_info()
+
+        _exec = vvc_exec.vvc_executer(
+            vtm_path    =   self.vtm_dir,
+            version     =   self.version,
+            n_frames    =   self.n_frames
+        )
+        _exec.bg_exec = self.bg_exec
+        _exec.enable_display()
+        _exec.set_output_path(self.out_dir)
+
         for video in self.videos:
+            _exec.set_video_cfg(os.path.join(self.cfg_dir, video), video[:-4])
             for cfg in self.encoder:
+                _exec.set_cfg(cfg)
                 for qp in self.qps:
-                    vvc_exec.exec(
-                        vtm_dir         = self.vtm_dir, 
-                        encoder_name    = cfg, 
-                        cfg_video       = os.path.join(self.cfg_dir, video), 
-                        qp              = qp,
-                        out_dir         = self.out_dir,
-                        video_name      = video[:-4], 
-                        VTM_version     = self.version, 
-                        n_frames        = str(self.n_frames),
-                        gprof           = self.gprof,
-                        background_exec = self.bg_exec
-                    )
+                    _exec.set_qp(qp)
+                    _exec.run_exec()
         print('Simulation done')
 
-    def get_exec_info(self, show=False):
+    def get_exec_info(self):
         info = \
             f'---------------------------------------------- \n' + \
             f'\n' + \
@@ -71,8 +73,8 @@ class Simulation:
                 f'---------------------------------------------- \n'
 
         info += f'Total execution {len(self.videos)} x {len(self.qps)} x {len(self.encoder)} = {len(self.videos) * len(self.qps) * len(self.encoder)} simulations\n---------------------------------------------- \n'
-        if show:
-            print(info)
+        
+        print(info)
         return info
 
     def remove_video_from_buffer(self, file_index):

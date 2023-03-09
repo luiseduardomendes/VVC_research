@@ -1,13 +1,19 @@
 import os
 
 class vvc_executer:
-    def __init__(self, video=None, cfg=None, qp=None, version=None):
+    def __init__(self, vtm_path=None, video=None, video_cfg=None, cfg='AI', qp=22, version='Precise', n_frames=32):
         self.ts_status = ''
         
-        if video != None and cfg != None and qp != None and version != None:
-            self.set_video_params(video, cfg, qp, version)
+        self.set_cfg(cfg)
+        self.set_qp(qp)
+        self.set_version(version)
+        
+        if video_cfg != None and video != None:
+            self.set_video_cfg(video_cfg, video)
+        if vtm_path != None:
+            self.set_vtm_path(vtm_path)
 
-        self.n_frames = 32
+        self.n_frames = n_frames
         self.display = True
         self.bg_exec = False
 
@@ -15,6 +21,9 @@ class vvc_executer:
         self.bin_encoder_path = os.path.join(self.bin_dir, 'EncoderAppStatic')
         self.cfg_encoder_path = os.path.join(self.cfg_dir, self.cfg_enc)
         self.bin_videos_path  = os.path.join(self.output_path, 'videos_bin')
+
+        self.update_config()
+        self.update_paths()
 
         print(self.__create_command__())
 
@@ -33,23 +42,25 @@ class vvc_executer:
         self.cfg_dir = os.path.join(vtm_path, 'cfg')
         self.bin_dir = os.path.join(vtm_path, 'bin')
     
+    def set_version(self, version:str):
+        self.version = version
+
     def set_output_path(self, output_path:str):
         self.output_path = output_path
         
-    def enable_output_in_ext_file(self):
+    def __enable_output_in_ext_file__(self):
         vvc_log_name            = f'log_{self.video_identifier}.vvclog'
         try:
             self.__make_path_log_vvc__(self.output_path, self.version, self.cfg)
             self.output_vvc_log_path = os.path.join(self.output_path, 'vvc_log',        self.version, self.cfg, vvc_log_name)
         except AttributeError:
-            raise Exception("Output path not defined")
+            raise Exception("Output path not defined")        
 
-        
-
-    def set_video_cfg(self, video_cfg:str):
+    def set_video_cfg(self, video_cfg:str, video_name:str):
         self.video_cfg = video_cfg
+        self.video = video_name
 
-    def set_cfg(self, cfg=''):
+    def set_cfg(self, cfg):
         cfg_dict = {
             'AI': 'encoder_intra_vtm.cfg',
             'LB': 'encoder_lowdelay_vtm.cfg',
@@ -59,6 +70,15 @@ class vvc_executer:
         self.cfg_enc = cfg_dict[cfg]
         if cfg == 'AI':
             self.ts_status = '-ts 1'
+
+    def set_qp(self, qp):
+        self.qp = qp
+
+    def update_config(self):
+        self.__set_video_identifier__(self.video, self.cfg, self.qp, self.version)
+    
+    def update_paths(self):
+        self.__enable_output_in_ext_file__()
 
     def enable_display(self):
         self.display = True
@@ -100,20 +120,15 @@ class vvc_executer:
 
     def __display_info__(
         self,
-        video_name, 
-        encoder_name,
-        cfg_video,
-        qp,
-        VTM_version,
-        n_frames
     ):
         print()
-        print(f'Encoding: ........... {video_name}')
+        print(f'Encoding: ........... {self.video}')
         print()
-        print(f'Video config: ....... {cfg_video}')
-        print(f'Encoder: ............ {encoder_name}')
-        print(f'QP: ................. {qp}')
-        print(f'VTM version used: ... {VTM_version}')
-        print(f'frames encoded: ..... {n_frames}')
+        print(f'Video identifier: ... {self.video_identifier}')
+        print(f'Video config: ....... {self.video_cfg}')
+        print(f'Encoder: ............ {self.cfg}')
+        print(f'QP: ................. {self.qp}')
+        print(f'VTM version used: ... {self.version}')
+        print(f'frames encoded: ..... {self.n_frames}')
         print()
 
