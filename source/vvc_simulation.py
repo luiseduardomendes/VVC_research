@@ -94,6 +94,10 @@ class Simulation:
                 raise Exception("invalid index type")
         except :
             raise Exception("invalid index type")
+
+    def change_version(self, new_version, old_file, new_file):
+        self.set_version(new_version)
+        self.replace_file(new_file, old_file)
        
     def set_paths(self, out_dir, vtm_dir, cfg_dir):
         self.set_out_dir(out_dir)
