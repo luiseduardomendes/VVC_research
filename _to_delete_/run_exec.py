@@ -9,8 +9,8 @@ if not os.path.isfile(sys.argv[1]):
 config_file = sys.argv[1]
 data = read_config_file(config_file)
 
-out_videos_dir = data['out_videos_dir']
-cfg_videos_dir = data['cfg_videos_dir']
+out_videos_dir = data['out_dir']
+cfg_videos_dir = data['cfg_dir']
 vtm_dir = data['vtm_dir']
 compile_VTM(vtm_dir, '/home/luismendes/Documents/GitHub/VVC_research')
 

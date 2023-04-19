@@ -102,8 +102,8 @@ def read_config_file(filename: str):
     with open(filename, 'r') as f:
         data = {
             "vtm_dir": f.readline().replace('\n', ''),
-            "cfg_videos_dir": f.readline().replace('\n', ''),
-            "out_videos_dir": f.readline().replace('\n', '')
+            "cfg_dir": f.readline().replace('\n', ''),
+            "out_dir": f.readline().replace('\n', '')
         }
         f.close()
     print(data)

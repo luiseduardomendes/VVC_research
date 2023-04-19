@@ -58,6 +58,10 @@ class Simulation:
     def get_exec_info(self):
         info = \
             f'---------------------------------------------- \n' + \
+            f'out directory     {self.out_dir}'\
+            f'vtm directory     {self.vtm_dir}'\
+            f'cfg directory     {self.cfg_dir}'\
+            f'---------------------------------------------- \n' + \
             f'\n' + \
             f'version :         {self.version} \n' + \
             f'qps :             {self.qps} \n' + \
@@ -91,7 +95,10 @@ class Simulation:
         except :
             raise Exception("invalid index type")
        
-
+    def set_paths(self, out_dir, vtm_dir, cfg_dir):
+        self.set_out_dir(out_dir)
+        self.set_vtm_dir(vtm_dir)
+        self.set_cfg_dir(cfg_dir)
 
     def replace_file(self, new_file, old_file):
         file_subs(new_file, old_file, Path(old_file).stem)
@@ -134,11 +141,6 @@ class Simulation:
     def __create_output_dir__(self, output_dir):
         if not os.path.isdir(output_dir):
             os.mkdir(output_dir)
-        else:
-            while(os.path.isdir(output_dir)):
-                output_dir = self.__rename_dir__(output_dir)
-            os.mkdir(output_dir)
-        return output_dir
 
     def __config_files_in_dir__(self, cfg_vid_dir):
         if not os.path.isdir(cfg_vid_dir):
@@ -150,12 +152,4 @@ class Simulation:
             if os.path.isfile(os.path.join(cfg_vid_dir, f)) and 
             f[-4:] == '.cfg'
         ]
-    def __rename_dir__(self, d : str ):
-        matches = re.findall(r'(\d+)$', d)
-        if len(matches) > 0:
-            n = int(matches[-1])
-            n = n + 1
-            d = d[:-1] + str(n)
-        else:
-            d = d + '1'
-        return d
+    
