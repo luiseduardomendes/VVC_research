@@ -36,6 +36,9 @@ class BD_Rate(pd.Series):
         )
         super().__init__(bdr, name=self.__name__, index=index, dtype=float)
 
+    def append_bd(self, bd_rate):
+        super().__init__(pd.concat([self, bd_rate]))
+
     def __bdbr__(self, cmp, ref):
         if len(cmp['bitrate']) != len(ref['bitrate']):
             return None

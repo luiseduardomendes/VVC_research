@@ -11,7 +11,7 @@ class Simulation:
 
     version = 'Precise'
     qps = [22, 27, 32, 37]
-    encoder = ['AI', 'RA', 'LD']
+    encoder = ['AI', 'RA', 'LB']
 
     n_frames = 32
     bg_exec = False
@@ -19,7 +19,7 @@ class Simulation:
 
     videos = []
 
-    def __init__(self, n_frames = 32, version = 'Precise', qps = [22, 27, 32, 37], encoder = ['AI', 'RA', 'LD'], bg_exec = False, gprof = False):
+    def __init__(self, n_frames = 32, version = 'Precise', qps = [22, 27, 32, 37], encoder = ['AI', 'RA', 'LB'], bg_exec = False, gprof = False):
         self.set_n_frames(n_frames)
         self.set_version(version)
         self.set_qps(qps)

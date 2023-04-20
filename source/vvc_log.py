@@ -41,6 +41,6 @@ def vvc_frame_analysis(approximations, file_names, path, all_frames = True):
                 tmp_df = BD_Rate(satd=satd, video=file, cfg=cfg)
                 tmp_df.calc_bdbr(log, ref)
 
-                df = pd.concat([df, tmp_df])
+                df.append_bd(tmp_df)
     return df
     
