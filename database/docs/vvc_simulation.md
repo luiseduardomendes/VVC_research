@@ -14,17 +14,17 @@ _example:_ if you want to change some of the Affine methods, you could call `ver
 
 _example:_ will repeat the simulation using each of this quantization parameters.
 
-```py   
+```py
 qp = [22, 27, 32, 37]
 ```
 
 `encoder` : indicates the encoder configurations that will be used on the encoding process. The encoder configurations available are:
 
-|mnemonic|encoder|
-|---|---|
-|`AI`|All Intra|
-|`RA`|Random Access|
-|`LB`|Low Delay B|
+| mnemonic | encoder       |
+| -------- | ------------- |
+| `AI`   | All Intra     |
+| `RA`   | Random Access |
+| `LB`   | Low Delay B   |
 
 _example:_ will repeat the simulation using each of this configuration parameters.
 
@@ -65,6 +65,7 @@ sim.run_exec()
 in this example, the software will execute each of the videos in the `'/home/cfg-files'` directory for each of the encoders `'RA', 'AI', 'LB'` for each qp in the default qps `22, 27, 32, 37` for 32 frames of the video. The software will run in background and will not generate a gprof file. The output files will be stored at the `'/home/output'` directory. If this directory not exists, then it will be created.
 
 _output of the software in the console_:
+
 ```
 Execution running
 ---------------------------------------------- 
@@ -107,39 +108,53 @@ Simulation done
 ```
 
 ## Making changes in VTM
+
 To replace a file in VTM for an alternative version, the method `simulation.replace_file(old_file, new_file)` can be used. It will replace the file and then will recompile the VTM.
 
 ```py
 new_file = '/home/RdCostModified.cpp'
 old_file = '/home/VVCSoftware_VTM/source/Common/CommonLib/RdCost.cpp'
 
-sim.replace_file(old_file, new_file)
-sim.set_version("RdCostModified")
+sim.change_version("RdCostModified", old_file, new_file)
 
 sim.run_exec()
 ```
 
-## Simulation output 
+## Simulation output
 
 The files will be stored in such way that the `vvc_log` package can interpret. It can be represented in a file tree like above.
 
 ### file structure representation:
+
 > output
-> > gprof_log
-> > > AI
-> > > > log_video1_qp22_AI_Precise.gplog\
-> > > > log_video1_qp27_AI_Precise.gplog\
-> > > > log_video2_qp22_AI_Precise.gplog\
-> > > > log_video2_qp27_AI_Precise.gplog
+>
+>> gprof_log
+>>
+>>> AI
+>>>
+>>>> log_video1_qp22_AI_Precise.gplog
+>>>> log_video1_qp27_AI_Precise.gplog
+>>>> log_video2_qp22_AI_Precise.gplog
+>>>> log_video2_qp27_AI_Precise.gplog
+>>>>
+>>>
+>>
 
-> > > LB\
-> > > RA
+>>> LB
+>>> RA
+>>>
+>>
 
-> > videos_bin
-> > > videos.bin
+>> videos_bin
+>>
+>>> videos.bin
+>>>
+>>
 
-> > vvc_log
-> > > AI\
-> > > LB\
-> > > RA
-
+>> vvc_log
+>>
+>>> AI
+>>> LB
+>>> RA
+>>>
+>>
