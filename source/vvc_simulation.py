@@ -94,6 +94,13 @@ class Simulation:
                 raise Exception("invalid index type")
         except :
             raise Exception("invalid index type")
+        
+    def remove_video_from_buffer_by_name(self, file_name):
+        try:
+            i = self.videos.index(file_name)
+            del self.videos[i]
+        except :
+            raise Exception("invalid index type")
 
     def change_version(self, new_version, old_file, new_file):
         self.set_version(new_version)

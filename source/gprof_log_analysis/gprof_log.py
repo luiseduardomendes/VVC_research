@@ -11,6 +11,9 @@ class GprofDF(pd.DataFrame):
         keys = ('time', 'cum_sec', ' self_sec', 'calls', 'self_s_call', 'tot_s_call', 'name', 'class')
 
         pattern = re.compile(r'(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+|\s+)\s+(\d+|\s+)\s+(\d+\.\d+|\s+)\s+(\d+\.\d+|\s+)\s+(.+)()')
+
+        '([^: ]+)::([^<(]+).+'
+        '([^ :(<>]+)[(<]'
             
         structBuffer = {}
         for key in keys:
