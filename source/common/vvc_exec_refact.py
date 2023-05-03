@@ -53,6 +53,8 @@ class vvc_executer:
         try:
             self.__make_path_log_vvc__(self.output_path, self.version, self.video, self.cfg)
             self.output_vvc_log_path = os.path.join(self.output_path, 'vvc_log', self.version, self.video, self.cfg, vvc_log_name)
+            
+            self.output_gprof_log_path = os.path.join(self.output_path, 'gprof_log', self.version, self.video, self.cfg, vvc_log_name)
         except AttributeError:
             raise Exception("Output path not defined")        
 
@@ -94,8 +96,14 @@ class vvc_executer:
     
     def __create_command__(self):
         command = self.__main_command__()
+
+        command += f'>> \"{self.output_vvc_log_path}\" '
+        
+        command = command + \
+            f'&& cd \"{self.bin_dir}\" && gprof \"{self.bin_encoder_path}\" gmon.out ' + \
+            f'>> \"{self.output_gprof_log_path}\" '
         if self.bg_exec:
-            command += f'>> \"{self.output_vvc_log_path}\" & '
+            command = command + ' & '
         return command
     
     def __main_command__(self):
@@ -111,7 +119,7 @@ class vvc_executer:
     def __make_path_log_vvc__(self, out_dir, VTM_version, video_name, encoder_name):
         if not os.path.isdir(out_dir):
             os.mkdir(out_dir)
-        if not os.path.isdir(os.path.join(out_dir, 'vvc_log')):
+        if not os.path.isdir(os.path.join(out_dir, 'vvc_log'  )):
             os.mkdir(        os.path.join(out_dir, 'vvc_log'  ))
         if not os.path.isdir(os.path.join(out_dir, 'gprof_log')):
             os.mkdir(        os.path.join(out_dir, 'gprof_log'))
