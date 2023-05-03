@@ -1,6 +1,7 @@
 import os
 import re
-from os.path import isfile, isdir
+from os import mkdir
+from os.path import isfile, isdir, join
 from pathlib import Path
     
 def file_subs(file_path, destiny_dir, rename_like) -> None:
@@ -37,13 +38,17 @@ def get_next_file(exec_buffer, erase = True):
     return file
 
 def compile_VTM(vtm_path, repo_path):
-    if not(os.path.isdir(os.path.join(vtm_path, "build"))):
-        os.mkdir(os.path.join(vtm_path, "build"))
-    os.system(f'cd {os.path.join(vtm_path, "build")}')
+    build_dir = join(vtm_path, "build")
+    cmake_file = join(build_dir, 'CMakeCache.txt')
+
+    if not(isdir(build_dir)):
+        mkdir(build_dir)
+
     os.system(f'cmake {vtm_path} -DCMAKE_BUILD_TYPE=Release')
-    turn_on_profiling_in_makefile(os.path.join(os.path.join(vtm_path, "build"),'CMakeCache.txt'))
-    os.system('make')
-    os.system(f'cd {repo_path}')
+    turn_on_profiling_in_makefile(cmake_file)
+
+    os.system(f'cd {build_dir} && make')
+    
 
 def create_exec_buffer(output_dir='.',output_name='.execution_buffer', dir_path='.', extension:str='.cpp'):
     files_list = [str(f) for f in Path(dir_path).rglob('*'+extension)]
@@ -82,21 +87,19 @@ def turn_on_profiling_in_makefile(file):
         txt = f.read()
         f.close()
 
-    check = re.findall('//Flags used by the CXX compiler during RELEASE builds.\nCMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG -pg', txt)
-    if len(check) < 0:
-        change_expression_in_file(
-            file, 
-            '//Flags used by the CXX compiler during RELEASE builds.\nCMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG'
-            '//Flags used by the CXX compiler during RELEASE builds.\nCMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG -pg'
-        )
+    re.sub( 
+        r'//Flags used by the CXX compiler during RELEASE builds.\nCMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG',
+        '//Flags used by the CXX compiler during RELEASE builds.\nCMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG -pg', txt
+    )
 
-    check = re.findall('//Flags used by the CXX compiler during RELWITHDEBINFO builds.\nCMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG -pg', txt)
-    if len(check) < 0:
-        change_expression_in_file(
-            file,
-            '//Flags used by the CXX compiler during RELWITHDEBINFO builds.\nCMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG',
-            '//Flags used by the CXX compiler during RELWITHDEBINFO builds.\nCMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG -pg'
-        )
+    re.sub(
+        '//Flags used by the CXX compiler during RELWITHDEBINFO builds.\nCMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG',
+        '//Flags used by the CXX compiler during RELWITHDEBINFO builds.\nCMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG -pg'
+    )
+
+    with open(file, 'w') as f:
+        f.write(txt)
+        f.close()
 
 def read_config_file(filename: str):
     with open(filename, 'r') as f:
