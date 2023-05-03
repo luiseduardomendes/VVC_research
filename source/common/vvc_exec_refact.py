@@ -51,8 +51,8 @@ class vvc_executer:
     def __enable_output_in_ext_file__(self):
         vvc_log_name            = f'log_{self.video_identifier}.vvclog'
         try:
-            self.__make_path_log_vvc__(self.output_path, self.version, self.cfg)
-            self.output_vvc_log_path = os.path.join(self.output_path, 'vvc_log',        self.version, self.cfg, vvc_log_name)
+            self.__make_path_log_vvc__(self.output_path, self.version, self.video, self.cfg)
+            self.output_vvc_log_path = os.path.join(self.output_path, 'vvc_log', self.version, self.video, self.cfg, vvc_log_name)
         except AttributeError:
             raise Exception("Output path not defined")        
 
@@ -113,12 +113,20 @@ class vvc_executer:
             os.mkdir(out_dir)
         if not os.path.isdir(os.path.join(out_dir, 'vvc_log')):
             os.mkdir(os.path.join(out_dir, 'vvc_log'))
+        if not os.path.isdir(os.path.join(out_dir, 'gprof_log')):
+            os.mkdir(os.path.join(out_dir, 'gprof_log'))
         if not os.path.isdir(os.path.join(out_dir, 'vvc_log', VTM_version)):
             os.mkdir(os.path.join(out_dir, 'vvc_log', VTM_version))
+        if not os.path.isdir(os.path.join(out_dir, 'gprof_log', VTM_version)):
+            os.mkdir(os.path.join(out_dir, 'gprof_log', VTM_version))
         if not os.path.isdir(os.path.join(out_dir, 'vvc_log', VTM_version, video_name)):
             os.mkdir(os.path.join(out_dir, 'vvc_log', VTM_version, video_name))
+        if not os.path.isdir(os.path.join(out_dir, 'gprof_log', VTM_version, video_name)):
+            os.mkdir(os.path.join(out_dir, 'gprof_log', VTM_version, video_name))
         if not os.path.isdir(os.path.join(out_dir, 'vvc_log', VTM_version, video_name, encoder_name)):
             os.mkdir(os.path.join(out_dir, 'vvc_log', VTM_version, video_name, encoder_name))
+        if not os.path.isdir(os.path.join(out_dir, 'gprof_log', VTM_version, video_name, encoder_name)):
+            os.mkdir(os.path.join(out_dir, 'gprof_dir', VTM_version, video_name, encoder_name))
 
     def __display_info__(
         self,

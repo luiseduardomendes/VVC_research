@@ -58,9 +58,9 @@ class Simulation:
     def get_exec_info(self):
         info = \
             f'---------------------------------------------- \n' + \
-            f'out directory     {self.out_dir}'\
-            f'vtm directory     {self.vtm_dir}'\
-            f'cfg directory     {self.cfg_dir}'\
+            f'out directory     {self.out_dir}\n'\
+            f'vtm directory     {self.vtm_dir}\n'\
+            f'cfg directory     {self.cfg_dir}\n'\
             f'---------------------------------------------- \n' + \
             f'\n' + \
             f'version :         {self.version} \n' + \
@@ -152,6 +152,7 @@ class Simulation:
     def __create_output_dir__(self, output_dir):
         if not os.path.isdir(output_dir):
             os.mkdir(output_dir)
+        return output_dir
 
     def __config_files_in_dir__(self, cfg_vid_dir):
         if not os.path.isdir(cfg_vid_dir):
