@@ -112,21 +112,21 @@ class vvc_executer:
         if not os.path.isdir(out_dir):
             os.mkdir(out_dir)
         if not os.path.isdir(os.path.join(out_dir, 'vvc_log')):
-            os.mkdir(os.path.join(out_dir, 'vvc_log'))
+            os.mkdir(        os.path.join(out_dir, 'vvc_log'  ))
         if not os.path.isdir(os.path.join(out_dir, 'gprof_log')):
-            os.mkdir(os.path.join(out_dir, 'gprof_log'))
-        if not os.path.isdir(os.path.join(out_dir, 'vvc_log', VTM_version)):
-            os.mkdir(os.path.join(out_dir, 'vvc_log', VTM_version))
+            os.mkdir(        os.path.join(out_dir, 'gprof_log'))
+        if not os.path.isdir(os.path.join(out_dir, 'vvc_log',   VTM_version)):
+            os.mkdir(        os.path.join(out_dir, 'vvc_log',   VTM_version))
         if not os.path.isdir(os.path.join(out_dir, 'gprof_log', VTM_version)):
-            os.mkdir(os.path.join(out_dir, 'gprof_log', VTM_version))
-        if not os.path.isdir(os.path.join(out_dir, 'vvc_log', VTM_version, video_name)):
-            os.mkdir(os.path.join(out_dir, 'vvc_log', VTM_version, video_name))
+            os.mkdir(        os.path.join(out_dir, 'gprof_log', VTM_version))
+        if not os.path.isdir(os.path.join(out_dir, 'vvc_log',   VTM_version, video_name)):
+            os.mkdir(        os.path.join(out_dir, 'vvc_log',   VTM_version, video_name))
         if not os.path.isdir(os.path.join(out_dir, 'gprof_log', VTM_version, video_name)):
-            os.mkdir(os.path.join(out_dir, 'gprof_log', VTM_version, video_name))
-        if not os.path.isdir(os.path.join(out_dir, 'vvc_log', VTM_version, video_name, encoder_name)):
-            os.mkdir(os.path.join(out_dir, 'vvc_log', VTM_version, video_name, encoder_name))
+            os.mkdir(        os.path.join(out_dir, 'gprof_log', VTM_version, video_name))
+        if not os.path.isdir(os.path.join(out_dir, 'vvc_log',   VTM_version, video_name, encoder_name)):
+            os.mkdir(        os.path.join(out_dir, 'vvc_log',   VTM_version, video_name, encoder_name))
         if not os.path.isdir(os.path.join(out_dir, 'gprof_log', VTM_version, video_name, encoder_name)):
-            os.mkdir(os.path.join(out_dir, 'gprof_dir', VTM_version, video_name, encoder_name))
+            os.mkdir(        os.path.join(out_dir, 'gprof_log', VTM_version, video_name, encoder_name))
 
     def __display_info__(
         self,
