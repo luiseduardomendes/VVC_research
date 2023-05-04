@@ -37,14 +37,14 @@ def get_next_file(exec_buffer, erase = True):
 
     return file
 
-def compile_VTM(vtm_path, repo_path):
+def compile_VTM(vtm_path):
     build_dir = join(vtm_path, "build")
     cmake_file = join(build_dir, 'CMakeCache.txt')
 
     if not(isdir(build_dir)):
         mkdir(build_dir)
 
-    os.system(f'cmake {vtm_path} -DCMAKE_BUILD_TYPE=Release')
+    os.system(f'cd {build_dir} && cmake {vtm_path} -DCMAKE_BUILD_TYPE=Release')
     turn_on_profiling_in_makefile(cmake_file)
 
     os.system(f'cd {build_dir} && make')
@@ -87,15 +87,15 @@ def turn_on_profiling_in_makefile(file):
         txt = f.read()
         f.close()
 
-    re.sub( 
-        r'//Flags used by the CXX compiler during RELEASE builds.\nCMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG',
-        '//Flags used by the CXX compiler during RELEASE builds.\nCMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG -pg', txt
-    )
+    src = 'CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG'
+    dst = 'CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG -pg'
 
-    re.sub(
-        '//Flags used by the CXX compiler during RELWITHDEBINFO builds.\nCMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG',
-        '//Flags used by the CXX compiler during RELWITHDEBINFO builds.\nCMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG -pg'
-    )
+    txt = re.sub(src, dst, txt)
+
+    src = 'CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG'
+    dst = 'CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG -pg'
+
+    txt = re.sub(src, dst, txt)
 
     with open(file, 'w') as f:
         f.write(txt)

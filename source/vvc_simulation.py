@@ -113,7 +113,7 @@ class Simulation:
 
     def replace_file(self, new_file, old_file):
         file_subs(new_file, old_file, Path(old_file).stem)
-        compile_VTM(self.vtm_dir, os.getcwd())
+        compile_VTM(self.vtm_dir)
 
     def set_n_frames(self, n_frames):
         self.n_frames = n_frames
