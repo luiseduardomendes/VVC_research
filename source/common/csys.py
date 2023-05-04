@@ -21,9 +21,9 @@ def join(commands):
     
 def vvc(encoder, cfg_enc:str, cfg_vid, bin_vid, qp, frames, output=None):
     if cfg_enc.endswith('encoder_intra_vtm.cfg'):
-        ts = ''
-    else:
         ts = '-ts 1'
+    else:
+        ts = ''
 
     if output != None:
         output = '>> ' + output
