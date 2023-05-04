@@ -1,4 +1,5 @@
 import os
+import source.common.csys as csys
 
 class vvc_executer:
     def __init__(self, vtm_path=None, video=None, video_cfg=None, cfg='AI', qp=22, version='Precise', n_frames=32):
@@ -20,10 +21,11 @@ class vvc_executer:
     def run_exec(self):
         self.bin_encoder_path = os.path.join(self.bin_dir, 'EncoderAppStatic')
         self.cfg_encoder_path = os.path.join(self.cfg_dir, self.cfg_enc)
-        self.bin_videos_path  = os.path.join(self.output_path, 'videos_bin')
 
         self.update_config()
         self.update_paths()
+
+        self.bin_videos_path  = os.path.join(self.output_bin_video_path, self.video+'.bin')
 
         os.system(self.__create_command__())
 
@@ -55,6 +57,8 @@ class vvc_executer:
             self.output_vvc_log_path = os.path.join(self.output_path, 'vvc_log', self.version, self.video, self.cfg, vvc_log_name)
             
             self.output_gprof_log_path = os.path.join(self.output_path, 'gprof_log', self.version, self.video, self.cfg, vvc_log_name)
+
+            self.output_bin_video_path = os.path.join(self.output_path, 'video_bin', self.version, self.video, self.cfg, f'QP{self.qp}')
         except AttributeError:
             raise Exception("Output path not defined")        
 
@@ -95,46 +99,35 @@ class vvc_executer:
         self.bg_exec = False
     
     def __create_command__(self):
-        command = self.__main_command__()
+        command = csys.vvc(
+            self.bin_encoder_path,
+            self.cfg_encoder_path,
+            self.video_cfg,
+            self.bin_videos_path,
+            self.qp,
+            self.n_frames,
+            output=self.output_vvc_log_path
+        )
 
-        command += f'>> \"{self.output_vvc_log_path}\" '
-        
-        command = command + \
-            f'&& cd \"{self.bin_dir}\" && gprof \"{self.bin_encoder_path}\" gmon.out ' + \
-            f'>> \"{self.output_gprof_log_path}\" '
+        command = csys.join([
+            csys.cd(self.output_bin_video_path),
+            command, 
+            csys.cd(self.bin_dir),
+            csys.gprof(self.bin_encoder_path, self.output_bin_video_path, self.output_gprof_log_path)
+        ])
+            
         if self.bg_exec:
             command = command + ' & '
         return command
-    
-    def __main_command__(self):
-        return f'/\"{self.bin_encoder_path}\" ' + \
-        f'-c \"{self.cfg_encoder_path}\" ' + \
-        f'-c \"{self.video_cfg}\" ' + \
-        f'-b \"{self.bin_videos_path}\" ' + \
-        f'-q {self.qp} -f {self.n_frames} {self.ts_status} --SIMD=SCALAR ' 
-
+            
     def __set_video_identifier__(self, video, cfg, qp, version):
         self.video_identifier = f'{video}_qp{qp}_{cfg}_{version}'
 
     def __make_path_log_vvc__(self, out_dir, VTM_version, video_name, encoder_name):
-        if not os.path.isdir(out_dir):
-            os.mkdir(out_dir)
-        if not os.path.isdir(os.path.join(out_dir, 'vvc_log'  )):
-            os.mkdir(        os.path.join(out_dir, 'vvc_log'  ))
-        if not os.path.isdir(os.path.join(out_dir, 'gprof_log')):
-            os.mkdir(        os.path.join(out_dir, 'gprof_log'))
-        if not os.path.isdir(os.path.join(out_dir, 'vvc_log',   VTM_version)):
-            os.mkdir(        os.path.join(out_dir, 'vvc_log',   VTM_version))
-        if not os.path.isdir(os.path.join(out_dir, 'gprof_log', VTM_version)):
-            os.mkdir(        os.path.join(out_dir, 'gprof_log', VTM_version))
-        if not os.path.isdir(os.path.join(out_dir, 'vvc_log',   VTM_version, video_name)):
-            os.mkdir(        os.path.join(out_dir, 'vvc_log',   VTM_version, video_name))
-        if not os.path.isdir(os.path.join(out_dir, 'gprof_log', VTM_version, video_name)):
-            os.mkdir(        os.path.join(out_dir, 'gprof_log', VTM_version, video_name))
-        if not os.path.isdir(os.path.join(out_dir, 'vvc_log',   VTM_version, video_name, encoder_name)):
-            os.mkdir(        os.path.join(out_dir, 'vvc_log',   VTM_version, video_name, encoder_name))
-        if not os.path.isdir(os.path.join(out_dir, 'gprof_log', VTM_version, video_name, encoder_name)):
-            os.mkdir(        os.path.join(out_dir, 'gprof_log', VTM_version, video_name, encoder_name))
+        print([out_dir, 'video_bin', VTM_version, video_name, encoder_name, f'{self.qp}'])
+        csys.mkdir_r([out_dir, 'vvc_log',   VTM_version, video_name, encoder_name])
+        csys.mkdir_r([out_dir, 'gprof_log', VTM_version, video_name, encoder_name])
+        csys.mkdir_r([out_dir, 'video_bin', VTM_version, video_name, encoder_name, f'QP{self.qp}'])
 
     def __display_info__(
         self,
