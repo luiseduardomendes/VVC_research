@@ -27,7 +27,9 @@ class vvc_executer:
 
         self.bin_videos_path  = os.path.join(self.output_bin_video_path, self.video+'.bin')
 
-        os.system(self.__create_command__())
+        cmd = self.__create_command__()
+        print(cmd)
+        os.system(cmd)
 
         if self.display:
             self.__display_info__()
@@ -52,11 +54,12 @@ class vvc_executer:
         
     def __enable_output_in_ext_file__(self):
         vvc_log_name            = f'log_{self.video_identifier}.vvclog'
+        gp_log_name             = f'log_{self.video_identifier}.gplog'
         try:
             self.__make_path_log_vvc__(self.output_path, self.version, self.video, self.cfg)
             self.output_vvc_log_path = os.path.join(self.output_path, 'vvc_log', self.version, self.video, self.cfg, vvc_log_name)
             
-            self.output_gprof_log_path = os.path.join(self.output_path, 'gprof_log', self.version, self.video, self.cfg, vvc_log_name)
+            self.output_gprof_log_path = os.path.join(self.output_path, 'gprof_log', self.version, self.video, self.cfg, gp_log_name)
 
             self.output_bin_video_path = os.path.join(self.output_path, 'video_bin', self.version, self.video, self.cfg, f'QP{self.qp}')
         except AttributeError:
