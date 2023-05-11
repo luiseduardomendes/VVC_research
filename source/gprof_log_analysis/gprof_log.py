@@ -15,7 +15,7 @@ class GprofDF(pd.DataFrame):
 
         pattern = re.compile(r'(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+|\s+)\s+(\d+|\s+)\s+(\d+\.\d+|\s+)\s+(\d+\.\d+|\s+)\s+(.+)()')
 
-        pattern_class = re.compile(r'([^: ]+)::([^<(]+).+')
+        pattern_class = re.compile(r'([^:( ]+)::([^<(]+).+')
         pattern_no_class = re.compile(r'([^ :(<>]+)[(<]')
             
         structBuffer = {}
