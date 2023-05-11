@@ -7,62 +7,71 @@ class GprofDF(pd.DataFrame):
     def __init__(self, data = None) -> None:
         super().__init__(data)
 
-    def read_file(self, file_name):           
-        keys = ('time', 'cum_sec', 'self_sec', 'calls', 'self_s_call', 'tot_s_call', 'name', 'class')
-        numeric_keys = ('time', 'cum_sec', 'self_sec', 'calls', 'self_s_call', 'tot_s_call')
-        str_keys = ('name', 'class')
+    def read_file(self, file_name):   
+        keys = ('time','cum_sec','self_sec','calls','self_s_call','tot_s_call','namespace','class','function','definition')
+        num_keys = ('time','cum_sec','self_sec','calls','self_s_call','tot_s_call')
 
-
-        pattern = re.compile(r'(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+|\s+)\s+(\d+|\s+)\s+(\d+\.\d+|\s+)\s+(\d+\.\d+|\s+)\s+(.+)()')
-
-        pattern_class = re.compile(r'([^:( ]+)::([^<(]+).+')
-        pattern_no_class = re.compile(r'([^ :(<>]+)[(<]')
-            
-        structBuffer = {}
-        for key in keys:
-            structBuffer[key] = []
+        ptrn0 = re.compile(r'^\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+|\s+)\s+(\d+|\s+)\s+(\d+\.\d+|\s+)\s+(\d+\.\d+|\s+)\s+(.+)')
+        ptrn1 = re.compile(r'(\w+)(?:<.+>)?::(\w+)(?:<.+>)?::(\w+)(?:<.+>)?\(')
+        ptrn2 = re.compile(r'(\w+)(?:<.+>)?::(\w+)(?:<.+>)?\(')
+        ptrn3 = re.compile(r'(\w+)(?:<.+>)?\(')
         
+        df = {
+            'time':[],
+            'cum_sec':[],
+            'self_sec':[],
+            'calls':[],
+            'self_s_call':[],
+            'tot_s_call':[],
+            'namespace':[],
+            'class':[],
+            'function':[],
+            'definition':[]
+        }
+
         with open(file_name) as f:
             for line in f:
-                check = pattern.findall(line)
-                if len(check) != 0:
-                    buffer = check[0][:]
+                match = ptrn0.findall(line)
+                if len(match) == 0:
+                    if line == ' %         the percentage of the total running time of the':
+                        break
+                    continue
 
-                    match = pattern_class.findall(buffer[6])
-                    if len(match) != 0:
-                        match2 = pattern_class.findall(match[0][1])
-                        #print(match2)
-                        if len(match2) > 0:
-                            class_name = match2[0][0]
-                            funct_name = match2[0][1]
-                        else:
-                            class_name = match[0][0]
-                            funct_name = match[0][1]
-
+                for i, key in enumerate(num_keys):
+                    buffer = match[0]
+                    if buffer[i] == '':
+                        df[key].append(np.nan)
                     else:
-                        match2 = pattern_no_class.findall(buffer[6])
-                        if len(match2) > 0:
-                            class_name = np.nan
-                            funct_name = match2[0]
-                        else:
-                            class_name = np.nan
-                            funct_name = np.nan
-                    
-                    for i, key in enumerate(numeric_keys):
-                        if buffer[i] == '':
-                            structBuffer[key].append(np.nan)
-                        else:
-                            try:
-                                structBuffer[key].append(float(buffer[i]))
-                            except:
-                                structBuffer[key].append(np.nan)
+                        try:
+                            df[key].append(float(buffer[i]))
+                        except:
+                            df[key].append(np.nan)
+                df['definition']=match[0][6] 
 
-                    structBuffer['class'].append(class_name)
-                    structBuffer['name'].append(funct_name)
-
+                match = ptrn1.findall(line)
+                if len(match) > 0:
+                    df['namespace'].append(match[0][0])
+                    df['class'].append(match[0][1])
+                    df['function'].append(match[0][2])
+                    continue
+                match = ptrn2.findall(line)
+                if len(match) > 0:
+                    df['namespace'].append(np.nan)
+                    df['class'].append(match[0][0])
+                    df['function'].append(match[0][1])
+                    continue
+                match = ptrn3.findall(line)
+                if len(match) > 0:
+                    df['namespace'].append(np.nan)
+                    df['class'].append(np.nan)
+                    df['function'].append(match[0])
+                    continue
+                df['namespace'].append(np.nan)
+                df['class'].append(np.nan)
+                df['function'].append(np.nan)    
             f.close()
-        
-        self.__init__(structBuffer)
+
+        self.__init__(df)
         return(self)
     
     def filter_function(self, function_name : str):
@@ -89,8 +98,27 @@ class GprofDF(pd.DataFrame):
                 tmp_dt = self[self['class'] == c]
                 dt2[col][c] = tmp_dt.loc[:, col].sum(skipna=True)
 
-        
-        return GprofDF(dt2).sort()
+        dt2 = GprofDF(dt2).sort()
+        return GprofClasses(dt2)
+    
+    def gplot(self, column='time', head=10):
+        x = list(self.loc[:, 'function'])[:head]
+        x.reverse()
+        y = list(self.loc[:, column])[:head]
+        y.reverse()
+
+        plt.style.use('ggplot')
+        plt.title(f'{column} - first {head} functions')
+        plt.barh(x, y)
+        plt.show()
+    
+class GprofClasses(pd.DataFrame):
+    def __init__(self, data = None) -> None:
+        super().__init__(data)
+
+    def read_file(self, file_name):
+        df = GprofDF().read_file(file_name)
+        return df.group_by_class()
     
     def gplot(self, column='time', head=10):
         x = list(self.index[:head])
@@ -99,6 +127,6 @@ class GprofDF(pd.DataFrame):
         y.reverse()
 
         plt.style.use('ggplot')
-        plt.title(f'{column} - first {head} items')
+        plt.title(f'{column} - first {head} classes')
         plt.barh(x, y)
         plt.show()
