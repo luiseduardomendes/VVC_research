@@ -1,6 +1,6 @@
 import os
 
-def cd( dir):
+def cd(dir):
     return f'cd \"{dir}\"'
 
 def gprof(enc, bin, out):

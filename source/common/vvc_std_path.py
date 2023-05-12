@@ -1,4 +1,26 @@
+import numpy as np
 import os
+import re
+
+def get_info_from_path(path):
+    pattern = re.compile(r'log_([^_]+)_qp([^_]+)_([^_]+)_([^_]+)\..+')
+    match = pattern.findall(path)
+    if len(match) > 0:
+        return {
+            'video':match[0][0],
+            'qp':match[0][1], 
+            'cfg':match[0][2],
+            'version':match[0][3],
+            'log_type':match[0][4]
+        }
+    else:
+        return {
+            'video':np.nan,
+            'qp':np.nan, 
+            'cfg':np.nan,
+            'version':np.nan,
+            'log_type':np.nan
+        }
 
 def gprof_make_path(path, cfg, file, version, qps):
     return ext_make_path(path, cfg, file, version, qps, 'gprof')

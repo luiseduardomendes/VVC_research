@@ -1,124 +1,148 @@
 import os
+import source.common.csys as csys
 
-def exec(
-        # --------------- vtm parameters --------------- #
-        vtm_dir : str,                  # path to VTM
-        encoder_name: str,              # name of encoder used = ('AI', 'LB', 'RA')
-        cfg_video: str,                 # path to the '.cfg' file
-        qp: int,                        # quantization parameter used
+class vvc_executer:
+    def __init__(self, vtm_path=None, video=None, video_cfg=None, cfg='AI', qp=22, version='Precise', n_frames=32):
+        self.ts_status = ''
         
-        # ------------- optional parameters ------------ #
-        out_dir: str = '_out_',         # output to the logs and binaries files
-        video_name: str='any',          # output video name
-        VTM_version: str='precise',     # name of the version of vtm executed
-        n_frames='',                    # number of frames that must be 
-        background_exec:bool=True,      # execute the encoder in background
-        gprof : bool=False,             # flag to execute using profiler or not
-        display_data:bool=True,         # print the configurations used
-        output_in_ext_file:bool=True    # output in console when false
+        self.set_cfg(cfg)
+        self.set_qp(qp)
+        self.set_version(version)
+        
+        if video_cfg != None and video != None:
+            self.set_video_cfg(video_cfg, video)
+        if vtm_path != None:
+            self.set_vtm_path(vtm_path)
+
+        self.n_frames = n_frames
+        self.display = True
+        self.bg_exec = False
+
+    def run_exec(self):
+        self.bin_encoder_path = os.path.join(self.bin_dir, 'EncoderAppStatic')
+        self.cfg_encoder_path = os.path.join(self.cfg_dir, self.cfg_enc)
+
+        self.update_config()
+        self.update_paths()
+
+        self.bin_videos_path  = os.path.join(self.output_bin_video_path, self.video+'.bin')
+
+        cmd = self.__create_command__()
+        print(cmd)
+        os.system(cmd)
+
+        if self.display:
+            self.__display_info__()
+
+    def set_video_params(self, video, cfg, qp, version):
+        self.__set_video_identifier__(video, cfg, qp, version)
+        self.video = video
+        self.set_cfg(cfg)
+        self.qp = qp
+        self.version = version
+
+    def set_vtm_path(self, vtm_path:str):
+        self.vtm_path = vtm_path
+        self.cfg_dir = os.path.join(vtm_path, 'cfg')
+        self.bin_dir = os.path.join(vtm_path, 'bin')
+    
+    def set_version(self, version:str):
+        self.version = version
+
+    def set_output_path(self, output_path:str):
+        self.output_path = output_path
+        
+    def __enable_output_in_ext_file__(self):
+        vvc_log_name            = f'log_{self.video_identifier}.vvclog'
+        gp_log_name             = f'log_{self.video_identifier}.gplog'
+        try:
+            self.__make_path_log_vvc__(self.output_path, self.version, self.video, self.cfg)
+            self.output_vvc_log_path = os.path.join(self.output_path, 'vvc_log', self.version, self.video, self.cfg, vvc_log_name)
+            
+            self.output_gprof_log_path = os.path.join(self.output_path, 'gprof_log', self.version, self.video, self.cfg, gp_log_name)
+
+            self.output_bin_video_path = os.path.join(self.output_path, 'video_bin', self.version, self.video, self.cfg, f'QP{self.qp}')
+        except AttributeError:
+            raise Exception("Output path not defined")        
+
+    def set_video_cfg(self, video_cfg:str, video_name:str):
+        self.video_cfg = video_cfg
+        self.video = video_name
+
+    def set_cfg(self, cfg):
+        cfg_dict = {
+            'AI': 'encoder_intra_vtm.cfg',
+            'LB': 'encoder_lowdelay_vtm.cfg',
+            'RA': 'encoder_randomaccess_vtm.cfg',
+        }
+        self.cfg = cfg
+        self.cfg_enc = cfg_dict[cfg]
+        if cfg == 'AI':
+            self.ts_status = '-ts 1'
+
+    def set_qp(self, qp):
+        self.qp = qp
+
+    def update_config(self):
+        self.__set_video_identifier__(self.video, self.cfg, self.qp, self.version)
+    
+    def update_paths(self):
+        self.__enable_output_in_ext_file__()
+
+    def enable_display(self):
+        self.display = True
+
+    def disable_display(self):
+        self.display = False
+
+    def enable_bg_exec(self):
+        self.bg_exec = True
+
+    def disable_bg_exec(self):
+        self.bg_exec = False
+    
+    def __create_command__(self):
+        command = csys.vvc(
+            self.bin_encoder_path,
+            self.cfg_encoder_path,
+            self.video_cfg,
+            self.bin_videos_path,
+            self.qp,
+            self.n_frames,
+            output=self.output_vvc_log_path
+        )
+
+        command = csys.join([
+            csys.cd(self.output_bin_video_path),
+            command, 
+            csys.cd(self.bin_dir),
+            csys.gprof(self.bin_encoder_path, self.output_bin_video_path, self.output_gprof_log_path)
+        ])
+            
+        if self.bg_exec:
+            command = command + ' & '
+        return command
+            
+    def __set_video_identifier__(self, video, cfg, qp, version):
+        self.video_identifier = f'{video}_qp{qp}_{cfg}_{version}'
+
+    def __make_path_log_vvc__(self, out_dir, VTM_version, video_name, encoder_name):
+        print([out_dir, 'video_bin', VTM_version, video_name, encoder_name, f'{self.qp}'])
+        csys.mkdir_r([out_dir, 'vvc_log',   VTM_version, video_name, encoder_name])
+        csys.mkdir_r([out_dir, 'gprof_log', VTM_version, video_name, encoder_name])
+        csys.mkdir_r([out_dir, 'video_bin', VTM_version, video_name, encoder_name, f'QP{self.qp}'])
+
+    def __display_info__(
+        self,
     ):
+        print()
+        print(f'Encoding: ........... {self.video}')
+        print()
+        print(f'Video identifier: ... {self.video_identifier}')
+        print(f'Video config: ....... {self.video_cfg}')
+        print(f'Encoder: ............ {self.cfg}')
+        print(f'QP: ................. {self.qp}')
+        print(f'VTM version used: ... {self.version}')
+        print(f'frames encoded: ..... {self.n_frames}')
+        print()
 
-    # standard path to the config and binaries
-    cfg_dir = os.path.join(vtm_dir, 'cfg')
-    bin_dir = os.path.join(vtm_dir, 'bin')
-
-    # standard path to the encoders
-    cfg_dict = {
-        'AI': 'encoder_intra_vtm.cfg',
-        'LD': 'encoder_lowdelay_vtm.cfg',
-        'RA': 'encoder_randomaccess_vtm.cfg',
-    }
-    cfg_encoder = cfg_dict[encoder_name]
-
-    # ts status is only used when the cfg selected is the intra encoding
-    ts_status = ''
-    if (encoder_name == 'AI'):
-        ts_status = '-ts 1'
-
-    if display_data:
-        __display_info__(video_name, encoder_name, cfg_video, qp, VTM_version, n_frames)
-    
-    if background_exec:
-        background_status = '&'
-    else:
-        background_status = ''
-
-    video_identifier        = f'{video_name}_qp{qp}_{encoder_name}_{VTM_version}'
-    binary_encoder_path     = os.path.join(bin_dir, 'EncoderAppStatic')
-    encoder_cfg_path        = os.path.join(cfg_dir, cfg_encoder)
-
-    binary_videos_dir       = os.path.join(out_dir, 'videos_bin')
-    make_path_bin(binary_videos_dir)
-
-    binary_videos_path      = os.path.join(binary_videos_dir, f'{video_identifier}.bin')
-
-    vvc_log_name            = f'log_{video_identifier}.vvclog'
-    gprof_log_name          = f'log_{video_identifier}.gplog'
-    
-    output_log_path_vvc     = os.path.join(out_dir, 'vvc_log', VTM_version, encoder_name, vvc_log_name)
-    make_path_log_vvc(out_dir, VTM_version, encoder_name)
-    
-    output_log_path_gprof   = os.path.join(out_dir, 'gprof_log', VTM_version, encoder_name, gprof_log_name)
-    make_path_log_gprof(out_dir, VTM_version, encoder_name)
-    
-    command = \
-        f'/\"{binary_encoder_path}\" ' + \
-        f'-c \"{encoder_cfg_path}\" ' + \
-        f'-c \"{cfg_video}\" ' + \
-        f'-b \"{binary_videos_path}\" ' + \
-        f'-q {qp} -f {n_frames} {ts_status} --SIMD=SCALAR ' 
-    
-    if output_in_ext_file:
-        command = command + f'>> \"{output_log_path_vvc}\" '
-
-    if background_exec:
-        command = command + ' & '
-
-    if gprof:
-        command = command + \
-            f'&& cd \"{bin_dir}\" && gprof \"{binary_encoder_path}\" gmon.out ' + \
-            f'>> \"{output_log_path_gprof}\" {background_status}'
-
-    os.system(command)
-
-    if display_data:
-        print('execution done')
-
-
-def __display_info__(
-        video_name, 
-        encoder_name,
-        cfg_video,
-        qp,
-        VTM_version,
-        n_frames
-    ):
-    print()
-    print(f'Encoding: ........... {video_name}')
-    print()
-    print(f'Video config: ....... {cfg_video}')
-    print(f'Encoder: ............ {encoder_name}')
-    print(f'QP: ................. {qp}')
-    print(f'VTM version used: ... {VTM_version}')
-    print(f'frames encoded: ..... {n_frames}')
-    print()
-    
-def make_path_log_vvc(out_dir, VTM_version, encoder_name):
-    if not os.path.isdir(os.path.join(out_dir, 'vvc_log')):
-        os.mkdir(os.path.join(out_dir, 'vvc_log'))
-    if not os.path.isdir(os.path.join(out_dir, 'vvc_log', VTM_version)):
-        os.mkdir(os.path.join(out_dir, 'vvc_log', VTM_version))
-    if not os.path.isdir(os.path.join(out_dir, 'vvc_log', VTM_version, encoder_name)):
-        os.mkdir(os.path.join(out_dir, 'vvc_log', VTM_version, encoder_name))
-
-def make_path_log_gprof(out_dir, VTM_version, encoder_name):
-    if not os.path.isdir(os.path.join(out_dir, 'gprof_log')):
-        os.mkdir(os.path.join(out_dir, 'gprof_log'))
-    if not os.path.isdir(os.path.join(out_dir, 'gprof_log', VTM_version)):
-        os.mkdir(os.path.join(out_dir, 'gprof_log', VTM_version))
-    if not os.path.isdir(os.path.join(out_dir, 'gprof_log', VTM_version, encoder_name)):
-        os.mkdir(os.path.join(out_dir, 'gprof_log', VTM_version, encoder_name))
-
-def make_path_bin(binary_videos_dir):
-    if not os.path.isdir(binary_videos_dir):
-        os.mkdir(binary_videos_dir)

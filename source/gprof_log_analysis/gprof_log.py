@@ -3,72 +3,23 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt    
 
+keys = ('time','cum_sec','self_sec','calls','self_s_call','tot_s_call','namespace','class','function','definition')
+
 class GprofDF(pd.DataFrame):
     def __init__(self, data = None) -> None:
         super().__init__(data)
 
     def read_file(self, file_name):   
-        keys = ('time','cum_sec','self_sec','calls','self_s_call','tot_s_call','namespace','class','function','definition')
-        num_keys = ('time','cum_sec','self_sec','calls','self_s_call','tot_s_call')
-
-        ptrn0 = re.compile(r'^\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+|\s+)\s+(\d+|\s+)\s+(\d+\.\d+|\s+)\s+(\d+\.\d+|\s+)\s+(.+)')
-        ptrn1 = re.compile(r'(\w+)(?:<.+>)?::(\w+)(?:<.+>)?::(\w+)(?:<.+>)?\(')
-        ptrn2 = re.compile(r'(\w+)(?:<.+>)?::(\w+)(?:<.+>)?\(')
-        ptrn3 = re.compile(r'(\w+)(?:<.+>)?\(')
-        
-        df = {
-            'time':[],
-            'cum_sec':[],
-            'self_sec':[],
-            'calls':[],
-            'self_s_call':[],
-            'tot_s_call':[],
-            'namespace':[],
-            'class':[],
-            'function':[],
-            'definition':[]
-        }
+        df = {key:[] for key in keys}
 
         with open(file_name) as f:
             for line in f:
-                match = ptrn0.findall(line)
-                if len(match) == 0:
-                    if line == ' %         the percentage of the total running time of the':
-                        break
-                    continue
+                if line == ' %         the percentage of the total running time of the':
+                    break
+                r = __gprof_line_decoder__(line)
 
-                for i, key in enumerate(num_keys):
-                    buffer = match[0]
-                    if buffer[i] == '':
-                        df[key].append(np.nan)
-                    else:
-                        try:
-                            df[key].append(float(buffer[i]))
-                        except:
-                            df[key].append(np.nan)
-                df['definition']=match[0][6] 
-
-                match = ptrn1.findall(line)
-                if len(match) > 0:
-                    df['namespace'].append(match[0][0])
-                    df['class'].append(match[0][1])
-                    df['function'].append(match[0][2])
-                    continue
-                match = ptrn2.findall(line)
-                if len(match) > 0:
-                    df['namespace'].append(np.nan)
-                    df['class'].append(match[0][0])
-                    df['function'].append(match[0][1])
-                    continue
-                match = ptrn3.findall(line)
-                if len(match) > 0:
-                    df['namespace'].append(np.nan)
-                    df['class'].append(np.nan)
-                    df['function'].append(match[0])
-                    continue
-                df['namespace'].append(np.nan)
-                df['class'].append(np.nan)
-                df['function'].append(np.nan)    
+                for key in df.keys():
+                    df[key].append(r[key])
             f.close()
 
         self.__init__(df)
@@ -111,7 +62,7 @@ class GprofDF(pd.DataFrame):
         plt.title(f'{column} - first {head} functions')
         plt.barh(x, y)
         plt.show()
-    
+
 class GprofClasses(pd.DataFrame):
     def __init__(self, data = None) -> None:
         super().__init__(data)
@@ -130,3 +81,58 @@ class GprofClasses(pd.DataFrame):
         plt.title(f'{column} - first {head} classes')
         plt.barh(x, y)
         plt.show()
+
+def __gprof_line_decoder__(line : str) -> dict:
+    ptrn0 = re.compile(r'^\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+|\s+)\s+(\d+|\s+)\s+(\d+\.\d+|\s+)\s+(\d+\.\d+|\s+)\s+(.+)')
+
+    match = ptrn0.findall(line)
+    if len(match) <= 0:
+        return []
+
+    match = match[0]
+
+    r = {key:np.nan for key in keys}
+    r = __numeric_decoder__(match[0], r)
+    r = __str_decoder__(line, r)
+
+    return r
+    
+def __numeric_decoder__(match, r):
+    num_keys = ('time','cum_sec','self_sec','calls','self_s_call','tot_s_call')
+    
+    for i, key in enumerate(num_keys):
+        try:
+            r[i] = float(match[i])
+        except:
+            r[i] = np.nan
+    r['definition'] = match[6]
+    return r
+
+def __str_decoder__(line, r):
+    ptrn1 = re.compile(r'(\w+)(?:<.+>)?::(\w+)(?:<.+>)?::(\w+)(?:<.+>)?\(')
+    ptrn2 = re.compile(r'(\w+)(?:<.+>)?::(\w+)(?:<.+>)?\(')
+    ptrn3 = re.compile(r'(\w+)(?:<.+>)?\(')
+
+    match = ptrn1.findall(line)
+    if len(match) > 0:
+        r['namespace'] = match[0][0]
+        r['class'] = match[0][1]
+        r['function'] = match[0][2]
+        return
+    match = ptrn2.findall(line)
+    if len(match) > 0:
+        r['namespace'] = np.nan
+        r['class'] = match[0][0]
+        r['function'] = match[0][1]
+        return
+    match = ptrn3.findall(line)
+    if len(match) > 0:
+        r['namespace'] = np.nan
+        r['class'] = np.nan
+        r['function'] = match[0]
+        return
+    
+    r['namespace'] = np.nan
+    r['class'] = np.nan
+    r['function'] = np.nan
+    return r

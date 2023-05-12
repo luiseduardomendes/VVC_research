@@ -2,7 +2,7 @@ import pandas as pd
 from pprint import pprint
 from source.vvc_log_analysis.vvc_output import VVC_Output
 from source.vvc_log_analysis.vvc_bd_rate import BD_Rate
-import source.common.vvc_analyser_path as vvcpath
+import source.common.vvc_std_path as vvcpath
 
 def vvc_frame_analysis(approximations, file_names, path, all_frames = True):
 

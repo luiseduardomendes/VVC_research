@@ -1,7 +1,7 @@
 import os 
 import re
 from source.common.commonlib import file_subs, compile_VTM
-import source.common.vvc_exec_refact as vvc_exec
+import source.common.vvc_exec as vvc_exec
 from pathlib import Path
 
 class Simulation:
