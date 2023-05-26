@@ -1,11 +1,12 @@
 import pandas as pd
+import numpy as np
 import re
 import os
 
 class VVC_Output(pd.DataFrame):
-    __keys__ = ('frame','bitrate','Y_PSNR','U_PSNR','V_PSNR','YUV_PSNR','qp')
+    __keys__ = ('frame','t_frame','qp_offset','bitrate','Y_PSNR','U_PSNR','V_PSNR','YUV_PSNR','qp')
     __full_vid_pattern__ = re.compile(r'^\s+\d+\s+a\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\s+$', re.M)
-    __frame_pattern__ = re.compile(r'^POC\s+(\d+)\s+LId:\s+\d+\s+TId:\s+\d+\s+\( \w+, \w-SLICE, QP \d+ \)\s+(\w+) bits \[Y (\d+\.\d+) dB\s+U (\d+\.\d+) dB\s+V (\d+\.\d+) dB', re.M)
+    __frame_pattern__ = re.compile(r'^POC\s+(\d+)\s+LId:\s+\d+\s+TId:\s+\d+\s+\( \w+, (\w-SLICE), QP (\d+) \)\s+(\w+) bits \[Y (\d+\.\d+) dB\s+U (\d+\.\d+) dB\s+V (\d+\.\d+) dB', re.M)
 
     def __init__(self, data=None) -> None:
         super().__init__(data)
@@ -50,27 +51,31 @@ class VVC_Output(pd.DataFrame):
     def __full_execution_decoder__(self, data, qp):
         bitrate, y_psnr, u_psnr, v_psnr, yuv_psnr = data
         data = pd.DataFrame({
-            'frame':    [int(-1)],
-            'bitrate':  [float(bitrate)],
-            'Y_PSNR':   [float(y_psnr)],
-            'U_PSNR':   [float(u_psnr)],
-            'V_PSNR':   [float(v_psnr)],
-            'YUV_PSNR': [float(yuv_psnr)],
-            'qp':       [int(qp)]
+            self.__keys__[ 0]:  [int(-1)],          # POC number
+            self.__keys__[ 1]:  [np.nan],           # frame type
+            self.__keys__[ 2]:  [np.nan],           # QP offset
+            self.__keys__[ 3]:  [float(bitrate)],   # Bitrate
+            self.__keys__[ 4]:  [float(y_psnr)],    # Y_PNSR
+            self.__keys__[ 5]:  [float(u_psnr)],    # U_PSNR
+            self.__keys__[ 6]:  [float(v_psnr)],    # V_PSNR
+            self.__keys__[ 7]:  [float(yuv_psnr)],  # YUV_PSNR approximate by the Y_PSNR
+            self.__keys__[ 8]:  [int(qp)]           # QP
         })
         self.append(data)
             
 
     def __each_frame_decoder__(self, data, qp):
-        frames, bitrate, y_psnr, u_psnr, v_psnr = data
+
         data = pd.DataFrame({
-            'frame':    [int(frames)],
-            'bitrate':  [int(bitrate)],
-            'Y_PSNR':   [float(y_psnr)],
-            'U_PSNR':   [float(u_psnr)],
-            'V_PSNR':   [float(v_psnr)],
-            'YUV_PSNR': [float(y_psnr)],
-            'qp':       [int(qp)]
+            self.__keys__[ 0]:  [int(data[0])],     # POC number
+            self.__keys__[ 1]:  [data[1]],          # frame type
+            self.__keys__[ 2]:  [int(data[2])-qp],  # QP offset
+            self.__keys__[ 3]:  [float(data[3])],   # Bitrate
+            self.__keys__[ 4]:  [float(data[4])],   # Y_PNSR
+            self.__keys__[ 5]:  [float(data[5])],   # U_PSNR
+            self.__keys__[ 6]:  [float(data[6])],   # V_PSNR
+            self.__keys__[ 7]:  [float(data[4])],   # YUV_PSNR approximate by the Y_PSNR
+            self.__keys__[ 8]:  [int(qp)]           # QP
         })
 
         self.append(data)

@@ -15,19 +15,14 @@ class Simulation:
 
     n_frames = 32
     bg_exec = False
-    gprof = False
 
     videos = []
 
-    def __init__(self, n_frames = 32, version = 'Precise', qps = [22, 27, 32, 37], encoder = ['AI', 'RA', 'LB'], bg_exec = False, gprof = False):
+    def __init__(self, n_frames = 32, version = 'Precise', qps = [22, 27, 32, 37], encoder = ['AI', 'RA', 'LB'], bg_exec = False):
         self.set_n_frames(n_frames)
         self.set_version(version)
         self.set_qps(qps)
         self.set_encoder(encoder)
-        if gprof:
-            self.enable_gprof() 
-        else:
-            self.disable_gprof()
         if bg_exec:
             self.enable_bg_exec()
         else:
@@ -68,7 +63,6 @@ class Simulation:
             f'encoder :         {self.encoder} \n' + \
             f'n_frames :        {self.n_frames} \n' + \
             f'background exec : {self.bg_exec} \n' + \
-            f'gprof :           {self.gprof} \n' + \
             f'videos :          [ \n'
         for i, video in enumerate(self.videos):
             info += \
@@ -80,6 +74,15 @@ class Simulation:
         
         print(info)
         return info
+
+    def append_video_to_buffer(self, file_name:str):
+        if not file_name.endswith('.cfg'):
+            raise Exception("file name must end with .cfg")
+        
+        if not os.path.isfile(file_name): 
+            raise Exception("File not found")
+
+        self.videos.append(file_name)
 
     def remove_video_from_buffer(self, file_index):
         try:
@@ -112,7 +115,7 @@ class Simulation:
         self.set_cfg_dir(cfg_dir)
 
     def replace_file(self, new_file, old_file):
-        file_subs(new_file, old_file, Path(old_file).stem)
+        file_subs(new_file, os.path.dirname(old_file), Path(old_file).stem)
         compile_VTM(self.vtm_dir)
 
     def set_n_frames(self, n_frames):
@@ -136,12 +139,6 @@ class Simulation:
     
     def set_encoder(self, encoder):
         self.encoder = encoder
-
-    def enable_gprof(self):
-        self.gprof = True
-    
-    def disable_gprof(self):
-        self.gprof = False
 
     def enable_bg_exec(self):
         self.bg_exec = True

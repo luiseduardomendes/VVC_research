@@ -17,6 +17,9 @@ class GprofDF(pd.DataFrame):
                 if line == ' %         the percentage of the total running time of the':
                     break
                 r = __gprof_line_decoder__(line)
+                
+                if len(list(r.keys())) == 0:
+                    continue
 
                 for key in df.keys():
                     df[key].append(r[key])
@@ -83,16 +86,16 @@ class GprofClasses(pd.DataFrame):
         plt.show()
 
 def __gprof_line_decoder__(line : str) -> dict:
-    ptrn0 = re.compile(r'^\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+|\s+)\s+(\d+|\s+)\s+(\d+\.\d+|\s+)\s+(\d+\.\d+|\s+)\s+(.+)')
+    ptrn0 = re.compile(r'^\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+|\s+)\s+(\d+|\s+)\s+(\d+\.\d+|\s+)\s+(\d+\.\d+|\s+)\s+(.+)$')
 
     match = ptrn0.findall(line)
     if len(match) <= 0:
-        return []
+        return {}
 
     match = match[0]
 
     r = {key:np.nan for key in keys}
-    r = __numeric_decoder__(match[0], r)
+    r = __numeric_decoder__(match, r)
     r = __str_decoder__(line, r)
 
     return r
@@ -102,9 +105,9 @@ def __numeric_decoder__(match, r):
     
     for i, key in enumerate(num_keys):
         try:
-            r[i] = float(match[i])
+            r[key] = float(match[i])
         except:
-            r[i] = np.nan
+            r[key] = np.nan
     r['definition'] = match[6]
     return r
 
@@ -118,19 +121,19 @@ def __str_decoder__(line, r):
         r['namespace'] = match[0][0]
         r['class'] = match[0][1]
         r['function'] = match[0][2]
-        return
+        return r
     match = ptrn2.findall(line)
     if len(match) > 0:
         r['namespace'] = np.nan
         r['class'] = match[0][0]
         r['function'] = match[0][1]
-        return
+        return r
     match = ptrn3.findall(line)
     if len(match) > 0:
         r['namespace'] = np.nan
         r['class'] = np.nan
         r['function'] = match[0]
-        return
+        return r
     
     r['namespace'] = np.nan
     r['class'] = np.nan
