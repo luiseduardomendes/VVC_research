@@ -22,8 +22,13 @@ class BD_Rate(pd.Series):
         super().__init__([], name=self.__name__, index=self.__mk_empty_index__(), dtype=float)
 
     def calc_bdbr(self, cmp_df : VVC_Output, ref_df : VVC_Output):
+        cmp_df = cmp_df.sort_values(by=['frame', 'qp'])
+        ref_df = ref_df.sort_values(by=['frame', 'qp']) 
         bdr = [
-            self.__bdbr__(cmp_df.iloc[i:i+self.__nqps__], ref_df.iloc[i:i+self.__nqps__]) 
+            self.__bdbr__(
+                cmp_df.iloc[i:i+self.__nqps__], 
+                ref_df.iloc[i:i+self.__nqps__]
+            ) 
             for i in range(0, len(cmp_df['frame']), self.__nqps__)
         ]
         
@@ -35,6 +40,7 @@ class BD_Rate(pd.Series):
             self.__nqps__
         )
         super().__init__(bdr, name=self.__name__, index=index, dtype=float)
+        return self
 
     def append_bd(self, bd_rate):
         super().__init__(pd.concat([self, bd_rate]))
@@ -43,10 +49,9 @@ class BD_Rate(pd.Series):
         if len(cmp['bitrate']) != len(ref['bitrate']):
             return None
 
-
         VVC     = np.asarray(cmp.loc[:,'bitrate':'YUV_PSNR'])
         HEVC    = np.asarray(ref.loc[:,'bitrate':'YUV_PSNR'])
-        
+
         HEVC = HEVC[HEVC[:,0].argsort()]
         VVC = VVC[VVC[:,0].argsort()]
 
