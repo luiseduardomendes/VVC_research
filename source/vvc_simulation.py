@@ -42,7 +42,7 @@ class Simulation:
         _exec.set_output_path(self.out_dir)
 
         for video in self.videos:
-            _exec.set_video_cfg(os.path.join(self.cfg_dir, video), video[:-4])
+            _exec.set_video_cfg(os.path.join(self.cfg_dir, video), Path(video).stem)
             for cfg in self.encoder:
                 _exec.set_cfg(cfg)
                 for qp in self.qps:
@@ -115,7 +115,7 @@ class Simulation:
         self.set_cfg_dir(cfg_dir)
 
     def replace_file(self, new_file, old_file):
-        file_subs(new_file, os.path.dirname(old_file), Path(old_file).stem)
+        file_subs(new_file, os.path.dirname(old_file), os.path.basename(old_file))
         compile_VTM(self.vtm_dir)
 
     def set_n_frames(self, n_frames):

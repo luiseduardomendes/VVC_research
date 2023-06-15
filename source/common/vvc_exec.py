@@ -1,5 +1,6 @@
 import os
 import source.common.csys as csys
+from source.common.log_path import vvc_log_path, gprof_log_path, bin_file_path, create_path_to_log, get_video_identifier
 
 class vvc_executer:
     def __init__(self, vtm_path=None, video=None, video_cfg=None, cfg='AI', qp=22, version='Precise', n_frames=32):
@@ -28,8 +29,8 @@ class vvc_executer:
         self.bin_videos_path  = os.path.join(self.output_bin_video_path, self.video+'.bin')
 
         cmd = self.__create_command__()
-        print(cmd)
         os.system(cmd)
+        print(cmd)
 
         if self.display:
             self.__display_info__()
@@ -53,15 +54,22 @@ class vvc_executer:
         self.output_path = output_path
         
     def __enable_output_in_ext_file__(self):
-        vvc_log_name            = f'log_{self.video_identifier}.vvclog'
-        gp_log_name             = f'log_{self.video_identifier}.gplog'
+        
         try:
-            self.__make_path_log_vvc__(self.output_path, self.version, self.video, self.cfg)
-            self.output_vvc_log_path = os.path.join(self.output_path, 'vvc_log', self.version, self.video, self.cfg, vvc_log_name)
+            create_path_to_log(self.output_path, self.version, self.video, self.cfg, self.qp)
             
-            self.output_gprof_log_path = os.path.join(self.output_path, 'gprof_log', self.version, self.video, self.cfg, gp_log_name)
+            self.output_vvc_log_path = vvc_log_path(
+                self.output_path, self.cfg, self.video, self.version, self.qp, False
+            )
+            
+            self.output_gprof_log_path = gprof_log_path(
+                self.output_path, self.cfg, self.video, self.version, self.qp, False
+            )
 
-            self.output_bin_video_path = os.path.join(self.output_path, 'video_bin', self.version, self.video, self.cfg, f'QP{self.qp}')
+            self.output_bin_video_path = bin_file_path(
+                self.output_path, self.cfg, self.video, self.version, self.qp, False
+            )
+
         except AttributeError:
             raise Exception("Output path not defined")        
 
@@ -111,7 +119,6 @@ class vvc_executer:
             self.n_frames,
             output=self.output_vvc_log_path
         )
-
         command = csys.join([
             csys.cd(self.output_bin_video_path),
             command, 
@@ -124,17 +131,9 @@ class vvc_executer:
         return command
             
     def __set_video_identifier__(self, video, cfg, qp, version):
-        self.video_identifier = f'{video}_qp{qp}_{cfg}_{version}'
+        self.video_identifier = get_video_identifier(video, cfg, qp, version)
 
-    def __make_path_log_vvc__(self, out_dir, VTM_version, video_name, encoder_name):
-        print([out_dir, 'video_bin', VTM_version, video_name, encoder_name, f'{self.qp}'])
-        csys.mkdir_r([out_dir, 'vvc_log',   VTM_version, video_name, encoder_name])
-        csys.mkdir_r([out_dir, 'gprof_log', VTM_version, video_name, encoder_name])
-        csys.mkdir_r([out_dir, 'video_bin', VTM_version, video_name, encoder_name, f'QP{self.qp}'])
-
-    def __display_info__(
-        self,
-    ):
+    def __display_info__(self):
         print()
         print(f'Encoding: ........... {self.video}')
         print()

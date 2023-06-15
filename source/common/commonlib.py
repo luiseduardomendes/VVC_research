@@ -15,7 +15,7 @@ def file_subs(file_path, destiny_dir, rename_like) -> None:
     else:   
         raise Exception("Destiny is not a directory!")
 
-    os.system(f"cp \"{source_path}\" \"{destiny_path}{rename_like}\"") 
+    os.system(f"cp \"{source_path}\" \"{os.path.join(destiny_path, rename_like)}\"") 
 
 
 def get_next_file(exec_buffer, erase = True):
@@ -39,15 +39,15 @@ def get_next_file(exec_buffer, erase = True):
 
 def compile_VTM(vtm_path):
     build_dir = join(vtm_path, "build")
+    if not os.path.isdir(build_dir):
+        os.mkdir(build_dir)
+
     cmake_file = join(build_dir, 'CMakeCache.txt')
 
-    if not(isdir(build_dir)):
-        mkdir(build_dir)
-
-    os.system(f'cd {build_dir} && cmake {vtm_path} -DCMAKE_BUILD_TYPE=Release')
+    os.system(f'cd \"{build_dir}\" && cmake \"{vtm_path}\" -DCMAKE_BUILD_TYPE=Release')
     turn_on_profiling_in_makefile(cmake_file)
 
-    os.system(f'cd {build_dir} && make')
+    os.system(f'cd \"{build_dir}\" && make')
     
 
 def create_exec_buffer(output_dir='.',output_name='.execution_buffer', dir_path='.', extension:str='.cpp'):

@@ -26,7 +26,7 @@ def vvc(encoder, cfg_enc:str, cfg_vid, bin_vid, qp, frames, output=None):
         ts = ''
 
     if output != None:
-        output = '>> ' + output
+        output = '>> \"' + output + '\"'
     else:
         output = ''
 
