@@ -1,0 +1,4 @@
+---
+    cfg: /home/luispmendes/cfg-files-test
+    out: /home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023
+    vtm: /home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM
