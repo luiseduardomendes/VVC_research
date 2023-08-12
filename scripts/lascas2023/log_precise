@@ -1,0 +1,266 @@
+Execution running
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/AI/QP22" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_intra_vtm.cfg" -c "/home/luispmendes/cfg-files-test/RaceHorses.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/AI/QP22/RaceHorses.bin" -q 22 -f 32 -ts 1 --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/Precise/RaceHorses/AI/log_RaceHorses_qp22_AI_Precise.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/AI/QP22/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/Precise/RaceHorses/AI/log_RaceHorses_qp22_AI_Precise.gplog" & 
+
+Encoding: ........... RaceHorses
+
+Video identifier: ... RaceHorses_qp22_AI_Precise
+Video config: ....... /home/luispmendes/cfg-files-test/RaceHorses.cfg
+Encoder: ............ AI
+QP: ................. 22
+VTM version used: ... Precise
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/AI/QP27" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_intra_vtm.cfg" -c "/home/luispmendes/cfg-files-test/RaceHorses.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/AI/QP27/RaceHorses.bin" -q 27 -f 32 -ts 1 --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/Precise/RaceHorses/AI/log_RaceHorses_qp27_AI_Precise.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/AI/QP27/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/Precise/RaceHorses/AI/log_RaceHorses_qp27_AI_Precise.gplog" & 
+
+Encoding: ........... RaceHorses
+
+Video identifier: ... RaceHorses_qp27_AI_Precise
+Video config: ....... /home/luispmendes/cfg-files-test/RaceHorses.cfg
+Encoder: ............ AI
+QP: ................. 27
+VTM version used: ... Precise
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/AI/QP32" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_intra_vtm.cfg" -c "/home/luispmendes/cfg-files-test/RaceHorses.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/AI/QP32/RaceHorses.bin" -q 32 -f 32 -ts 1 --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/Precise/RaceHorses/AI/log_RaceHorses_qp32_AI_Precise.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/AI/QP32/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/Precise/RaceHorses/AI/log_RaceHorses_qp32_AI_Precise.gplog" & 
+
+Encoding: ........... RaceHorses
+
+Video identifier: ... RaceHorses_qp32_AI_Precise
+Video config: ....... /home/luispmendes/cfg-files-test/RaceHorses.cfg
+Encoder: ............ AI
+QP: ................. 32
+VTM version used: ... Precise
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/AI/QP37" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_intra_vtm.cfg" -c "/home/luispmendes/cfg-files-test/RaceHorses.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/AI/QP37/RaceHorses.bin" -q 37 -f 32 -ts 1 --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/Precise/RaceHorses/AI/log_RaceHorses_qp37_AI_Precise.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/AI/QP37/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/Precise/RaceHorses/AI/log_RaceHorses_qp37_AI_Precise.gplog" & 
+
+Encoding: ........... RaceHorses
+
+Video identifier: ... RaceHorses_qp37_AI_Precise
+Video config: ....... /home/luispmendes/cfg-files-test/RaceHorses.cfg
+Encoder: ............ AI
+QP: ................. 37
+VTM version used: ... Precise
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/RA/QP22" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_randomaccess_vtm.cfg" -c "/home/luispmendes/cfg-files-test/RaceHorses.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/RA/QP22/RaceHorses.bin" -q 22 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/Precise/RaceHorses/RA/log_RaceHorses_qp22_RA_Precise.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/RA/QP22/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/Precise/RaceHorses/RA/log_RaceHorses_qp22_RA_Precise.gplog" & 
+
+Encoding: ........... RaceHorses
+
+Video identifier: ... RaceHorses_qp22_RA_Precise
+Video config: ....... /home/luispmendes/cfg-files-test/RaceHorses.cfg
+Encoder: ............ RA
+QP: ................. 22
+VTM version used: ... Precise
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/RA/QP27" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_randomaccess_vtm.cfg" -c "/home/luispmendes/cfg-files-test/RaceHorses.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/RA/QP27/RaceHorses.bin" -q 27 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/Precise/RaceHorses/RA/log_RaceHorses_qp27_RA_Precise.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/RA/QP27/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/Precise/RaceHorses/RA/log_RaceHorses_qp27_RA_Precise.gplog" & 
+
+Encoding: ........... RaceHorses
+
+Video identifier: ... RaceHorses_qp27_RA_Precise
+Video config: ....... /home/luispmendes/cfg-files-test/RaceHorses.cfg
+Encoder: ............ RA
+QP: ................. 27
+VTM version used: ... Precise
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/RA/QP32" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_randomaccess_vtm.cfg" -c "/home/luispmendes/cfg-files-test/RaceHorses.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/RA/QP32/RaceHorses.bin" -q 32 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/Precise/RaceHorses/RA/log_RaceHorses_qp32_RA_Precise.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/RA/QP32/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/Precise/RaceHorses/RA/log_RaceHorses_qp32_RA_Precise.gplog" & 
+
+Encoding: ........... RaceHorses
+
+Video identifier: ... RaceHorses_qp32_RA_Precise
+Video config: ....... /home/luispmendes/cfg-files-test/RaceHorses.cfg
+Encoder: ............ RA
+QP: ................. 32
+VTM version used: ... Precise
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/RA/QP37" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_randomaccess_vtm.cfg" -c "/home/luispmendes/cfg-files-test/RaceHorses.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/RA/QP37/RaceHorses.bin" -q 37 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/Precise/RaceHorses/RA/log_RaceHorses_qp37_RA_Precise.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/RA/QP37/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/Precise/RaceHorses/RA/log_RaceHorses_qp37_RA_Precise.gplog" & 
+
+Encoding: ........... RaceHorses
+
+Video identifier: ... RaceHorses_qp37_RA_Precise
+Video config: ....... /home/luispmendes/cfg-files-test/RaceHorses.cfg
+Encoder: ............ RA
+QP: ................. 37
+VTM version used: ... Precise
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/LB/QP22" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_lowdelay_vtm.cfg" -c "/home/luispmendes/cfg-files-test/RaceHorses.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/LB/QP22/RaceHorses.bin" -q 22 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/Precise/RaceHorses/LB/log_RaceHorses_qp22_LB_Precise.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/LB/QP22/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/Precise/RaceHorses/LB/log_RaceHorses_qp22_LB_Precise.gplog" & 
+
+Encoding: ........... RaceHorses
+
+Video identifier: ... RaceHorses_qp22_LB_Precise
+Video config: ....... /home/luispmendes/cfg-files-test/RaceHorses.cfg
+Encoder: ............ LB
+QP: ................. 22
+VTM version used: ... Precise
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/LB/QP27" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_lowdelay_vtm.cfg" -c "/home/luispmendes/cfg-files-test/RaceHorses.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/LB/QP27/RaceHorses.bin" -q 27 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/Precise/RaceHorses/LB/log_RaceHorses_qp27_LB_Precise.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/LB/QP27/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/Precise/RaceHorses/LB/log_RaceHorses_qp27_LB_Precise.gplog" & 
+
+Encoding: ........... RaceHorses
+
+Video identifier: ... RaceHorses_qp27_LB_Precise
+Video config: ....... /home/luispmendes/cfg-files-test/RaceHorses.cfg
+Encoder: ............ LB
+QP: ................. 27
+VTM version used: ... Precise
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/LB/QP32" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_lowdelay_vtm.cfg" -c "/home/luispmendes/cfg-files-test/RaceHorses.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/LB/QP32/RaceHorses.bin" -q 32 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/Precise/RaceHorses/LB/log_RaceHorses_qp32_LB_Precise.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/LB/QP32/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/Precise/RaceHorses/LB/log_RaceHorses_qp32_LB_Precise.gplog" & 
+
+Encoding: ........... RaceHorses
+
+Video identifier: ... RaceHorses_qp32_LB_Precise
+Video config: ....... /home/luispmendes/cfg-files-test/RaceHorses.cfg
+Encoder: ............ LB
+QP: ................. 32
+VTM version used: ... Precise
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/LB/QP37" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_lowdelay_vtm.cfg" -c "/home/luispmendes/cfg-files-test/RaceHorses.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/LB/QP37/RaceHorses.bin" -q 37 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/Precise/RaceHorses/LB/log_RaceHorses_qp37_LB_Precise.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/RaceHorses/LB/QP37/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/Precise/RaceHorses/LB/log_RaceHorses_qp37_LB_Precise.gplog" & 
+
+Encoding: ........... RaceHorses
+
+Video identifier: ... RaceHorses_qp37_LB_Precise
+Video config: ....... /home/luispmendes/cfg-files-test/RaceHorses.cfg
+Encoder: ............ LB
+QP: ................. 37
+VTM version used: ... Precise
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/AI/QP22" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_intra_vtm.cfg" -c "/home/luispmendes/cfg-files-test/BasketballPass.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/AI/QP22/BasketballPass.bin" -q 22 -f 32 -ts 1 --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/Precise/BasketballPass/AI/log_BasketballPass_qp22_AI_Precise.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/AI/QP22/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/Precise/BasketballPass/AI/log_BasketballPass_qp22_AI_Precise.gplog" & 
+
+Encoding: ........... BasketballPass
+
+Video identifier: ... BasketballPass_qp22_AI_Precise
+Video config: ....... /home/luispmendes/cfg-files-test/BasketballPass.cfg
+Encoder: ............ AI
+QP: ................. 22
+VTM version used: ... Precise
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/AI/QP27" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_intra_vtm.cfg" -c "/home/luispmendes/cfg-files-test/BasketballPass.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/AI/QP27/BasketballPass.bin" -q 27 -f 32 -ts 1 --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/Precise/BasketballPass/AI/log_BasketballPass_qp27_AI_Precise.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/AI/QP27/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/Precise/BasketballPass/AI/log_BasketballPass_qp27_AI_Precise.gplog" & 
+
+Encoding: ........... BasketballPass
+
+Video identifier: ... BasketballPass_qp27_AI_Precise
+Video config: ....... /home/luispmendes/cfg-files-test/BasketballPass.cfg
+Encoder: ............ AI
+QP: ................. 27
+VTM version used: ... Precise
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/AI/QP32" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_intra_vtm.cfg" -c "/home/luispmendes/cfg-files-test/BasketballPass.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/AI/QP32/BasketballPass.bin" -q 32 -f 32 -ts 1 --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/Precise/BasketballPass/AI/log_BasketballPass_qp32_AI_Precise.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/AI/QP32/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/Precise/BasketballPass/AI/log_BasketballPass_qp32_AI_Precise.gplog" & 
+
+Encoding: ........... BasketballPass
+
+Video identifier: ... BasketballPass_qp32_AI_Precise
+Video config: ....... /home/luispmendes/cfg-files-test/BasketballPass.cfg
+Encoder: ............ AI
+QP: ................. 32
+VTM version used: ... Precise
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/AI/QP37" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_intra_vtm.cfg" -c "/home/luispmendes/cfg-files-test/BasketballPass.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/AI/QP37/BasketballPass.bin" -q 37 -f 32 -ts 1 --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/Precise/BasketballPass/AI/log_BasketballPass_qp37_AI_Precise.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/AI/QP37/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/Precise/BasketballPass/AI/log_BasketballPass_qp37_AI_Precise.gplog" & 
+
+Encoding: ........... BasketballPass
+
+Video identifier: ... BasketballPass_qp37_AI_Precise
+Video config: ....... /home/luispmendes/cfg-files-test/BasketballPass.cfg
+Encoder: ............ AI
+QP: ................. 37
+VTM version used: ... Precise
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/RA/QP22" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_randomaccess_vtm.cfg" -c "/home/luispmendes/cfg-files-test/BasketballPass.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/RA/QP22/BasketballPass.bin" -q 22 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/Precise/BasketballPass/RA/log_BasketballPass_qp22_RA_Precise.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/RA/QP22/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/Precise/BasketballPass/RA/log_BasketballPass_qp22_RA_Precise.gplog" & 
+
+Encoding: ........... BasketballPass
+
+Video identifier: ... BasketballPass_qp22_RA_Precise
+Video config: ....... /home/luispmendes/cfg-files-test/BasketballPass.cfg
+Encoder: ............ RA
+QP: ................. 22
+VTM version used: ... Precise
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/RA/QP27" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_randomaccess_vtm.cfg" -c "/home/luispmendes/cfg-files-test/BasketballPass.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/RA/QP27/BasketballPass.bin" -q 27 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/Precise/BasketballPass/RA/log_BasketballPass_qp27_RA_Precise.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/RA/QP27/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/Precise/BasketballPass/RA/log_BasketballPass_qp27_RA_Precise.gplog" & 
+
+Encoding: ........... BasketballPass
+
+Video identifier: ... BasketballPass_qp27_RA_Precise
+Video config: ....... /home/luispmendes/cfg-files-test/BasketballPass.cfg
+Encoder: ............ RA
+QP: ................. 27
+VTM version used: ... Precise
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/RA/QP32" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_randomaccess_vtm.cfg" -c "/home/luispmendes/cfg-files-test/BasketballPass.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/RA/QP32/BasketballPass.bin" -q 32 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/Precise/BasketballPass/RA/log_BasketballPass_qp32_RA_Precise.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/RA/QP32/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/Precise/BasketballPass/RA/log_BasketballPass_qp32_RA_Precise.gplog" & 
+
+Encoding: ........... BasketballPass
+
+Video identifier: ... BasketballPass_qp32_RA_Precise
+Video config: ....... /home/luispmendes/cfg-files-test/BasketballPass.cfg
+Encoder: ............ RA
+QP: ................. 32
+VTM version used: ... Precise
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/RA/QP37" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_randomaccess_vtm.cfg" -c "/home/luispmendes/cfg-files-test/BasketballPass.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/RA/QP37/BasketballPass.bin" -q 37 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/Precise/BasketballPass/RA/log_BasketballPass_qp37_RA_Precise.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/RA/QP37/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/Precise/BasketballPass/RA/log_BasketballPass_qp37_RA_Precise.gplog" & 
+
+Encoding: ........... BasketballPass
+
+Video identifier: ... BasketballPass_qp37_RA_Precise
+Video config: ....... /home/luispmendes/cfg-files-test/BasketballPass.cfg
+Encoder: ............ RA
+QP: ................. 37
+VTM version used: ... Precise
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/LB/QP22" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_lowdelay_vtm.cfg" -c "/home/luispmendes/cfg-files-test/BasketballPass.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/LB/QP22/BasketballPass.bin" -q 22 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/Precise/BasketballPass/LB/log_BasketballPass_qp22_LB_Precise.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/LB/QP22/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/Precise/BasketballPass/LB/log_BasketballPass_qp22_LB_Precise.gplog" & 
+
+Encoding: ........... BasketballPass
+
+Video identifier: ... BasketballPass_qp22_LB_Precise
+Video config: ....... /home/luispmendes/cfg-files-test/BasketballPass.cfg
+Encoder: ............ LB
+QP: ................. 22
+VTM version used: ... Precise
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/LB/QP27" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_lowdelay_vtm.cfg" -c "/home/luispmendes/cfg-files-test/BasketballPass.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/LB/QP27/BasketballPass.bin" -q 27 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/Precise/BasketballPass/LB/log_BasketballPass_qp27_LB_Precise.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/LB/QP27/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/Precise/BasketballPass/LB/log_BasketballPass_qp27_LB_Precise.gplog" & 
+
+Encoding: ........... BasketballPass
+
+Video identifier: ... BasketballPass_qp27_LB_Precise
+Video config: ....... /home/luispmendes/cfg-files-test/BasketballPass.cfg
+Encoder: ............ LB
+QP: ................. 27
+VTM version used: ... Precise
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/LB/QP32" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_lowdelay_vtm.cfg" -c "/home/luispmendes/cfg-files-test/BasketballPass.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/LB/QP32/BasketballPass.bin" -q 32 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/Precise/BasketballPass/LB/log_BasketballPass_qp32_LB_Precise.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/LB/QP32/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/Precise/BasketballPass/LB/log_BasketballPass_qp32_LB_Precise.gplog" & 
+
+Encoding: ........... BasketballPass
+
+Video identifier: ... BasketballPass_qp32_LB_Precise
+Video config: ....... /home/luispmendes/cfg-files-test/BasketballPass.cfg
+Encoder: ............ LB
+QP: ................. 32
+VTM version used: ... Precise
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/LB/QP37" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_lowdelay_vtm.cfg" -c "/home/luispmendes/cfg-files-test/BasketballPass.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/LB/QP37/BasketballPass.bin" -q 37 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/Precise/BasketballPass/LB/log_BasketballPass_qp37_LB_Precise.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/Precise/BasketballPass/LB/QP37/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/Precise/BasketballPass/LB/log_BasketballPass_qp37_LB_Precise.gplog" & 
+
+Encoding: ........... BasketballPass
+
+Video identifier: ... BasketballPass_qp37_LB_Precise
+Video config: ....... /home/luispmendes/cfg-files-test/BasketballPass.cfg
+Encoder: ............ LB
+QP: ................. 37
+VTM version used: ... Precise
+frames encoded: ..... 32
+
+Simulation done

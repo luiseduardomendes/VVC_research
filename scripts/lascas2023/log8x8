@@ -1,0 +1,493 @@
+-- Setting up BBuildEnv 3.14.4.4
+-- bb_enable_warnings:  -> updating warnings flags: -Wall;-fdiagnostics-show-option;-Werror;-Wno-sign-compare;-Wno-class-memaccess
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/build
+-- Setting up BBuildEnv 3.14.4.4
+-- bb_enable_warnings:  -> updating warnings flags: -Wall;-fdiagnostics-show-option;-Werror;-Wno-sign-compare;-Wno-class-memaccess
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/build
+[  0%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/AdaptiveLoopFilter.cpp.o
+[  1%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/AffineGradientSearch.cpp.o
+[  1%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/BitStream.cpp.o
+[  2%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/Buffer.cpp.o
+[  2%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/CacheModel.cpp.o
+[  3%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/ChromaFormat.cpp.o
+[  3%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/CodingStructure.cpp.o
+[  4%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/ContextModelling.cpp.o
+[  4%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/Contexts.cpp.o
+[  5%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/DeblockingFilter.cpp.o
+[  5%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/DepQuant.cpp.o
+[  6%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/HRD.cpp.o
+[  6%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/Hash.cpp.o
+[  7%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/IbcHashMap.cpp.o
+[  7%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/InterPrediction.cpp.o
+[  8%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/InterpolationFilter.cpp.o
+[  8%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/IntraPrediction.cpp.o
+[  9%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/MCTS.cpp.o
+[  9%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/MatrixIntraPrediction.cpp.o
+[ 10%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/Mv.cpp.o
+[ 10%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/ParameterSetManager.cpp.o
+[ 11%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/PicYuvMD5.cpp.o
+[ 11%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/Picture.cpp.o
+[ 12%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/ProfileLevelTier.cpp.o
+[ 12%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/Quant.cpp.o
+[ 13%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/QuantRDOQ.cpp.o
+[ 13%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/RdCost.cpp.o
+[ 14%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/RdCostWeightPrediction.cpp.o
+[ 14%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/Reshape.cpp.o
+[ 15%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/Rom.cpp.o
+[ 15%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/RomLFNST.cpp.o
+[ 16%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/RomTr.cpp.o
+[ 16%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/SEI.cpp.o
+[ 17%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/SEIColourTransform.cpp.o
+[ 17%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/SampleAdaptiveOffset.cpp.o
+[ 18%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/Slice.cpp.o
+[ 18%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/TrQuant.cpp.o
+[ 19%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/TrQuant_EMT.cpp.o
+[ 19%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/Unit.cpp.o
+[ 20%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/UnitPartitioner.cpp.o
+[ 20%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/UnitTools.cpp.o
+[ 21%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/WeightPrediction.cpp.o
+[ 21%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/dtrace.cpp.o
+[ 22%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/dtrace_blockstatistics.cpp.o
+[ 22%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/x86/CommonDefX86.cpp.o
+[ 23%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/x86/InitX86.cpp.o
+[ 23%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/x86/sse41/AdaptiveLoopFilter_sse41.cpp.o
+[ 24%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/x86/sse41/AffineGradientSearch_sse41.cpp.o
+[ 24%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/x86/sse41/Buffer_sse41.cpp.o
+[ 25%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/x86/sse41/InterpolationFilter_sse41.cpp.o
+[ 25%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/x86/sse41/RdCost_sse41.cpp.o
+[ 26%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/x86/sse42/IbcHashmap_sse42.cpp.o
+[ 26%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/x86/avx/AdaptiveLoopFilter_avx.cpp.o
+[ 27%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/x86/avx/AffineGradientSearch_avx.cpp.o
+[ 27%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/x86/avx/Buffer_avx.cpp.o
+[ 28%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/x86/avx/InterpolationFilter_avx.cpp.o
+[ 28%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/x86/avx/RdCost_avx.cpp.o
+[ 29%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/x86/avx2/AdaptiveLoopFilter_avx2.cpp.o
+[ 29%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/x86/avx2/AffineGradientSearch_avx2.cpp.o
+[ 30%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/x86/avx2/Buffer_avx2.cpp.o
+[ 30%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/x86/avx2/InterpolationFilter_avx2.cpp.o
+[ 31%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/x86/avx2/RdCost_avx2.cpp.o
+[ 31%] Building CXX object source/Lib/CommonLib/CMakeFiles/CommonLib.dir/__/libmd5/libmd5.cpp.o
+[ 32%] Linking CXX static library ../../../../lib/umake/gcc-9.4/x86_64/release/libCommonLib.a
+[ 32%] Built target CommonLib
+[ 33%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/AdaptiveLoopFilter.cpp.o
+[ 33%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/AffineGradientSearch.cpp.o
+[ 34%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/BitStream.cpp.o
+[ 34%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/Buffer.cpp.o
+[ 35%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/CacheModel.cpp.o
+[ 35%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/ChromaFormat.cpp.o
+[ 36%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/CodingStructure.cpp.o
+[ 36%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/ContextModelling.cpp.o
+[ 37%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/Contexts.cpp.o
+[ 37%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/DeblockingFilter.cpp.o
+[ 38%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/DepQuant.cpp.o
+[ 38%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/HRD.cpp.o
+[ 39%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/Hash.cpp.o
+[ 39%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/IbcHashMap.cpp.o
+[ 40%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/InterPrediction.cpp.o
+[ 40%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/InterpolationFilter.cpp.o
+[ 41%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/IntraPrediction.cpp.o
+[ 41%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/MCTS.cpp.o
+[ 42%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/MatrixIntraPrediction.cpp.o
+[ 42%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/Mv.cpp.o
+[ 43%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/ParameterSetManager.cpp.o
+[ 43%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/PicYuvMD5.cpp.o
+[ 44%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/Picture.cpp.o
+[ 44%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/ProfileLevelTier.cpp.o
+[ 45%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/Quant.cpp.o
+[ 45%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/QuantRDOQ.cpp.o
+[ 46%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/RdCost.cpp.o
+[ 46%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/RdCostWeightPrediction.cpp.o
+[ 47%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/Reshape.cpp.o
+[ 47%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/Rom.cpp.o
+[ 48%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/RomLFNST.cpp.o
+[ 48%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/RomTr.cpp.o
+[ 49%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/SEI.cpp.o
+[ 49%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/SEIColourTransform.cpp.o
+[ 50%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/SampleAdaptiveOffset.cpp.o
+[ 50%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/Slice.cpp.o
+[ 51%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/TrQuant.cpp.o
+[ 51%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/TrQuant_EMT.cpp.o
+[ 52%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/Unit.cpp.o
+[ 52%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/UnitPartitioner.cpp.o
+[ 53%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/UnitTools.cpp.o
+[ 53%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/WeightPrediction.cpp.o
+[ 54%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/dtrace.cpp.o
+[ 54%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/dtrace_blockstatistics.cpp.o
+[ 55%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/x86/CommonDefX86.cpp.o
+[ 55%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/x86/InitX86.cpp.o
+[ 56%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/x86/sse41/AdaptiveLoopFilter_sse41.cpp.o
+[ 56%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/x86/sse41/AffineGradientSearch_sse41.cpp.o
+[ 57%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/x86/sse41/Buffer_sse41.cpp.o
+[ 57%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/x86/sse41/InterpolationFilter_sse41.cpp.o
+[ 58%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/x86/sse41/RdCost_sse41.cpp.o
+[ 58%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/x86/sse42/IbcHashmap_sse42.cpp.o
+[ 59%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/x86/avx/AdaptiveLoopFilter_avx.cpp.o
+[ 59%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/x86/avx/AffineGradientSearch_avx.cpp.o
+[ 60%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/x86/avx/Buffer_avx.cpp.o
+[ 60%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/x86/avx/InterpolationFilter_avx.cpp.o
+[ 61%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/x86/avx/RdCost_avx.cpp.o
+[ 61%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/x86/avx2/AdaptiveLoopFilter_avx2.cpp.o
+[ 62%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/x86/avx2/AffineGradientSearch_avx2.cpp.o
+[ 62%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/x86/avx2/Buffer_avx2.cpp.o
+[ 63%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/x86/avx2/InterpolationFilter_avx2.cpp.o
+[ 63%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/CommonLib/x86/avx2/RdCost_avx2.cpp.o
+[ 64%] Building CXX object source/Lib/CommonAnalyserLib/CMakeFiles/CommonAnalyserLib.dir/__/libmd5/libmd5.cpp.o
+[ 64%] Linking CXX static library ../../../../lib/umake/gcc-9.4/x86_64/release/libCommonAnalyserLib.a
+[ 64%] Built target CommonAnalyserLib
+[ 65%] Building CXX object source/Lib/DecoderAnalyserLib/CMakeFiles/DecoderAnalyserLib.dir/__/DecoderLib/AnnexBread.cpp.o
+[ 65%] Building CXX object source/Lib/DecoderAnalyserLib/CMakeFiles/DecoderAnalyserLib.dir/__/DecoderLib/BinDecoder.cpp.o
+[ 66%] Building CXX object source/Lib/DecoderAnalyserLib/CMakeFiles/DecoderAnalyserLib.dir/__/DecoderLib/CABACReader.cpp.o
+[ 66%] Building CXX object source/Lib/DecoderAnalyserLib/CMakeFiles/DecoderAnalyserLib.dir/__/DecoderLib/DecCu.cpp.o
+[ 67%] Building CXX object source/Lib/DecoderAnalyserLib/CMakeFiles/DecoderAnalyserLib.dir/__/DecoderLib/DecLib.cpp.o
+[ 67%] Building CXX object source/Lib/DecoderAnalyserLib/CMakeFiles/DecoderAnalyserLib.dir/__/DecoderLib/DecSlice.cpp.o
+[ 68%] Building CXX object source/Lib/DecoderAnalyserLib/CMakeFiles/DecoderAnalyserLib.dir/__/DecoderLib/NALread.cpp.o
+[ 68%] Building CXX object source/Lib/DecoderAnalyserLib/CMakeFiles/DecoderAnalyserLib.dir/__/DecoderLib/SEIread.cpp.o
+[ 69%] Building CXX object source/Lib/DecoderAnalyserLib/CMakeFiles/DecoderAnalyserLib.dir/__/DecoderLib/VLCReader.cpp.o
+[ 69%] Linking CXX static library ../../../../lib/umake/gcc-9.4/x86_64/release/libDecoderAnalyserLib.a
+[ 69%] Built target DecoderAnalyserLib
+[ 70%] Building CXX object source/Lib/DecoderLib/CMakeFiles/DecoderLib.dir/AnnexBread.cpp.o
+[ 70%] Building CXX object source/Lib/DecoderLib/CMakeFiles/DecoderLib.dir/BinDecoder.cpp.o
+[ 71%] Building CXX object source/Lib/DecoderLib/CMakeFiles/DecoderLib.dir/CABACReader.cpp.o
+[ 71%] Building CXX object source/Lib/DecoderLib/CMakeFiles/DecoderLib.dir/DecCu.cpp.o
+[ 72%] Building CXX object source/Lib/DecoderLib/CMakeFiles/DecoderLib.dir/DecLib.cpp.o
+[ 72%] Building CXX object source/Lib/DecoderLib/CMakeFiles/DecoderLib.dir/DecSlice.cpp.o
+[ 73%] Building CXX object source/Lib/DecoderLib/CMakeFiles/DecoderLib.dir/NALread.cpp.o
+[ 73%] Building CXX object source/Lib/DecoderLib/CMakeFiles/DecoderLib.dir/SEIread.cpp.o
+[ 74%] Building CXX object source/Lib/DecoderLib/CMakeFiles/DecoderLib.dir/VLCReader.cpp.o
+[ 74%] Linking CXX static library ../../../../lib/umake/gcc-9.4/x86_64/release/libDecoderLib.a
+[ 74%] Built target DecoderLib
+[ 75%] Building CXX object source/Lib/EncoderLib/CMakeFiles/EncoderLib.dir/AQp.cpp.o
+[ 75%] Building CXX object source/Lib/EncoderLib/CMakeFiles/EncoderLib.dir/BinEncoder.cpp.o
+[ 76%] Building CXX object source/Lib/EncoderLib/CMakeFiles/EncoderLib.dir/CABACWriter.cpp.o
+[ 76%] Building CXX object source/Lib/EncoderLib/CMakeFiles/EncoderLib.dir/EncAdaptiveLoopFilter.cpp.o
+[ 77%] Building CXX object source/Lib/EncoderLib/CMakeFiles/EncoderLib.dir/EncCu.cpp.o
+[ 77%] Building CXX object source/Lib/EncoderLib/CMakeFiles/EncoderLib.dir/EncGOP.cpp.o
+[ 78%] Building CXX object source/Lib/EncoderLib/CMakeFiles/EncoderLib.dir/EncHRD.cpp.o
+[ 78%] Building CXX object source/Lib/EncoderLib/CMakeFiles/EncoderLib.dir/EncLib.cpp.o
+[ 79%] Building CXX object source/Lib/EncoderLib/CMakeFiles/EncoderLib.dir/EncLibCommon.cpp.o
+[ 79%] Building CXX object source/Lib/EncoderLib/CMakeFiles/EncoderLib.dir/EncModeCtrl.cpp.o
+[ 80%] Building CXX object source/Lib/EncoderLib/CMakeFiles/EncoderLib.dir/EncReshape.cpp.o
+[ 80%] Building CXX object source/Lib/EncoderLib/CMakeFiles/EncoderLib.dir/EncSampleAdaptiveOffset.cpp.o
+[ 81%] Building CXX object source/Lib/EncoderLib/CMakeFiles/EncoderLib.dir/EncSlice.cpp.o
+[ 81%] Building CXX object source/Lib/EncoderLib/CMakeFiles/EncoderLib.dir/EncTemporalFilter.cpp.o
+[ 82%] Building CXX object source/Lib/EncoderLib/CMakeFiles/EncoderLib.dir/InterSearch.cpp.o
+[ 82%] Building CXX object source/Lib/EncoderLib/CMakeFiles/EncoderLib.dir/IntraSearch.cpp.o
+[ 83%] Building CXX object source/Lib/EncoderLib/CMakeFiles/EncoderLib.dir/NALwrite.cpp.o
+[ 83%] Building CXX object source/Lib/EncoderLib/CMakeFiles/EncoderLib.dir/RateCtrl.cpp.o
+[ 84%] Building CXX object source/Lib/EncoderLib/CMakeFiles/EncoderLib.dir/SEIEncoder.cpp.o
+[ 84%] Building CXX object source/Lib/EncoderLib/CMakeFiles/EncoderLib.dir/SEIwrite.cpp.o
+[ 85%] Building CXX object source/Lib/EncoderLib/CMakeFiles/EncoderLib.dir/VLCWriter.cpp.o
+[ 85%] Building CXX object source/Lib/EncoderLib/CMakeFiles/EncoderLib.dir/WeightPredAnalysis.cpp.o
+[ 86%] Linking CXX static library ../../../../lib/umake/gcc-9.4/x86_64/release/libEncoderLib.a
+[ 86%] Built target EncoderLib
+[ 87%] Building CXX object source/Lib/Utilities/CMakeFiles/Utilities.dir/VideoIOYuv.cpp.o
+[ 87%] Building CXX object source/Lib/Utilities/CMakeFiles/Utilities.dir/program_options_lite.cpp.o
+[ 88%] Linking CXX static library ../../../../lib/umake/gcc-9.4/x86_64/release/libUtilities.a
+[ 88%] Built target Utilities
+[ 88%] Building CXX object source/App/DecoderAnalyserApp/CMakeFiles/DecoderAnalyserApp.dir/__/DecoderApp/DecApp.cpp.o
+[ 89%] Building CXX object source/App/DecoderAnalyserApp/CMakeFiles/DecoderAnalyserApp.dir/__/DecoderApp/DecAppCfg.cpp.o
+[ 89%] Building CXX object source/App/DecoderAnalyserApp/CMakeFiles/DecoderAnalyserApp.dir/__/DecoderApp/decmain.cpp.o
+[ 89%] Linking CXX executable ../../../../bin/umake/gcc-9.4/x86_64/release/DecoderAnalyserApp
+[ 89%] Built target DecoderAnalyserApp
+[ 90%] Building CXX object source/App/DecoderApp/CMakeFiles/DecoderApp.dir/DecApp.cpp.o
+[ 90%] Building CXX object source/App/DecoderApp/CMakeFiles/DecoderApp.dir/DecAppCfg.cpp.o
+[ 91%] Building CXX object source/App/DecoderApp/CMakeFiles/DecoderApp.dir/decmain.cpp.o
+[ 91%] Linking CXX executable ../../../../bin/umake/gcc-9.4/x86_64/release/DecoderApp
+[ 91%] Built target DecoderApp
+[ 92%] Building CXX object source/App/EncoderApp/CMakeFiles/EncoderApp.dir/EncApp.cpp.o
+[ 92%] Building CXX object source/App/EncoderApp/CMakeFiles/EncoderApp.dir/EncAppCfg.cpp.o
+[ 93%] Building CXX object source/App/EncoderApp/CMakeFiles/EncoderApp.dir/encmain.cpp.o
+[ 93%] Linking CXX executable ../../../../bin/umake/gcc-9.4/x86_64/release/EncoderApp
+[ 93%] Built target EncoderApp
+[ 93%] Building CXX object source/App/SEIRemovalApp/CMakeFiles/SEIRemovalApp.dir/SEIRemovalApp.cpp.o
+[ 94%] Building CXX object source/App/SEIRemovalApp/CMakeFiles/SEIRemovalApp.dir/SEIRemovalAppCfg.cpp.o
+[ 94%] Building CXX object source/App/SEIRemovalApp/CMakeFiles/SEIRemovalApp.dir/seiremovalmain.cpp.o
+[ 95%] Linking CXX executable ../../../../bin/umake/gcc-9.4/x86_64/release/SEIRemovalApp
+[ 95%] Built target SEIRemovalApp
+[ 95%] Building CXX object source/App/Parcat/CMakeFiles/parcat.dir/parcat.cpp.o
+[ 96%] Linking CXX executable ../../../../bin/umake/gcc-9.4/x86_64/release/parcat
+[ 96%] Built target parcat
+[ 96%] Building CXX object source/App/StreamMergeApp/CMakeFiles/StreamMergeApp.dir/StreamMergeApp.cpp.o
+[ 97%] Building CXX object source/App/StreamMergeApp/CMakeFiles/StreamMergeApp.dir/StreamMergeAppCfg.cpp.o
+[ 97%] Building CXX object source/App/StreamMergeApp/CMakeFiles/StreamMergeApp.dir/StreamMergeMain.cpp.o
+[ 98%] Linking CXX executable ../../../../bin/umake/gcc-9.4/x86_64/release/StreamMergeApp
+[ 98%] Built target StreamMergeApp
+[ 98%] Building CXX object source/App/BitstreamExtractorApp/CMakeFiles/BitstreamExtractorApp.dir/BitstreamExtractorApp.cpp.o
+[ 98%] Building CXX object source/App/BitstreamExtractorApp/CMakeFiles/BitstreamExtractorApp.dir/BitstreamExtractorAppCfg.cpp.o
+[ 99%] Building CXX object source/App/BitstreamExtractorApp/CMakeFiles/BitstreamExtractorApp.dir/bitstreamextractormain.cpp.o
+[ 99%] Linking CXX executable ../../../../bin/umake/gcc-9.4/x86_64/release/BitstreamExtractorApp
+[ 99%] Built target BitstreamExtractorApp
+[ 99%] Building CXX object source/App/SubpicMergeApp/CMakeFiles/SubpicMergeApp.dir/SubpicMergeApp.cpp.o
+[100%] Building CXX object source/App/SubpicMergeApp/CMakeFiles/SubpicMergeApp.dir/SubpicMergeMain.cpp.o
+[100%] Linking CXX executable ../../../../bin/umake/gcc-9.4/x86_64/release/SubpicMergeApp
+[100%] Built target SubpicMergeApp
+Execution running
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/AI/QP22" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_intra_vtm.cfg" -c "/home/luispmendes/cfg-files-test/RaceHorses.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/AI/QP22/RaceHorses.bin" -q 22 -f 32 -ts 1 --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/RdCost-8x8-SAD/RaceHorses/AI/log_RaceHorses_qp22_AI_RdCost-8x8-SAD.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/AI/QP22/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/RdCost-8x8-SAD/RaceHorses/AI/log_RaceHorses_qp22_AI_RdCost-8x8-SAD.gplog" & 
+
+Encoding: ........... RaceHorses
+
+Video identifier: ... RaceHorses_qp22_AI_RdCost-8x8-SAD
+Video config: ....... /home/luispmendes/cfg-files-test/RaceHorses.cfg
+Encoder: ............ AI
+QP: ................. 22
+VTM version used: ... RdCost-8x8-SAD
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/AI/QP27" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_intra_vtm.cfg" -c "/home/luispmendes/cfg-files-test/RaceHorses.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/AI/QP27/RaceHorses.bin" -q 27 -f 32 -ts 1 --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/RdCost-8x8-SAD/RaceHorses/AI/log_RaceHorses_qp27_AI_RdCost-8x8-SAD.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/AI/QP27/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/RdCost-8x8-SAD/RaceHorses/AI/log_RaceHorses_qp27_AI_RdCost-8x8-SAD.gplog" & 
+
+Encoding: ........... RaceHorses
+
+Video identifier: ... RaceHorses_qp27_AI_RdCost-8x8-SAD
+Video config: ....... /home/luispmendes/cfg-files-test/RaceHorses.cfg
+Encoder: ............ AI
+QP: ................. 27
+VTM version used: ... RdCost-8x8-SAD
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/AI/QP32" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_intra_vtm.cfg" -c "/home/luispmendes/cfg-files-test/RaceHorses.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/AI/QP32/RaceHorses.bin" -q 32 -f 32 -ts 1 --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/RdCost-8x8-SAD/RaceHorses/AI/log_RaceHorses_qp32_AI_RdCost-8x8-SAD.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/AI/QP32/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/RdCost-8x8-SAD/RaceHorses/AI/log_RaceHorses_qp32_AI_RdCost-8x8-SAD.gplog" & 
+
+Encoding: ........... RaceHorses
+
+Video identifier: ... RaceHorses_qp32_AI_RdCost-8x8-SAD
+Video config: ....... /home/luispmendes/cfg-files-test/RaceHorses.cfg
+Encoder: ............ AI
+QP: ................. 32
+VTM version used: ... RdCost-8x8-SAD
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/AI/QP37" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_intra_vtm.cfg" -c "/home/luispmendes/cfg-files-test/RaceHorses.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/AI/QP37/RaceHorses.bin" -q 37 -f 32 -ts 1 --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/RdCost-8x8-SAD/RaceHorses/AI/log_RaceHorses_qp37_AI_RdCost-8x8-SAD.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/AI/QP37/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/RdCost-8x8-SAD/RaceHorses/AI/log_RaceHorses_qp37_AI_RdCost-8x8-SAD.gplog" & 
+
+Encoding: ........... RaceHorses
+
+Video identifier: ... RaceHorses_qp37_AI_RdCost-8x8-SAD
+Video config: ....... /home/luispmendes/cfg-files-test/RaceHorses.cfg
+Encoder: ............ AI
+QP: ................. 37
+VTM version used: ... RdCost-8x8-SAD
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/RA/QP22" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_randomaccess_vtm.cfg" -c "/home/luispmendes/cfg-files-test/RaceHorses.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/RA/QP22/RaceHorses.bin" -q 22 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/RdCost-8x8-SAD/RaceHorses/RA/log_RaceHorses_qp22_RA_RdCost-8x8-SAD.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/RA/QP22/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/RdCost-8x8-SAD/RaceHorses/RA/log_RaceHorses_qp22_RA_RdCost-8x8-SAD.gplog" & 
+
+Encoding: ........... RaceHorses
+
+Video identifier: ... RaceHorses_qp22_RA_RdCost-8x8-SAD
+Video config: ....... /home/luispmendes/cfg-files-test/RaceHorses.cfg
+Encoder: ............ RA
+QP: ................. 22
+VTM version used: ... RdCost-8x8-SAD
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/RA/QP27" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_randomaccess_vtm.cfg" -c "/home/luispmendes/cfg-files-test/RaceHorses.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/RA/QP27/RaceHorses.bin" -q 27 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/RdCost-8x8-SAD/RaceHorses/RA/log_RaceHorses_qp27_RA_RdCost-8x8-SAD.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/RA/QP27/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/RdCost-8x8-SAD/RaceHorses/RA/log_RaceHorses_qp27_RA_RdCost-8x8-SAD.gplog" & 
+
+Encoding: ........... RaceHorses
+
+Video identifier: ... RaceHorses_qp27_RA_RdCost-8x8-SAD
+Video config: ....... /home/luispmendes/cfg-files-test/RaceHorses.cfg
+Encoder: ............ RA
+QP: ................. 27
+VTM version used: ... RdCost-8x8-SAD
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/RA/QP32" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_randomaccess_vtm.cfg" -c "/home/luispmendes/cfg-files-test/RaceHorses.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/RA/QP32/RaceHorses.bin" -q 32 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/RdCost-8x8-SAD/RaceHorses/RA/log_RaceHorses_qp32_RA_RdCost-8x8-SAD.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/RA/QP32/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/RdCost-8x8-SAD/RaceHorses/RA/log_RaceHorses_qp32_RA_RdCost-8x8-SAD.gplog" & 
+
+Encoding: ........... RaceHorses
+
+Video identifier: ... RaceHorses_qp32_RA_RdCost-8x8-SAD
+Video config: ....... /home/luispmendes/cfg-files-test/RaceHorses.cfg
+Encoder: ............ RA
+QP: ................. 32
+VTM version used: ... RdCost-8x8-SAD
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/RA/QP37" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_randomaccess_vtm.cfg" -c "/home/luispmendes/cfg-files-test/RaceHorses.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/RA/QP37/RaceHorses.bin" -q 37 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/RdCost-8x8-SAD/RaceHorses/RA/log_RaceHorses_qp37_RA_RdCost-8x8-SAD.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/RA/QP37/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/RdCost-8x8-SAD/RaceHorses/RA/log_RaceHorses_qp37_RA_RdCost-8x8-SAD.gplog" & 
+
+Encoding: ........... RaceHorses
+
+Video identifier: ... RaceHorses_qp37_RA_RdCost-8x8-SAD
+Video config: ....... /home/luispmendes/cfg-files-test/RaceHorses.cfg
+Encoder: ............ RA
+QP: ................. 37
+VTM version used: ... RdCost-8x8-SAD
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/LB/QP22" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_lowdelay_vtm.cfg" -c "/home/luispmendes/cfg-files-test/RaceHorses.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/LB/QP22/RaceHorses.bin" -q 22 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/RdCost-8x8-SAD/RaceHorses/LB/log_RaceHorses_qp22_LB_RdCost-8x8-SAD.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/LB/QP22/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/RdCost-8x8-SAD/RaceHorses/LB/log_RaceHorses_qp22_LB_RdCost-8x8-SAD.gplog" & 
+
+Encoding: ........... RaceHorses
+
+Video identifier: ... RaceHorses_qp22_LB_RdCost-8x8-SAD
+Video config: ....... /home/luispmendes/cfg-files-test/RaceHorses.cfg
+Encoder: ............ LB
+QP: ................. 22
+VTM version used: ... RdCost-8x8-SAD
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/LB/QP27" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_lowdelay_vtm.cfg" -c "/home/luispmendes/cfg-files-test/RaceHorses.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/LB/QP27/RaceHorses.bin" -q 27 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/RdCost-8x8-SAD/RaceHorses/LB/log_RaceHorses_qp27_LB_RdCost-8x8-SAD.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/LB/QP27/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/RdCost-8x8-SAD/RaceHorses/LB/log_RaceHorses_qp27_LB_RdCost-8x8-SAD.gplog" & 
+
+Encoding: ........... RaceHorses
+
+Video identifier: ... RaceHorses_qp27_LB_RdCost-8x8-SAD
+Video config: ....... /home/luispmendes/cfg-files-test/RaceHorses.cfg
+Encoder: ............ LB
+QP: ................. 27
+VTM version used: ... RdCost-8x8-SAD
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/LB/QP32" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_lowdelay_vtm.cfg" -c "/home/luispmendes/cfg-files-test/RaceHorses.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/LB/QP32/RaceHorses.bin" -q 32 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/RdCost-8x8-SAD/RaceHorses/LB/log_RaceHorses_qp32_LB_RdCost-8x8-SAD.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/LB/QP32/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/RdCost-8x8-SAD/RaceHorses/LB/log_RaceHorses_qp32_LB_RdCost-8x8-SAD.gplog" & 
+
+Encoding: ........... RaceHorses
+
+Video identifier: ... RaceHorses_qp32_LB_RdCost-8x8-SAD
+Video config: ....... /home/luispmendes/cfg-files-test/RaceHorses.cfg
+Encoder: ............ LB
+QP: ................. 32
+VTM version used: ... RdCost-8x8-SAD
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/LB/QP37" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_lowdelay_vtm.cfg" -c "/home/luispmendes/cfg-files-test/RaceHorses.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/LB/QP37/RaceHorses.bin" -q 37 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/RdCost-8x8-SAD/RaceHorses/LB/log_RaceHorses_qp37_LB_RdCost-8x8-SAD.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/RaceHorses/LB/QP37/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/RdCost-8x8-SAD/RaceHorses/LB/log_RaceHorses_qp37_LB_RdCost-8x8-SAD.gplog" & 
+
+Encoding: ........... RaceHorses
+
+Video identifier: ... RaceHorses_qp37_LB_RdCost-8x8-SAD
+Video config: ....... /home/luispmendes/cfg-files-test/RaceHorses.cfg
+Encoder: ............ LB
+QP: ................. 37
+VTM version used: ... RdCost-8x8-SAD
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/AI/QP22" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_intra_vtm.cfg" -c "/home/luispmendes/cfg-files-test/BasketballPass.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/AI/QP22/BasketballPass.bin" -q 22 -f 32 -ts 1 --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/RdCost-8x8-SAD/BasketballPass/AI/log_BasketballPass_qp22_AI_RdCost-8x8-SAD.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/AI/QP22/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/RdCost-8x8-SAD/BasketballPass/AI/log_BasketballPass_qp22_AI_RdCost-8x8-SAD.gplog" & 
+
+Encoding: ........... BasketballPass
+
+Video identifier: ... BasketballPass_qp22_AI_RdCost-8x8-SAD
+Video config: ....... /home/luispmendes/cfg-files-test/BasketballPass.cfg
+Encoder: ............ AI
+QP: ................. 22
+VTM version used: ... RdCost-8x8-SAD
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/AI/QP27" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_intra_vtm.cfg" -c "/home/luispmendes/cfg-files-test/BasketballPass.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/AI/QP27/BasketballPass.bin" -q 27 -f 32 -ts 1 --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/RdCost-8x8-SAD/BasketballPass/AI/log_BasketballPass_qp27_AI_RdCost-8x8-SAD.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/AI/QP27/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/RdCost-8x8-SAD/BasketballPass/AI/log_BasketballPass_qp27_AI_RdCost-8x8-SAD.gplog" & 
+
+Encoding: ........... BasketballPass
+
+Video identifier: ... BasketballPass_qp27_AI_RdCost-8x8-SAD
+Video config: ....... /home/luispmendes/cfg-files-test/BasketballPass.cfg
+Encoder: ............ AI
+QP: ................. 27
+VTM version used: ... RdCost-8x8-SAD
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/AI/QP32" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_intra_vtm.cfg" -c "/home/luispmendes/cfg-files-test/BasketballPass.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/AI/QP32/BasketballPass.bin" -q 32 -f 32 -ts 1 --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/RdCost-8x8-SAD/BasketballPass/AI/log_BasketballPass_qp32_AI_RdCost-8x8-SAD.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/AI/QP32/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/RdCost-8x8-SAD/BasketballPass/AI/log_BasketballPass_qp32_AI_RdCost-8x8-SAD.gplog" & 
+
+Encoding: ........... BasketballPass
+
+Video identifier: ... BasketballPass_qp32_AI_RdCost-8x8-SAD
+Video config: ....... /home/luispmendes/cfg-files-test/BasketballPass.cfg
+Encoder: ............ AI
+QP: ................. 32
+VTM version used: ... RdCost-8x8-SAD
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/AI/QP37" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_intra_vtm.cfg" -c "/home/luispmendes/cfg-files-test/BasketballPass.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/AI/QP37/BasketballPass.bin" -q 37 -f 32 -ts 1 --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/RdCost-8x8-SAD/BasketballPass/AI/log_BasketballPass_qp37_AI_RdCost-8x8-SAD.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/AI/QP37/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/RdCost-8x8-SAD/BasketballPass/AI/log_BasketballPass_qp37_AI_RdCost-8x8-SAD.gplog" & 
+
+Encoding: ........... BasketballPass
+
+Video identifier: ... BasketballPass_qp37_AI_RdCost-8x8-SAD
+Video config: ....... /home/luispmendes/cfg-files-test/BasketballPass.cfg
+Encoder: ............ AI
+QP: ................. 37
+VTM version used: ... RdCost-8x8-SAD
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/RA/QP22" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_randomaccess_vtm.cfg" -c "/home/luispmendes/cfg-files-test/BasketballPass.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/RA/QP22/BasketballPass.bin" -q 22 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/RdCost-8x8-SAD/BasketballPass/RA/log_BasketballPass_qp22_RA_RdCost-8x8-SAD.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/RA/QP22/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/RdCost-8x8-SAD/BasketballPass/RA/log_BasketballPass_qp22_RA_RdCost-8x8-SAD.gplog" & 
+
+Encoding: ........... BasketballPass
+
+Video identifier: ... BasketballPass_qp22_RA_RdCost-8x8-SAD
+Video config: ....... /home/luispmendes/cfg-files-test/BasketballPass.cfg
+Encoder: ............ RA
+QP: ................. 22
+VTM version used: ... RdCost-8x8-SAD
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/RA/QP27" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_randomaccess_vtm.cfg" -c "/home/luispmendes/cfg-files-test/BasketballPass.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/RA/QP27/BasketballPass.bin" -q 27 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/RdCost-8x8-SAD/BasketballPass/RA/log_BasketballPass_qp27_RA_RdCost-8x8-SAD.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/RA/QP27/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/RdCost-8x8-SAD/BasketballPass/RA/log_BasketballPass_qp27_RA_RdCost-8x8-SAD.gplog" & 
+
+Encoding: ........... BasketballPass
+
+Video identifier: ... BasketballPass_qp27_RA_RdCost-8x8-SAD
+Video config: ....... /home/luispmendes/cfg-files-test/BasketballPass.cfg
+Encoder: ............ RA
+QP: ................. 27
+VTM version used: ... RdCost-8x8-SAD
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/RA/QP32" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_randomaccess_vtm.cfg" -c "/home/luispmendes/cfg-files-test/BasketballPass.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/RA/QP32/BasketballPass.bin" -q 32 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/RdCost-8x8-SAD/BasketballPass/RA/log_BasketballPass_qp32_RA_RdCost-8x8-SAD.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/RA/QP32/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/RdCost-8x8-SAD/BasketballPass/RA/log_BasketballPass_qp32_RA_RdCost-8x8-SAD.gplog" & 
+
+Encoding: ........... BasketballPass
+
+Video identifier: ... BasketballPass_qp32_RA_RdCost-8x8-SAD
+Video config: ....... /home/luispmendes/cfg-files-test/BasketballPass.cfg
+Encoder: ............ RA
+QP: ................. 32
+VTM version used: ... RdCost-8x8-SAD
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/RA/QP37" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_randomaccess_vtm.cfg" -c "/home/luispmendes/cfg-files-test/BasketballPass.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/RA/QP37/BasketballPass.bin" -q 37 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/RdCost-8x8-SAD/BasketballPass/RA/log_BasketballPass_qp37_RA_RdCost-8x8-SAD.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/RA/QP37/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/RdCost-8x8-SAD/BasketballPass/RA/log_BasketballPass_qp37_RA_RdCost-8x8-SAD.gplog" & 
+
+Encoding: ........... BasketballPass
+
+Video identifier: ... BasketballPass_qp37_RA_RdCost-8x8-SAD
+Video config: ....... /home/luispmendes/cfg-files-test/BasketballPass.cfg
+Encoder: ............ RA
+QP: ................. 37
+VTM version used: ... RdCost-8x8-SAD
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/LB/QP22" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_lowdelay_vtm.cfg" -c "/home/luispmendes/cfg-files-test/BasketballPass.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/LB/QP22/BasketballPass.bin" -q 22 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/RdCost-8x8-SAD/BasketballPass/LB/log_BasketballPass_qp22_LB_RdCost-8x8-SAD.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/LB/QP22/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/RdCost-8x8-SAD/BasketballPass/LB/log_BasketballPass_qp22_LB_RdCost-8x8-SAD.gplog" & 
+
+Encoding: ........... BasketballPass
+
+Video identifier: ... BasketballPass_qp22_LB_RdCost-8x8-SAD
+Video config: ....... /home/luispmendes/cfg-files-test/BasketballPass.cfg
+Encoder: ............ LB
+QP: ................. 22
+VTM version used: ... RdCost-8x8-SAD
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/LB/QP27" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_lowdelay_vtm.cfg" -c "/home/luispmendes/cfg-files-test/BasketballPass.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/LB/QP27/BasketballPass.bin" -q 27 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/RdCost-8x8-SAD/BasketballPass/LB/log_BasketballPass_qp27_LB_RdCost-8x8-SAD.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/LB/QP27/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/RdCost-8x8-SAD/BasketballPass/LB/log_BasketballPass_qp27_LB_RdCost-8x8-SAD.gplog" & 
+
+Encoding: ........... BasketballPass
+
+Video identifier: ... BasketballPass_qp27_LB_RdCost-8x8-SAD
+Video config: ....... /home/luispmendes/cfg-files-test/BasketballPass.cfg
+Encoder: ............ LB
+QP: ................. 27
+VTM version used: ... RdCost-8x8-SAD
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/LB/QP32" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_lowdelay_vtm.cfg" -c "/home/luispmendes/cfg-files-test/BasketballPass.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/LB/QP32/BasketballPass.bin" -q 32 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/RdCost-8x8-SAD/BasketballPass/LB/log_BasketballPass_qp32_LB_RdCost-8x8-SAD.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/LB/QP32/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/RdCost-8x8-SAD/BasketballPass/LB/log_BasketballPass_qp32_LB_RdCost-8x8-SAD.gplog" & 
+
+Encoding: ........... BasketballPass
+
+Video identifier: ... BasketballPass_qp32_LB_RdCost-8x8-SAD
+Video config: ....... /home/luispmendes/cfg-files-test/BasketballPass.cfg
+Encoder: ............ LB
+QP: ................. 32
+VTM version used: ... RdCost-8x8-SAD
+frames encoded: ..... 32
+
+cd "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/LB/QP37" && /"/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" -c "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/cfg/encoder_lowdelay_vtm.cfg" -c "/home/luispmendes/cfg-files-test/BasketballPass.cfg" -b "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/LB/QP37/BasketballPass.bin" -q 37 -f 32  --SIMD=SCALAR >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/vvc_log/RdCost-8x8-SAD/BasketballPass/LB/log_BasketballPass_qp37_LB_RdCost-8x8-SAD.vvclog" && cd "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin" && gprof "/home/luispmendes/VVC_research/scripts/lascas2023/VVCSoftware_VTM/bin/EncoderAppStatic" "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/video_bin/RdCost-8x8-SAD/BasketballPass/LB/QP37/gmon.out" >> "/home/luispmendes/VVC_research/scripts/lascas2023/output_lascas_2023/gprof_log/RdCost-8x8-SAD/BasketballPass/LB/log_BasketballPass_qp37_LB_RdCost-8x8-SAD.gplog" & 
+
+Encoding: ........... BasketballPass
+
+Video identifier: ... BasketballPass_qp37_LB_RdCost-8x8-SAD
+Video config: ....... /home/luispmendes/cfg-files-test/BasketballPass.cfg
+Encoder: ............ LB
+QP: ................. 37
+VTM version used: ... RdCost-8x8-SAD
+frames encoded: ..... 32
+
+Simulation done
