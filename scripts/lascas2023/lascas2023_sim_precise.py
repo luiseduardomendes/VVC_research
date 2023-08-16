@@ -1,10 +1,18 @@
 from vvcpy import sim
 from vvcpy import common as cm
 from os.path import join
+from os import getcwd
 
 setup_file = 'setup_lascas.yaml'
 Sim = sim.Simulation()
 Sim.read_yaml(setup_file)
 
-Sim.run_exec()
+vtm = cm.commonlib.yaml_reader(setup_file)['vtm']
 
+new_file = join(getcwd(), 'RdCostFiles/RdCost.cpp')
+old_file = join(vtm, 'source', 'Lib', 'CommonLib', 'RdCost.cpp')
+version = 'Precise'
+
+Sim.change_version(version, old_file, new_file)
+
+Sim.run_exec()
